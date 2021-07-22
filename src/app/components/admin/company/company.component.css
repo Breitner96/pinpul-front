@@ -1,0 +1,48 @@
+.container{
+    position: relative;
+}
+.titulo__modulo{
+    font-size: 2rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #c0baba;
+    padding-bottom: 0.5rem;
+}
+.btn-regPro{
+    padding: 1rem 1.5rem;
+    background-color: #38ada9;
+    /* border: 2px solid #ffa502 ; */
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    margin: 0 auto;
+    margin-top: 2.5rem;
+    cursor: pointer;
+
+}
+.btn-regPro:hover{
+    background-color: #079992;
+
+}
+.container__btn{
+    
+    width: 20rem;
+    margin: 4rem auto;
+
+}
+@media(min-width:768px){
+    .datos{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 4rem;
+    }
+    .datosUno{
+        width: 60%;
+        padding-right: 1rem;
+    }
+    .datosDos{
+        width: 40%;
+
+    }
+}

@@ -1,0 +1,68 @@
+<div class="wrapper">
+  
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <!-- Content Wrapper -->
+
+  <div class="content-wrapper">
+
+      <div class="container">
+          <div class="row justify-content-md-center">
+              <div class="col col-lg-12 mt-5">
+                <div class="btn__container">
+
+                  <button type="button" class="btn btn-primary btn-lg mb-5 boton__add" [routerLink]="['/admin/paises/add-country']">Añadir Pais</button>
+                </div>
+
+                <div class="card">
+                      <div class="card-header">
+                        <h3 class="card-title">Paises</h3>
+                      </div>
+                      <!-- /.card-header -->
+                      <div class="card-body p-0">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th style="width: 10px">#</th>
+                              <td align="center" style="font-weight: bold">Indicativo</td>
+                              <td align="center" style="font-weight: bold">Pais</td>
+                              <td align="center" style="font-weight: bold">Componentes</td>
+                            </tr>
+                          </thead>
+                          <tbody *ngFor="let pais of paises">
+                            <tr>
+                              <td>{{pais.id}}</td>
+                              <td align="center">{{pais.indicator}}</td>
+                              <td align="center">{{pais.country}}</td>
+
+                              <td align="center">
+                                
+                                <button type="button" class="btn btn-primary mr-2" [routerLink]="['/admin/paises/edit-country', pais.id]"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger" (click)="deleteCountry(pais.id)"><i class="fas fa-trash-alt"></i></button>
+
+                              </td>
+
+
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+
+              
+              </div>
+
+            </div>
+        </div>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <app-footerdash></app-footerdash>
+  
+</div>
+<!-- ./wrapper -->

@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="logo" >
+    <a [routerLink]="['/home/']">
+      <img src="{{ _angularImg }}/logos/500x262.png" alt="logo">
+    
+    </a>
+  </div>
+  <div class="">
+    
+    <!-- left column -->
+    <div class=" login__container">
+      <!-- jquery validation -->
+      <div class="card card-primary">
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form id="quickForm" novalidate="novalidate" [formGroup]="form" (ngSubmit)="login()">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input id="exampleInputEmail1" type="email" class="form-control" placeholder="Email" formControlName="email" placeholder="Ingresa tu email" autocomplete="email"
+              [class.is-invalid]="emailValidate">
+              <small *ngIf="emailValidate" class="text-danger">Ingrese el email</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input id="exampleInputPassword1" type="password" class="form-control" placeholder="Password" formControlName="password" placeholder="Password" 
+              [class.is-invalid]="passwordValidate">
+              <small *ngIf="passwordValidate" class="text-danger">Ingrese la contraseña</small>
+            </div>
+            <div class="registrarse">
+              <a [routerLink]="['/registro/']">Registrarse</a>
+              
+              <a href="#">Olvide mi contraseña</a>
+            </div>
+            
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.card -->
+      </div>
+    <!--/.col (left) -->
+    <!-- right column -->
+    <div class="col-md-6">
+
+    </div>
+    <!--/.col (right) -->
+  </div>
+  <!-- /.row -->
+</div><!-- /.container-fluid -->
+

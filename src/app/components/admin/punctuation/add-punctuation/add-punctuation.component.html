@@ -1,0 +1,81 @@
+
+<div class="wrapper">
+  
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <!-- Content Wrapper -->
+
+  <div class="content-wrapper">
+
+      <div class="container">
+          <div class="row justify-content-md-center">
+              <div class="col col-lg-6 mt-5">
+
+                  <!-- {{ formData | json }}               -->
+                  <form id="quickForm" [formGroup]="form" (ngSubmit)="add_Punctuation()">
+
+                        
+                      <!-- <div class="form-group">
+                          <label for="selectuser">Usuario</label>
+                          <select class="form-control" id="selectuser" formControlName="user_id"  [class.is-invalid]="userValidate">
+                            
+                            <option *ngFor="let user of users" value="{{ user.id }}">
+                              {{user.name}} {{user.last_name}}
+                            </option>
+                            
+                          </select>
+                          <small *ngIf="userValidate" class="text-danger">Ingrese el Usuario</small>
+                        </div> -->
+
+                        <div class="form-group">
+                          <label for="selectprovider">Proveedor</label>
+                          <select class="form-control" id="selectprovider" formControlName="provider_id"  [class.is-invalid]="providerValidate">
+                            
+                            <option *ngFor="let provider of providers" value="{{ provider.id }}">
+                              {{ provider.provider }}
+                            </option>
+                            
+                          </select>
+                          <small *ngIf="providerValidate" class="text-danger">Ingrese el Proveedor</small>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="calificacion">Califique de 1 a 5</label>
+                          <select class="form-control" id="calificacion" formControlName="rating_id"  [class.is-invalid]="calificacionValidate">
+                            
+                            <option *ngFor="let rating of ratings" value="{{ rating.id }}">
+                              {{ rating.rating }}
+                            </option>
+                            
+                          </select>
+                          <small *ngIf="calificacionValidate" class="text-danger">Ingrese la Calificación</small>
+                        </div>
+
+                        <div class="form-group">
+
+                          <label for="comment">Ingrese su comentario:</label>
+                          <textarea class="form-control" formControlName="comment" id="comment" cols="30" rows="10">
+c
+                          </textarea>
+                          <!-- <small *ngIf="commentValidate" class="text-danger">Ingrese la Calificación</small> -->
+                        </div>
+
+                      <button type="submit" class="btn btn-primary">Enviar</button>
+                      <button type="submit" [routerLink]="['/admin/puntuaciones']" class="btn btn-danger ml-4">Regresar</button>
+                  </form>
+
+              </div>
+
+            </div>
+        </div>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <app-footerdash></app-footerdash>
+
+</div>
+  <!-- ./wrapper -->
+  

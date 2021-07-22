@@ -1,0 +1,73 @@
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__row">
+            <div class="footer__col footer__col--categorias">
+                <h4><span class="punto__verde">•</span>Categorías</h4>
+                <ul>
+                    <li *ngFor="let category of categories">
+                        <a [routerLink]="['/categorias/', category.slug]">
+                
+                            {{ category.category }}
+                        </a>
+                    </li>
+                    <!-- <li><a href="#">Video & Animación</a></li>
+                    <li><a href="#">Calzados & Cuero</a></li>
+                    <li><a href="#">Social Media</a></li>
+                    <li><a href="#">Datos</a></li>
+                    <li><a href="#">Programación APPs</a></li> -->
+                </ul>
+            </div>
+            <div class="footer__col footer__col--about">
+                <h4><span class="punto__verde">•</span>Acerca de PINPUL</h4>
+                <ul>
+                    <li><a href="#">Empresa</a></li>
+                    <li><a [routerLink]="['/politicas/']">Políticas de privacidad</a></li>
+                    <li><a [routerLink]="['/blog/']">Blog</a></li>
+                    <li><a href="#">Contáctenos</a></li>
+                    <li><a [routerLink]="['/politicas/']">Términos de servicios</a></li>
+                </ul>
+            </div>
+            <div class="footer__col footer__col--logo">
+                <img width="150px" src="{{ rootNGIMg }}/logo-180.png" alt="">
+            </div>
+            <div class="footer__col footer__col--qa">
+                <h4><span class="punto__verde">•</span>Preguntas Frecuentes</h4>
+                <ul>
+                    <li><a [routerLink]="['/preguntas/']">Nuestros Planes</a></li>
+                    <li><a [routerLink]="['/preguntas/']">Ventajas de ser premium</a></li>
+                    <li><a [routerLink]="['/preguntas/']">¿Por qué Pinpul?</a></li>
+                    
+                </ul>
+            </div>
+            <div class="footer__col footer__col--contacto">
+                <h4><span class="punto__verde">•</span>Contáctanos</h4>
+                <ul>
+                    <li><a href="#">999 999 9999</a></li>
+                    <li><a href="#">pinpul@gmail.com</a></li>
+                    <li><a href="#">info@pinpul.com</a></li>
+                    <li><a href="#">www.pinpul.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__derechos">
+            <div class="footer__derechos--redes">
+                <!-- <a target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a> -->
+                <a style="color: #6c757d;" href="https://www.facebook.com/pinpul.proveedores" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a style="color: #6c757d;" href="https://www.instagram.com/pinpul.proveedores" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <!-- <a  target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a> -->
+            </div>
+            <div class="footer__derechos--texto">
+                <p>PINPUL PROVEEDORES | TODOS LOS DERECHOS RESERVADOS 2021 COLOMBIA - ESPAÑOL</p>
+            </div>
+            
+        </div>
+    </div>
+</footer>

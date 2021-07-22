@@ -1,0 +1,50 @@
+
+<div class="wrapper">
+  
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <!-- Content Wrapper -->
+
+  <div class="content-wrapper">
+
+      <div class="container">
+          <div class="row justify-content-md-center">
+              <div class="col col-lg-6 mt-5">
+
+                  <form id="quickForm" [formGroup]="form" (ngSubmit)="update_categories()" enctype="multipart/form-data"> 
+                      <div class="form-group">
+                      <label for="category">Ingrese la categoria</label>
+                      <input type="text" class="form-control" id="category"
+                      formControlName="category"
+                      [class.is-invalid]="categoriaValidate"
+                      value="{{ categoryID.category}}">
+                      
+                      <small *ngIf="categoriaValidate" class="text-danger">Ingresa la categoria</small>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleFormControlFile1">Ingrese la imagen</label>
+                        <input type="file" formControlName="imagen" (change)="uploadImage($event)" class="form-control-file" id="exampleFormControlFile1"
+                        [class.is-invalid]="imagenValidate">
+                        <small *ngIf="imagenValidate" class="text-danger">Ingresa una imagen</small>
+                        <img class="mt-4" style="width: 180px; margin-bottom: 1rem;" src="http://pinpul-back.test/img/{{categoryID.imagen}}" alt="">
+                      </div>
+
+                      <button type="submit" class="btn btn-primary">Enviar</button>
+                      <button type="submit" [routerLink]="['/admin/categorias']" class="btn btn-danger ml-4">Regresar</button>
+                  </form>
+
+              </div>
+
+            </div>
+        </div>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <app-footerdash></app-footerdash>
+</div>
+  <!-- ./wrapper -->
+  

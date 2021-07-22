@@ -1,0 +1,287 @@
+<div class="wrapper">
+
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper ">
+    <!-- Content Header (Page header) -->
+    <div class="content-header container">
+      <div class="container-fluid">
+        <div>
+          <div>
+            <h2 class="titulo__modulo">Dashboard</h2>
+          </div><!-- /.col -->
+          <!-- <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active"> Main Dashboard</li>
+            </ol>
+          </div>/.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content container">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-md-12 col-lg-12">
+
+            <div class="card">
+              <div class="card-header">
+
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <!-- <div class="btn-group">
+                    <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
+                      <i class="fas fa-wrench"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+                      <a href="#" class="dropdown-item">Action</a>
+                      <a href="#" class="dropdown-item">Another action</a>
+                      <a href="#" class="dropdown-item">Something else here</a>
+                      <a class="dropdown-divider"></a>
+                      <a href="#" class="dropdown-item">Separated link</a>
+                    </div>
+                  </div> -->
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <!-- <p class="text-center">
+                      <strong>Estadísticas de tu Empresa</strong>
+                    </p> -->
+
+                    <div class="chart">
+                      <div class="estadisticas">
+                        <!-- <h2 class="titulo__modulo">Mis estadísticas</h2> -->
+                        <div class="card-estadistica__container">
+                          <div class="card-estadistica card-estadistica__views">
+                            <div class="titulo__card">
+                              Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                                visibility
+                              </span>
+                            </div>
+                            <div class="datos__card">
+                              <span>34</span> Usuarios
+                            </div>
+                          </div>
+                          <div class="card-estadistica card-estadistica__tel">
+                            <div class="titulo__card">
+                              Vieron tu teléfono <span class="material-icons material-icons-outlined">
+                                visibility
+                              </span>
+                            </div>
+                            <div class="datos__card">
+                              <span>34</span> Usuarios
+                            </div>
+                          </div>
+                          <div class="card-estadistica card-estadistica__perfil">
+                            <div class="titulo__card">
+                              Vistas de Perfil <span class="material-icons material-icons-outlined">
+                                visibility
+                              </span>
+                            </div>
+                            <div class="datos__card">
+                              <span>34</span> Usuarios
+                            </div>
+                          </div>
+                          <div class="card-estadistica card-estadistica__info">
+                            <div class="titulo__card">
+                              Pidieron Información gratis <span class="material-icons material-icons-outlined">
+                                visibility
+                              </span>
+                            </div>
+                            <div class="datos__card">
+                              <span>34</span> Usuarios
+                            </div>
+                          </div>
+                          <!-- <div class="card-estadistica card-estadistica__views2">
+                              <div class="titulo__card">
+                                Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                                  visibility
+                                </span>
+                              </div>
+                              <div class="datos__card">
+                                <span>34</span> Usuarios
+                              </div>
+                            </div>
+                            <div class="card-estadistica card-estadistica__views3">
+                              <div class="titulo__card">
+                                Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                                  visibility
+                                </span>
+                              </div>
+                              <div class="datos__card">
+                                <span>34</span> Usuarios
+                              </div>
+                            </div>
+                            <div class="card-estadistica card-estadistica__views4">
+                              <div class="titulo__card">
+                                Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                                  visibility
+                                </span>
+                              </div>
+                              <div class="datos__card">
+                                <span>34</span> Usuarios
+                              </div>
+                            </div>
+                            <div class="card-estadistica card-estadistica__views5">
+                              <div class="titulo__card">
+                                Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                                  visibility
+                                </span>
+                              </div>
+                              <div class="datos__card">
+                                <span>34</span> Usuarios
+                              </div>
+                            </div> -->
+
+                        </div>
+                      </div>
+                      <!-- Sales Chart Canvas -->
+                      <!-- <canvas id="salesChart" height="180" style="height: 180px;"></canvas> -->
+                    </div>
+                    <!-- /.chart-responsive -->
+                  </div>
+                  <!-- /.col -->
+                  <!-- <div class="col-md-4">
+                    <p class="text-center">
+                      <strong>Goal Completion</strong>
+                    </p>
+
+                    <div class="progress-group">
+                      Add Products to Cart
+                      <span class="float-right"><b>10</b>/200</span>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar bg-primary" style="width: 10%"></div>
+                      </div>
+                    </div>
+                   
+
+                    <div class="progress-group">
+                      Complete Purchase
+                      <span class="float-right"><b>310</b>/400</span>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar bg-danger" style="width: 75%"></div>
+                      </div>
+                    </div>
+
+                    
+                    <div class="progress-group">
+                      <span class="progress-text">Visit Premium Page</span>
+                      <span class="float-right"><b>480</b>/800</span>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar bg-success" style="width: 60%"></div>
+                      </div>
+                    </div>
+
+                    
+                    <div class="progress-group">
+                      Send Inquiries
+                      <span class="float-right"><b>250</b>/500</span>
+                      <div class="progress progress-sm">
+                        <div class="progress-bar bg-warning" style="width: 50%"></div>
+                      </div>
+                    </div>
+                   
+                  </div> -->
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- ./card-body -->
+              <!-- <div class="card-footer">
+                <div class="row">
+                  <div class="col-sm-3 col-6">
+                    <div class="description-block border-right">
+                      <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 17%</span>
+                      <h5 class="description-header">$35,210.43</h5>
+                      <span class="description-text">TOTAL REVENUE</span>
+                    </div>
+                    
+                  </div>
+                  
+                  <div class="col-sm-3 col-6">
+                    <div class="description-block border-right">
+                      <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span>
+                      <h5 class="description-header">$10,390.90</h5>
+                      <span class="description-text">TOTAL COST</span>
+                    </div>
+                    
+                  </div>
+                 
+                  <div class="col-sm-3 col-6">
+                    <div class="description-block border-right">
+                      <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 20%</span>
+                      <h5 class="description-header">$24,813.53</h5>
+                      <span class="description-text">TOTAL PROFIT</span>
+                    </div>
+                    
+                  </div>
+                  
+                  <div class="col-sm-3 col-6">
+                    <div class="description-block">
+                      <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i> 18%</span>
+                      <h5 class="description-header">1200</h5>
+                      <span class="description-text">GOAL COMPLETIONS</span>
+                    </div>
+                    
+                  </div>
+
+                </div>
+                
+              </div> -->
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+            <div class="graficos__add">
+              <google-chart #chart 
+              [title]="title"
+              [type]="type"
+              [data]="data2"
+              [options]="options"
+              [width]="width"
+              [height]="height">
+              </google-chart>
+            </div>
+
+          </div>
+          <!-- /.col -->
+
+        </div>
+        <!-- /.row -->
+
+
+
+        <!-- /.row -->
+      </div>
+      <!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.1.0
+    </div>
+  </footer>
+</div>
+<!-- ./wrapper -->

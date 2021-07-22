@@ -1,0 +1,59 @@
+.login__container{
+    width: 30rem;
+    margin: 2rem auto;
+    
+}
+.card{
+    padding: 2rem;
+    background-color: #f1f1f1;
+    border: 2px solid #f1f1f1 !important;
+    border-radius: 1rem;
+    animation:backInRight ;
+    animation-duration: 1s;
+}
+.card-body{
+    color: gray;
+    font-size: 1.6rem;
+}
+.card-footer{
+    display: flex;
+    background-color: #f1f1f1;
+    justify-content: center;
+}
+.card-footer button{
+    background-color:rgb(116, 204, 57);
+    border: none;
+    width: 20rem;
+    font-size: 1.4rem;
+}
+.card-footer button:hover{
+    background-color: gray;
+}
+.logo{
+    width: 30rem;
+    margin:0 auto;
+    animation:bounceInLeft ;
+    animation-duration: 1s;
+}
+.logo img{
+    width: 100%;
+    margin-top: 10rem;
+
+}
+input{
+    font-size: 1.4rem;
+    padding: 1.5rem;
+}
+.registrarse{
+    display: flex;
+    justify-content: space-between;
+}
+.registrarse a{
+    font-size: 1.4rem;
+    color: rgba(0,0,0,0.65);
+
+}
+.registrarse a:hover{
+    color: rgb(116, 204, 57);
+    font-weight: 700;
+}

@@ -1,0 +1,215 @@
+<div class="wrapper">
+
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <!-- Content Wrapper -->
+
+  <div class="content-wrapper">
+
+    <div class="container">
+      <div class="nombre-logo">
+        <div class="logo">
+          <img src="http://pinpul-back.test/public/img/{{providers.logo}}" alt="...">
+        </div>
+        <h2 class=" titulo" style="text-transform: uppercase;">{{providers.provider}}</h2>
+      </div>
+      <div class="estadisticas">
+        <p><small class="text-muted"><b>Estadisticas del Proveedor</b></small></p>
+        <div class="card-estadistica__container">
+          <div class="card-estadistica card-estadistica__views">
+            <div class="titulo__card">
+              Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                visibility
+              </span>
+            </div>
+            <div class="datos__card">
+              <span>{{providers.views}}</span> Usuarios
+            </div>
+          </div>
+          <div class="card-estadistica card-estadistica__tel">
+            <div class="titulo__card">
+              Vieron tu teléfono <span class="material-icons material-icons-outlined">
+                visibility
+              </span>
+            </div>
+            <div class="datos__card">
+              <span>{{providers.views_tel}}</span> Usuarios
+            </div>
+          </div>
+          <div class="card-estadistica card-estadistica__perfil">
+            <div class="titulo__card">
+              Vistas de Perfil <span class="material-icons material-icons-outlined">
+                visibility
+              </span>
+            </div>
+            <div class="datos__card">
+              <span>34</span> Usuarios
+            </div>
+          </div>
+          <div class="card-estadistica card-estadistica__info">
+            <div class="titulo__card">
+              Pidieron Información gratis <span class="material-icons material-icons-outlined">
+                visibility
+              </span>
+            </div>
+            <div class="datos__card">
+              <span>34</span> Usuarios
+            </div>
+          </div>
+          <div class="card-estadistica card-estadistica__views2">
+            <div class="titulo__card">
+              Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                visibility
+              </span>
+            </div>
+            <div class="datos__card">
+              <span>{{providers.views}}</span> Usuarios
+            </div>
+          </div>
+          <div class="card-estadistica card-estadistica__views3">
+            <div class="titulo__card">
+              Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                visibility
+              </span>
+            </div>
+            <div class="datos__card">
+              <span>{{providers.views}}</span> Usuarios
+            </div>
+          </div>
+          <div class="card-estadistica card-estadistica__views4">
+            <div class="titulo__card">
+              Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                visibility
+              </span>
+            </div>
+            <div class="datos__card">
+              <span>{{providers.views}}</span> Usuarios
+            </div>
+          </div>
+          <div class="card-estadistica card-estadistica__views5">
+            <div class="titulo__card">
+              Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                visibility
+              </span>
+            </div>
+            <div class="datos__card">
+              <span>{{providers.views}}</span> Usuarios
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="info-prov">
+        <div class="datos">
+          <div class="datosUno">
+            <p><small class="text-muted"><b>Descripción: </b>{{providers.description}}</small></p>
+            <p><small class="text-muted"><b>Plan:</b> {{ providers.plan.plan }}</small></p>
+            <p><small class="text-muted"><b>Pais Ubicación:</b> {{ providers.country.country }}</small></p>
+            <p><small class="text-muted"><b>Ciudad Ubicación: </b>{{ providers.city.city }}</small></p>
+            <p><small class="text-muted"><b>Tipo de documento: </b>{{providers.type_document.document}}</small></p>
+            <p><small class="text-muted"><b>Número de documento: </b>{{providers.num_document}}</small></p>
+          </div>
+          <div class="datosDos">
+            <p><small class="text-muted"><b>Celular: </b>{{providers.phone}}</small></p>
+            <p><small class="text-muted"><b>Email: </b>{{providers.email}}</small></p>
+            <p><small class="text-muted"><b>Paises Cobertura:</b> {{ paises }}</small></p>
+            <p><small class="text-muted"><b>Ciudades Cobertura: </b>{{ ciudades }}</small></p>
+          </div>
+        </div>
+
+        <div *ngIf="faceon">
+          <p class="card-text text1"><small class="text-muted"><b>Url Facebook: </b><a
+                href="{{providers.facebook_url}}">{{providers.facebook_url}}</a></small></p>
+        </div>
+        <div *ngIf="twion">
+          <p class="card-text text1"><small class="text-muted"><b>Url Twitter: </b><a
+                href="{{providers.twitter_url}}">{{providers.twitter_url}}</a></small></p>
+        </div>
+        <div *ngIf="inston">
+          <p class="card-text text1"><small class="text-muted"><b>Url Instagram: </b><a
+                href="{{providers.instagram_url}}">{{providers.instagram_url}}</a></small></p>
+        </div>
+        <div *ngIf="linkon">
+          <p class="card-text text1"><small class="text-muted"><b>Url Linkedin: </b><a
+                href="{{providers.linkedin_url}}">{{providers.linkedin_url}}</a></small></p>
+        </div>
+        <div *ngIf="webon">
+          <p class="card-text text1"><small class="text-muted"><b>Url Sito Web: </b><a
+                href="{{providers.web_site}}">{{providers.web_site}}</a></small></p>
+        </div>
+
+        <div>
+          <p><small class="text-muted"><b>Documentos Proveedor</b></small></p>
+          <li *ngFor="let document of documents">
+            <a href="{{ rootDocuments }}/{{ document.document }}" target="_blank" download>{{ document.document }}</a>
+          </li>
+        </div>
+
+
+
+
+
+
+        <!-- <button type="submit" [routerLink]="['/admin/proveedores']" class="btn btn-danger align-self-center mt-4" style="width: 10rem;">Regresar</button> -->
+
+      </div>
+
+
+      <!-- <div class="row justify-content-md-center">
+
+              <div class="card mb-3" style="max-width: 800px;">
+              <div class="row no-gutters">
+                  <div class="col-lg-6 d-flex flex-column justify-content-center">
+                  <img src="http://pinpul-back.test/public/img/{{providers.logo}}" alt="...">
+                  </div>
+                  <div class="col-lg-6">
+                  <div class="card-body d-flex flex-column">
+                      <h5 class="card-title mb-2 titulo">{{providers.provider}}</h5>
+                      <p class="card-text text1">{{providers.description}}</p>
+                      <p class="card-text text1"> Plan: {{ providers.plan.plan }}</p>
+                      <p class="card-text text1"><small class="text-muted"><b>Pais Ubicación:</b> {{ providers.country.country }}</small></p>
+                      <p class="card-text text1"><small class="text-muted"><b>Ciudad Ubicación: </b>{{ providers.city.city }}</small></p>
+                      <p class="card-text text1"><small class="text-muted"><b>Paises Cobertura:</b> {{ paises }}</small></p>
+                      <p class="card-text text1"><small class="text-muted"><b>Ciudades Cobertura: </b>{{ ciudades }}</small></p>
+                      <p class="card-text text1"><small class="text-muted"><b>Tipo de documento: </b>{{providers.type_document.document}}</small></p>
+                      <p class="card-text text1"><small class="text-muted"><b>Número de documento: </b>{{providers.num_document}}</small></p>
+                      <p class="card-text text1"><small class="text-muted"><b>Celular: </b>{{providers.phone}}</small></p>
+                      <p class="card-text text1"><small class="text-muted"><b>Email: </b>{{providers.email}}</small></p>
+                      <div *ngIf="faceon"><p class="card-text text1"><small class="text-muted"><b>Url Facebook: </b><a href="{{providers.facebook_url}}">{{providers.facebook_url}}</a></small></p></div>
+                      <div *ngIf="twion"><p class="card-text text1"><small class="text-muted"><b>Url Twitter: </b><a href="{{providers.twitter_url}}">{{providers.twitter_url}}</a></small></p></div>
+                      <div *ngIf="inston"><p class="card-text text1"><small class="text-muted"><b>Url Instagram: </b><a href="{{providers.instagram_url}}">{{providers.instagram_url}}</a></small></p></div>
+                      <div *ngIf="linkon"><p class="card-text text1"><small class="text-muted"><b>Url Linkedin: </b><a href="{{providers.linkedin_url}}">{{providers.linkedin_url}}</a></small></p></div>
+                      <div *ngIf="webon"><p class="card-text text1"><small class="text-muted"><b>Url Sito Web: </b><a href="{{providers.web_site}}">{{providers.web_site}}</a></small></p></div>
+
+                      <div>
+                        <p  class="card-text text1">Documentos Proveedor</p>
+                        <li *ngFor="let document of documents">
+                          <a href="{{ rootDocuments }}/{{ document.document }}" target="_blank" download>{{ document.document }}</a>
+                        </li>
+                      </div>
+                      
+                      <button type="submit" [routerLink]="['/admin/proveedores']" class="btn btn-danger align-self-center mt-4" style="width: 10rem;">Regresar</button>
+                      
+                  </div>
+                  </div>
+              </div>
+              </div>
+
+
+            
+
+          </div> -->
+    </div>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+
+  <!-- Main Footer -->
+  <app-footerdash></app-footerdash>
+
+
+</div>
+<!-- ./wrapper -->

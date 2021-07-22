@@ -1,0 +1,13 @@
+.boton__add{
+    background-color: #65bb23 !important ;
+    border: #65bb23;
+}
+.btn__container{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2rem;
+}
+.card-title{
+    font-size: 2rem;
+    text-transform: uppercase;
+}

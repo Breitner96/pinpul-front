@@ -1,0 +1,91 @@
+<div class="nav__container container">
+    
+    <header >
+
+        <div class="aside__menu animacionEntrada" id="aside__menu">
+            <span class="material-icons material-icons-outlined" id="close__aside" (click)="asideCerrar()">
+                close
+                </span>
+            <div class="logo__aside">
+                <a routerLink='/home/'><img src="{{ rootNGIMg }}/logos/1920x1080.png" alt="Logo empresa"></a>
+                
+            </div>
+            <div class="usuario__aside">
+                <div class="usuario__avatar">
+                    <img src="{{ rootNGIMg }}/avatar5.png" alt="foto usuario">
+                </div>
+                <div class="usuario__nombre">
+                    <p class="uppercase">Nombre de usuario</p>
+                </div>
+               
+            </div>
+            <div class="navegacion__aside">
+                <ul class="uppercase">
+                    <li (click)="catMenuAsideAbrir()" id ="cat__con--aside">categorías
+                        <div class="menu__cat menu__cat--aside hidden" id="menu__cat--aside">
+                            <ul>
+                                <!-- <li class="item__menu--cat"><span class="punto__verde">•</span>Lorem Ipsum Lorem Ipsum</li>
+                                <li class="item__menu--cat"><span class="punto__verde">•</span>Lorem Ipsum</li>
+                                <li class="item__menu--cat"><span class="punto__verde">•</span>Lorem Ipsum</li> -->
+                                <li *ngFor="let category of categories" class="item__menu--cat">
+                                    <a [routerLink]="['/categorias/', category.slug]">
+                                        <span class="punto__verde">•</span>
+                                        {{ category.category }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li routerLink='/'>contáctenos</li>
+                    <li routerLink='/'>Nosotros</li>
+                    <li><a routerLink='/blog/'>Blog</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="overwrite" id="overwrite">
+
+        </div>
+
+
+
+        <div class="header container">
+            <div class="logo__header">
+                <a routerLink='/home/'><img src="{{ rootNGIMg }}/logos/1080x1080_simbolo.png" alt=" logo pinpul"></a>
+                <a routerLink='/home/'><img src="{{ rootNGIMg }}/logos/1920x1080_tipo.png" alt=" logo pinpul" class="oculto__movil"></a>
+            </div>
+            <div class="buscar__nav">
+                <div class="barra__buscar" id="barra__buscar">
+                    <input type="search" placeholder="Buscar servicio..."  ><span class="material-icons material-icons-outlined">search</span>
+                </div>
+                <!-- <span class="material-icons material-icons-outlined hide-on-large-only oculto__escritorio">search</span> -->
+                <span class="material-icons material-icons-outlined menu__puntos hide-on-large-only oculto__escritorio" (click)="asideVer()">more_vert</span>
+                <!-- <img src="../../../../assets/icons/menu puntos vertical.svg" alt="puntos" class="menu__puntos hide-on-large-only oculto__escritorio" (click)="asideVer()"> -->
+                <div class="navegacion">
+                    <ul class="uppercase">
+                        <li class="hide-on-med-and-down oculto__movil cat__con" id="cat__con" (click)="clickBody()">categorías
+                            <div class="menu__cat hidden" id="menu__cat">
+                                <ul>
+                                    <li *ngFor="let category of categories" class="item__menu--cat">
+                                        <a [routerLink]="['/categorias/', category.slug]">
+                                            <span class="punto__verde">•</span>
+                                            {{ category.category }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hide-on-med-and-down oculto__movil" ><a routerLink='/'>contáctenos</a></li>
+                        <li class="hide-on-med-and-down oculto__movil">
+                            <a routerLink='/'>Nosotros</a>
+                        </li>
+                        <li class="hide-on-med-and-down oculto__movil"><a [routerLink]="['/blog/']">Blog</a></li>
+                        <li class="hide-on-med-and-down oculto__movil"><a routerLink='/login/'>login <span class="material-icons">person</span></a></li>
+                    </ul>
+        
+                </div>
+                
+            </div>
+        </div>
+    </header>
+</div>
+

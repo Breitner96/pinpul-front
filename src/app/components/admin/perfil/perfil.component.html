@@ -1,0 +1,232 @@
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <div class="content-wrapper">
+    <div class="container">
+      <div class="row justify-content-md-center">
+
+        <div class="col col-lg-12 mt-5">
+
+          <h2 class="titulo__modulo">Mi información</h2>
+
+          <div class="info__container">
+            <div class="info1">
+              <h4>Información Personal</h4>
+              <p><strong>Nombre:</strong> {{ userID.name }}</p>
+              <p><strong>Email:</strong> {{ userID.email }}</p>
+
+
+            </div>
+            <div class="info2">
+              <h4>Cambiar contraseña</h4>
+              <form [formGroup]="form">
+
+                <label for="pass">Ingrese su nueva contraseña</label>
+                <input type="password" class="form-control">
+                <label for="pass">Repita su contraseña</label>
+                <input type="password" class="form-control">
+                <button type="submit" class="contact__submit pay">Cambiar contraseña</button>
+                <!-- <input type="submit" value="ENVIAR" class="contact__submit"> -->
+
+              </form>
+            </div>
+          </div>
+
+
+          <div *ngIf="notGerencia">
+            <div *ngIf="!existProvider">
+              <a routerLink="/admin/proveedores/add-provider" class="btn-regPro">Registrar proveedor</a>
+            </div>
+          </div>
+
+
+          <!-- Si el proveedor existe pero el estado no es activo -->
+          <div *ngIf="existProvider && !stateProvider">
+            <div style="width: 30%; text-align: center;" class="alert alert-info" role="alert">Tus datos están en
+              revisión</div>
+          </div>
+
+          <!-- Si el proveedor existe y el estado es activo -->
+          <div *ngIf="existProvider && stateProvider">
+            <div style="width: 30%; text-align: center;" class="alert alert-success" role="alert">Tus datos han sido
+              aprobados</div>
+          </div>
+
+          <div>
+            <!-- <div *ngIf="providerID[0].state == 'activo' ">
+                            <div *ngFor="let provider of providerID">
+                                <a class="btn btn-info" [routerLink]="['/admin/proveedores/view-provider', provider.id]">Ver mi información</a>
+                            </div>
+                        </div> -->
+          </div>
+
+          <div *ngIf="notGerencia" class="membresia">
+            <!-- {{ providerID | json }}
+            <div *ngIf="providerID[0] > 0 ">
+              <div *ngIf="providerID.plan_id == 2 && providerID.state == 'activo'">
+                <p>Si existe e ingresar info del plan</p>
+              </div>
+            </div> -->
+
+            <h2 class="titulo__modulo">Membresía</h2>
+            <div *ngIf="ifPremium" class="membresi__container">
+              <p><strong>Mi Plan:</strong> Premium</p>
+              <p><strong>Fecha Inicial:</strong> 22/04/2021</p>
+              <p><strong>Fecha Corte:</strong> 22/07/2021</p>
+              <!-- <div class="btn__card--container">
+                                <a  class="btn-addCard">Agregar </a>
+                            </div> -->
+            </div>
+
+            <div *ngIf="notPremium" class="membresia__free">
+              <h4>Aún no cuentas con nuestros beneficios Premium</h4>
+              <div class="btn__container-plan" (click)="mostrarPago()">
+                <a class="btn-regPro">Pasate a Premium</a>
+              </div>
+              <div class="formulario__pago hidden">
+                <form [formGroup]="form" (ngSubmit)="generateTokenCard()" id="customer-form">
+                  <!-- div donde se imprimiran los errores (opcional) -->
+                  <div class="card-errors"></div>
+                  <!-- datos necesarios para tokenizar -->
+                  <div class="form-group">
+                    <label> Nombre del usuario de tarjeta </label>
+                    <input type="text" data-epayco="card[name]" formControlName="name" class="form-control"
+                      placeholder="Titular de la tarjeta">
+                  </div>
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" data-epayco="card[email]" formControlName="email" class="form-control"
+                      placeholder="correo@correo.com">
+                  </div>
+                  <div class="tarjeta">
+                    <div class="form-group">
+                      <label> Número de la tarjeta de crédito </label>
+                      <input type="text" data-epayco="card[number]" formControlName="number" class="form-control"
+                        placeholder="# 0000 - 0000 - 0000 - 0000">
+                    </div>
+                    <div class="form-group">
+                      <label>CVC</label>
+                      <input type="text" size="4" data-epayco="card[cvc]" formControlName="cvc" class="form-control"
+                        placeholder="123">
+                    </div>
+                  </div>
+                  <div class="tarjeta">
+                    <div class="form-group">
+                      <label>Mes de expiración(MM)</label>
+                      <input type="text" data-epayco="card[exp_month]" formControlName="exp_month" class="form-control"
+                        placeholder="(MM)">
+
+                    </div>
+                    <div class="form-group">
+                      <label>Año de expiración(AAAA)</label>
+                      <input type="text" data-epayco="card[exp_year]" formControlName="exp_year" class="form-control"
+                        placeholder="(AAAA)">
+
+                    </div>
+
+                  </div>
+                  <!-- botón con la acción para enviar el formulario -->
+                  <button type="submit" class="contact__submit pay">PAGAR</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- <div class="estadisticas">
+                        <h2 class="titulo__modulo">Mis estadísticas</h2>
+                        <div class="card-estadistica__container">
+                            <div class="card-estadistica card-estadistica__views">
+                              <div class="titulo__card">
+                                Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                                  visibility
+                                </span>
+                              </div>
+                              <div class="datos__card">
+                                <span>34</span> Usuarios
+                              </div>
+                            </div>
+                            <div class="card-estadistica card-estadistica__tel">
+                              <div class="titulo__card">
+                                Vieron tu teléfono <span class="material-icons material-icons-outlined">
+                                  visibility
+                                </span>
+                              </div>
+                              <div class="datos__card">
+                                <span>34</span> Usuarios
+                              </div>
+                            </div>
+                            <div class="card-estadistica card-estadistica__perfil">
+                              <div class="titulo__card">
+                                Vistas de Perfil <span class="material-icons material-icons-outlined">
+                                  visibility
+                                </span>
+                              </div>
+                              <div class="datos__card">
+                                <span>34</span> Usuarios
+                              </div>
+                            </div>
+                            <div class="card-estadistica card-estadistica__info">
+                              <div class="titulo__card">
+                                Pidieron Información gratis <span class="material-icons material-icons-outlined">
+                                  visibility
+                                </span>
+                              </div>
+                              <div class="datos__card">
+                                <span>34</span> Usuarios
+                              </div>
+                            </div>
+                            <div class="card-estadistica card-estadistica__views2">
+                              <div class="titulo__card">
+                                Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                                  visibility
+                                </span>
+                              </div>
+                              <div class="datos__card">
+                                <span>34</span> Usuarios
+                              </div>
+                            </div>
+                            <div class="card-estadistica card-estadistica__views3">
+                              <div class="titulo__card">
+                                Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                                  visibility
+                                </span>
+                              </div>
+                              <div class="datos__card">
+                                <span>34</span> Usuarios
+                              </div>
+                            </div>
+                            <div class="card-estadistica card-estadistica__views4">
+                              <div class="titulo__card">
+                                Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                                  visibility
+                                </span>
+                              </div>
+                              <div class="datos__card">
+                                <span>34</span> Usuarios
+                              </div>
+                            </div>
+                            <div class="card-estadistica card-estadistica__views5">
+                              <div class="titulo__card">
+                                Vistas de Usuarios <span class="material-icons material-icons-outlined">
+                                  visibility
+                                </span>
+                              </div>
+                              <div class="datos__card">
+                                <span>34</span> Usuarios
+                              </div>
+                            </div>
+                  
+                          </div>
+                    </div> -->
+
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

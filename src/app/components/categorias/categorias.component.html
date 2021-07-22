@@ -1,0 +1,174 @@
+<app-navigation></app-navigation>
+<div class="cat__container">
+    <div class="filtros">
+        <div class="container filtros_container">
+            <div class="ships__filtros">
+                <div class="next__btn">
+                    <span class="material-icons material-icons-outlined">navigate_before</span>
+                </div>
+                <div class="ships">
+                    <div class="chip__contenedor">
+                        <div class="chip" (click)="clickBody()">
+                            <span class="material-icons material-icons-outlined">
+                                bookmark
+                            </span>Categorías
+
+                        </div>
+                        <div class="chip__options hidden" id="chip_options">
+                            <ul>
+
+                                <!-- <a *ngFor="let category of categories" [routerLink]="['/home/']">
+                                    <li><span class="punto__verde">•</span>{{ category.category }}</li>
+                                </a> -->
+
+
+                                <a [routerLink]="['/home/']">
+                                    <li><span class="punto__verde">•</span>Confección</li>
+                                </a>
+                                <a [routerLink]="['/home/']">
+                                    <li><span class="punto__verde">•</span>Cortes</li>
+                                </a>
+                                <a [routerLink]="['/home/']">
+                                    <li><span class="punto__verde">•</span>Desarrollo</li>
+                                </a>
+                                <a [routerLink]="['/home/']">
+                                    <li><span class="punto__verde">•</span>Ropa</li>
+                                </a>
+                                <a [routerLink]="['/home/']">
+                                    <li><span class="punto__verde">•</span>Uniforme</li>
+                                </a>
+
+
+                            </ul>
+                            <!-- <span class="material-icons material-icons-outlined" (click)="cerrarOpt()" >close</span> -->
+                        </div>
+                    </div>
+
+                    <div class="chip">
+                        <span class="material-icons material-icons-outlined">apartment</span>Ciudad
+                    </div>
+
+                    <div class="chip">
+                        <span class="material-icons material-icons-outlined">public</span>País
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <app-breadcumbs></app-breadcumbs> -->
+    <!-- <div class="pagination">
+        <div class="pagination__container container">
+            <div class="bread ">
+                <a href="#!" class="breadcrumb">First</a>
+                <a href="#!" class="breadcrumb">Second</a>
+                <a href="#!" class="breadcrumb">Third</a>
+            </div>
+            <div class="order ">
+                <p>Ordenar por:</p>
+                <select name="order" id="order">    
+                    <option value="popular">Más popular</option>
+                    <option value="popular">Más popular</option>
+                    <option value="popular">Más popular</option>
+    
+                </select>
+            </div>
+        </div>
+    
+    </div> -->
+    <section class="tarjetas">
+
+        <div class="terjetas__container container">
+            <h2 class="uppercase"> {{ allpost.length }} proveedores disponibles</h2>
+
+            <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+                (scrolled)="onScroll()">
+
+                <div class="row  card__container">
+
+                    <div *ngFor="let provider of allpost" class="card">
+
+                        <!-- <p>{{ provider | json }}</p> -->
+                        <!-- <i *ngIf="provider.plan.plan == 'Premium' " class="far fa-gem"></i> -->
+
+                        <!-- <div *ngIf="provider.state == 'activo' "> -->
+
+                            <a [routerLink]="['/proveedor/', provider.slug]">
+                                <img class="card__img" src="{{rootImage}}/{{ provider.logo }}" alt="">
+                            </a>
+                            <div class="card__texto">
+                                <!-- <a [routerLink]="['/proveedores/', provider.provider]"> -->
+                                <a [routerLink]="['/proveedor/', provider.slug]">
+                                    <h3 class="card__title">{{ provider.provider }}</h3>
+                                </a>
+                                <div class="card__category-views">
+                                    <div class="card__tags-categories" (click)="mostrar(provider.id)">
+                                        <span class="material-icons"> bookmark_border </span>
+                                        <h4 class="top-services__name-category">Categorías</h4>
+                                    </div>
+                                    <div class="card__tags-views">
+                                        <span class="material-icons material-icons-outlined">
+                                            visibility
+                                            </span>
+                                        <h4 class="top-services__count-view">{{provider.views}}</h4>
+                                    </div>
+                                    <div class="categoria_lista" id="{{ provider.id }}" (click)="cerrar(provider.id)">
+                                        <ul>
+                                            <li *ngFor="let category of provider.categories" class="enlaces"><a
+                                                    [routerLink]="['/categorias/', category.slug]"><span
+                                                        class="punto__verde">•</span>{{
+                                                    category.category }}</a></li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        <!-- </div> -->
+
+
+                        <!-- <div class="contenedor__btn">
+                <button class="search-results"
+                infiniteScroll
+                [infiniteScrollDistance]="2"
+                [infiniteScrollThrottle]="50"
+                (scrolled)="onScroll()" class="btn__verde btn">Más resultados <span class="material-icons material-icons-outlined">
+                    expand_more
+                    </span></button>
+            </div> -->
+
+                        <!-- sinner -->
+                    </div>
+                </div>
+
+                <div class="row pb-5">
+
+                    <div class="col-md-12 p-5">
+                        <ngx-spinner bdOpacity=0.9 bdColor="" size="default" color="#581f87" type="ball-pulse-sync"
+                            [fullScreen]="false">
+                        </ngx-spinner>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- Alert no more post -->
+            <div *ngIf="!notEmptyPost" class="col-md-12">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <div class="Noitem">No mas categorias</div>
+                </div>
+            </div>
+
+
+
+            <!-- <app-breadcumbs></app-breadcumbs> -->
+
+        </div>
+
+    </section>
+</div>
+
+<app-footer></app-footer>

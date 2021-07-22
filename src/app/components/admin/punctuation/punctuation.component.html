@@ -1,0 +1,74 @@
+<div class="wrapper">
+  
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <!-- Content Wrapper -->
+
+  <div class="content-wrapper">
+
+      <div class="container">
+          <div class="row justify-content-md-center">
+              <div class="col col-lg-12 mt-5">
+                <div class="btn__container">
+
+                  <button type="button" class="btn btn-primary btn-lg mb-5 boton__add" [routerLink]="['/admin/puntuaciones/add-puntuacion']">Añadir Calificación</button>
+                </div>
+
+                    <div class="card">
+                      <div class="card-header">
+                        <h3 class="card-title">Califiaciónes</h3>
+                      </div>
+                      <!-- /.card-header -->
+                      <div class="card-body p-0">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th style="width: 10px">#</th>
+                              <td align="center" style="font-weight: bold">Usuarios</td>
+                              <td align="center" style="font-weight: bold">Proveedores</td>
+                              <td align="center" style="font-weight: bold">Calificaciónes</td>
+                              <td align="center" style="font-weight: bold">Comentario</td>
+                              <td align="center" style="font-weight: bold">Componentes</td>
+                            </tr>
+                          </thead>
+                          <tbody *ngFor="let punctuation of punctuations">
+                            <tr>
+                              <td>{{punctuation.id}}</td>
+                              <td align="center">{{ punctuation.user.name }} {{ punctuation.user.last_name }}</td>
+                              <td align="center">{{ punctuation.provider.provider }}</td>
+                              <td align="center">{{ punctuation.rating.rating }}</td>
+                              <td align="center">{{ punctuation.comment }}</td>
+
+                              <td align="center">
+                                
+                                <button type="button" class="btn btn-primary mr-2" [routerLink]="['/admin/puntuaciones/edit-puntuacion', punctuation.id]"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger" (click)="deletePunctuation(punctuation.id)"><i class="fas fa-trash-alt"></i></button>
+                                <button type="button" class="btn btn-success" (click)="changeState(punctuation.id)">Aprobar</button>
+
+                              </td>
+
+
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+
+              
+              </div>
+
+            </div>
+        </div>
+
+  </div>
+  <!-- /.content-wrapper -->
+  
+  <!-- Main Footer -->
+  <app-footerdash></app-footerdash>
+
+</div>
+  <!-- ./wrapper -->
+  

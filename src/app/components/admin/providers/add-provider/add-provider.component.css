@@ -1,0 +1,11 @@
+input,
+select{
+    font-size: 1.4rem;
+    height: 3rem;
+}
+textarea{
+    font-size: 1.4rem;
+}
+.btn{
+    font-size: 1.4rem;
+}

@@ -1,0 +1,172 @@
+<app-navigation></app-navigation>
+<app-breadcumbs></app-breadcumbs>
+
+<div class="container detalle__container">
+    <main >
+        <div class="info__empresa--detalle">
+            <div class="logo__empresa--detalle">
+                <img src="/img/logos/180x180_1.png" alt="logo marca">
+            </div>
+            <div class="texto__empresa--detalle">
+                <h2>Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit.</h2>
+                <p class="uppercase categorias__lista"><span class="material-icons material-icons-outlined">bookmark</span>TEXTIL, CALZADO Y CUERO | ASEO Y LIMPIEZA | DESARROLLO DIGITAL | BARES Y RESTAURANTES</p>
+                
+            </div>
+            <div class="empresa__detalle--premium">
+                <span class="material-icons material-icons-outlined">
+                    workspace_premium
+                    </span>
+            </div>
+        </div>
+        <p class="ubicacion uppercase">
+            <span class="material-icons">location_on</span> ubicación <b> Bogotá</b>
+        </p>
+        <button class="btn__verde--relleno uppercase"> pedir información gratis <span class="material-icons">done</span></button>
+        <div class="imagenes__detalles">
+            <slider-carousel [images]="images" height="350px" max-width="600px"></slider-carousel>
+            <!-- <img src="../../../assets/img/meeting-594091_1920.jpg" alt="imagen detalles"> -->
+        </div>
+        <div class="info__contacto">
+            <!-- Tab links -->
+            <div class="tab" id="tab">
+                <button class="tablinks uppercase" (click)="info()" id="info">INFORMACIÓN</button>
+                <button class="tablinks uppercase" (click)="contacto()" id="contacto">CONTACTO</button>
+                
+            </div>
+            
+            <!-- Tab content -->
+            <div *ngIf="show" id="contenInfo" class="tabcontent">
+                <h3>Lorem ipsum dolor sit amet</h3>
+                <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla . Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est .</p>
+                    <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+                    magna aliqua. Ut enim ad minim veniam</p>
+            </div>
+            
+            <div *ngIf="show2" id="contentContacto" class="tabcontent ">
+                <div class="contenedor__form">
+                    <div class="info__contacto">
+                        <h4>Información de contacto</h4>
+                        <p>999 999 999</p>
+                        <p>www.ejemplo.com</p>
+                        <p>info@ejemplo.cokm</p>
+                        <br>
+                        <h4>Información de contacto</h4>
+                        <p>999 999 999</p>
+                        <p>www.ejemplo.com</p>
+                        <p>info@ejemplo.cokm</p>
+                        <br>
+                        <h4>Redes Sociales</h4>
+                        <div class="redes__sociales">
+                            <span class="material-icons">facebook</span>
+                            <span class="material-icons">facebook</span>
+                            <span class="material-icons">facebook</span>
+                        </div>
+                    </div>
+                    <div class="formuario__contacto">
+                        <form >
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" name="name" >
+
+                            <label for="empresa">Nombre de la Empresa</label>
+                            <input type="text" name="empresa" >
+                            
+
+                            <label for="email">Email</label>
+                            <input type="email" name="email" >
+
+                            <label for="telefono">Número Telefónico</label>
+                            <input type="number" name="telefono" >
+
+                            <button type="submit" class="btn__verde--relleno enviar">Enviar <span class="material-icons">send</span></button>
+                        </form>
+                        
+
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </main>
+    <aside>
+        <h2>Otros anuncios</h2>
+        <div class="card">
+            <img class="card__img" src="/img/meeting-594091_1920.jpg" alt="">
+            <div class="card__texto">
+                <h3 class="card__title">Título de la tarjeta</h3>
+                <div class="card__category-views">
+                    <div class="card__tags-categories" (click)="mostrar()">
+                        <span class="material-icons">
+                            bookmark_border
+                            </span>
+                        <h4 class="top-services__name-category">Categories</h4>
+                    </div>
+                    <div class="card__tags-views">
+                        <span class="material-icons material-icons-outlined">
+                            visibility
+                            </span>
+                        <h4 class="top-services__count-view">200</h4>
+                    </div>
+                </div>
+                <div class="categoria_lista" id="categoria_lista" (click)="cerrar()">
+                    <ul>
+                        <li><span class="punto__verde">•</span>Lorem </li>
+                        <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                        <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                        <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                        <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                    </ul>
+                    <span class="material-icons material-icons-outlined" (click)="cerrar()">
+                        close
+                        </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="card__img" src="/img/meeting-594091_1920.jpg" alt="">
+            <div class="card__texto">
+                <h3 class="card__title">Título de la tarjeta</h3>
+                <div class="card__category-views">
+                    <div class="card__tags-categories">
+                        <span class="material-icons">
+                            bookmark_border
+                            </span>
+                        <h4 class="top-services__name-category">Categories</h4>
+                    </div>
+                    <div class="card__tags-views">
+                        <span class="material-icons material-icons-outlined">
+                            visibility
+                            </span>
+                        <h4 class="top-services__count-view">200</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card__img" src="/img/meeting-594091_1920.jpg" alt="">
+            <div class="card__texto">
+                <h3 class="card__title">Título de la tarjeta</h3>
+                <div class="card__category-views">
+                    <div class="card__tags-categories">
+                        <span class="material-icons">
+                            bookmark_border
+                            </span>
+                        <h4 class="top-services__name-category">Categories</h4>
+                    </div>
+                    <div class="card__tags-views">
+                        <span class="material-icons material-icons-outlined">
+                            visibility
+                            </span>
+                        <h4 class="top-services__count-view">200</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+</div>
+<app-footer></app-footer>

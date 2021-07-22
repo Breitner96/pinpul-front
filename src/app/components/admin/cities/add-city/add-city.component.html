@@ -1,0 +1,50 @@
+<div class="wrapper">
+  
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <!-- Content Wrapper -->
+
+  <div class="content-wrapper">
+
+      <div class="container">
+          <div class="row justify-content-md-center">
+              <div class="col col-lg-6 mt-5">
+                
+                  <form [formGroup]="form" (ngSubmit)="addcity()">
+                      <div class="form-group">
+                          <label for="selectpais">Paises</label>
+                          <select class="form-control" id="selectpais" formControlName="country_id"  [class.is-invalid]="countryValidate">
+                            
+                            <option *ngFor="let country of countries" value="{{ country.id }}">
+                              {{ country.country }}
+                            </option>
+                            
+                          </select>
+                          <small *ngIf="countryValidate" class="text-danger">Ingrese el Pais</small>
+                        </div>
+                      <div class="form-group">
+                        <label for="ciudad">Ciudad</label>
+                        <input type="city" class="form-control" id="ciudad"
+                              formControlName="city"
+                                [class.is-invalid]="ciudadValidate">
+                                <small *ngIf="ciudadValidate" class="text-danger">Ingrese la ciudad</small>
+                      </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="submit" [routerLink]="['/admin/ciudades']" class="btn btn-danger ml-4">Regresar</button>
+                    </form>
+
+              
+              </div>
+
+            </div>
+        </div>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+
+  <!-- Main Footer -->
+  <app-footerdash></app-footerdash>
+  </div>
+  <!-- ./wrapper -->

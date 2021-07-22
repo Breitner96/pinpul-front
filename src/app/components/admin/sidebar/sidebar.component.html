@@ -1,0 +1,147 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <!-- <a href="../../index2.php" class="brand-link"> -->
+    <!-- <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      style="opacity: .8">
+    <span class="brand-text font-weight-light">Markaplace</span> -->
+  <!-- </a> -->
+
+  <!-- Sidebar -->
+  <div class="logoInfo__container">
+    <div class="logo__container">
+      <img src="{{ rootNGIMg }}/logos/1080x1080.png" class="" alt="User Image">
+    </div>
+    <!-- <div class="info">
+      <a class="d-block">Zuntek</a>
+    </div> -->
+  </div>
+  <div class="sidebar">
+    <!-- Sidebar user (optional) -->
+    
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li *ngFor="let link of links" class="nav-item">
+          <a *ngIf="link.show" [routerLink]="link.slug" class="nav-link">
+            <p>{{ links.show }}</p>
+            <i class="{{ link.icon }}"></i>
+            <p style="margin-left: 7px;">{{ link.label }}</p>
+          </a>
+        </li>
+      </ul>
+
+      <!-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+        <li class="nav-item">
+          <a [routerLink]="['/admin/categorias']" class="nav-link">
+            <i class="fas fa-edit"></i>
+            <p style="margin-left: 7px;">Categorias</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/admin/paises']" class="nav-link">
+            <i class="fas fa-globe"></i>
+            <p style="margin-left: 10px;">Paises</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/admin/ciudades']" class="nav-link">
+            <i class="fas fa-map"></i>
+            <p style="margin-left: 8px;">Ciudades</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/admin/planes']" class="nav-link">
+            <i class="fas fa-bullhorn"></i>
+            <p style="margin-left: 8px;">Planes</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/admin/servicios']" class="nav-link">
+            <i class="fas fa-book"></i>
+            <p style="margin-left: 12px;">Servicios</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/admin/tipo-documento']" class="nav-link">
+            <i class="fas fa-cog"></i>
+            <p style="margin-left: 10px;">Tipo Documentos</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/admin/type-company']" class="nav-link">
+            <i class="fas fa-industry"></i>
+            <p style="margin-left: 10px;">Tipo Compañias</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/admin/type-client']" class="nav-link">
+            <i class="fas fa-suitcase"></i>
+            <p style="margin-left: 10px;">Tipo cliente</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/admin/promotions']" class="nav-link">
+            <i class="fas fa-bolt"></i>
+            <p style="margin-left: 15px;">Promociones</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/admin/proveedores']" class="nav-link">
+            <i class="fas fa-male"></i>
+            <p style="margin-left: 18px;">Proveedores</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/admin/usuarios']" class="nav-link">
+            <i class="fas fa-user-plus"></i>
+            <p style="margin-left: 5px;">Usuarios</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/admin/comentarios']" class="nav-link">
+            <i class="fas fa-comment"></i>
+            <p style="margin-left: 8px;">Comentarios</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/admin/roles']" class="nav-link">
+            <i class="fas fa-users"></i>
+            <p style="margin-left: 6px;">Roles</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/admin/permisos']" class="nav-link">
+            <i class="fas fa-cubes"></i>
+            <p style="margin-left: 9px;">Permisos</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/admin/puntuaciones']" class="nav-link">
+            <i class="fas fa-smile"></i>
+            <p style="margin-left: 7px;">Calificaciónes</p>
+          </a>
+        </li>
+
+      </ul> -->
+      
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

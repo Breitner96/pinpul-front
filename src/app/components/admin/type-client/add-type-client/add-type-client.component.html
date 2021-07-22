@@ -1,0 +1,45 @@
+
+<div class="wrapper">
+
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <!-- Content Wrapper -->
+
+  <div class="content-wrapper">
+
+      <div class="container">
+          <div class="row justify-content-md-center">
+              <div class="col col-lg-6 mt-5">
+                
+                  <form [formGroup]="form" (ngSubmit)="addTypeClient()">
+                      <div class="form-group">
+                        <label for="id">Indique el Tipo de Cliente</label>
+                        <input type="text"
+                                class="form-control"
+                                formControlName="type_client"
+                                [class.is-invalid]="typeClientValidate"
+                                id="id">
+                        <small *ngIf="typeClientValidate" class="text-danger">Ingrese el Tipo de cliente</small>
+                      </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="submit" [routerLink]="['/admin/type-client']" class="btn btn-danger ml-4">Regresar</button>
+
+                    </form>
+
+              
+              </div>
+
+            </div>
+        </div>
+
+  </div>
+  <!-- /.content-wrapper -->
+  
+  
+  <!-- Main Footer -->
+  <app-footerdash></app-footerdash>
+
+</div>
+  <!-- ./wrapper -->
+  

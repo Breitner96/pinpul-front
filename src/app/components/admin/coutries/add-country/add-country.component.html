@@ -1,0 +1,52 @@
+
+<div class="wrapper">
+
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <!-- Content Wrapper -->
+
+  <div class="content-wrapper">
+
+      <div class="container">
+          <div class="row justify-content-md-center">
+              <div class="col col-lg-6 mt-5">
+                
+                  <form [formGroup]="form" (ngSubmit)="addCountry()">
+                      <div class="form-group">
+                        <label for="id">Indicativo</label>
+                        <input type="number"
+                                class="form-control"
+                                formControlName="indicator"
+                                [class.is-invalid]="indicatorValidate"
+                                id="id">
+                        <small *ngIf="indicatorValidate" class="text-danger">Ingrese el indicador</small>
+                      </div>
+                      <div class="form-group">
+                        <label for="pais">Pais</label>
+                        <input type="country" 
+                                class="form-control"
+                                formControlName="country"
+                                [class.is-invalid]="countryValidate"
+                                id="pais">
+                        <small *ngIf="countryValidate" class="text-danger">Ingrese el país</small>
+                      </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="submit" [routerLink]="['/admin/paises']" class="btn btn-danger ml-4">Regresar</button>
+                    </form>
+
+              
+              </div>
+
+            </div>
+        </div>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <app-footerdash></app-footerdash>
+
+</div>
+  <!-- ./wrapper -->
+  

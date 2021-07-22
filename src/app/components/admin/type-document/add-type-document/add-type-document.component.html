@@ -1,0 +1,44 @@
+
+<div class="wrapper">
+
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <!-- Content Wrapper -->
+
+  <div class="content-wrapper">
+
+      <div class="container">
+          <div class="row justify-content-md-center">
+              <div class="col col-lg-6 mt-5">
+                
+                  <form [formGroup]="form" (ngSubmit)="addDocument()">
+                      <div class="form-group">
+                        <label for="id">Indique el Tipo Documento</label>
+                        <input type="text"
+                                class="form-control"
+                                formControlName="document"
+                                [class.is-invalid]="documentValidate"
+                                id="id">
+                        <small *ngIf="documentValidate" class="text-danger">Ingrese el Tipo de Documento</small>
+                      </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="submit" [routerLink]="['/admin/tipo-documento']" class="btn btn-danger ml-4">Regresar</button>
+                    </form>
+
+              
+              </div>
+
+            </div>
+        </div>
+
+  </div>
+  <!-- /.content-wrapper -->
+  
+  
+  <!-- Main Footer -->
+  <app-footerdash></app-footerdash>
+
+</div>
+<!-- ./wrapper -->
+  

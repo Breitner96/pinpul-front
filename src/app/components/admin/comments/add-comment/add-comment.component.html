@@ -1,0 +1,57 @@
+<div class="wrapper">
+  
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <!-- Content Wrapper -->
+
+  <div class="content-wrapper">
+
+      <div class="container">
+          <div class="row justify-content-md-center">
+              <div class="col col-lg-6 mt-5">
+                
+                  <form [formGroup]="form" (ngSubmit)="addcomment()">
+                      <div class="form-group">
+                          <label for="selectusers">Comentarios</label>
+                          <select class="form-control" id="selectusers" formControlName="user_id"  [class.is-invalid]="userValidate">
+                            
+                            <option *ngFor="let user of users" value="{{ user.id }}">
+                              {{ user.name }}
+                            </option>
+                            
+                          </select>
+                          <small *ngIf="userValidate" class="text-danger">Ingrese el Usuario</small>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="comment">Comentario</label>
+                        <textarea formControlName="comment"
+                                  class="form-control"
+                                  id="comment"
+                                  [class.is-invalid]="commentValidate"
+                                  cols="30"
+                                  rows="10">
+                        </textarea>
+                        <small *ngIf="commentValidate" class="text-danger">Ingrese el comentario</small>  
+                      </div>
+                      
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="submit" [routerLink]="['/admin/comentarios']" class="btn btn-danger ml-4">Regresar</button>
+                    </form>
+
+              
+              </div>
+
+            </div>
+        </div>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+
+<!-- Main Footer -->
+<app-footerdash></app-footerdash>
+
+</div>
+  <!-- ./wrapper -->

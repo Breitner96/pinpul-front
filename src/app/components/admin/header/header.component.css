@@ -1,0 +1,48 @@
+.main-header{
+    display: flex;
+    justify-content: space-between;
+   
+}
+.usuario__container{
+    justify-self: flex-end;
+    display: flex;
+    align-items: center;
+   
+}
+.usuario__container .notificaciones{
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+.usuario__container .notificaciones span{
+    margin-right: 0.5rem;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+.usuario__container .avatar{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    margin-right: 0.6rem;
+}
+.usuario__container .avatar img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    
+}
+.usuario__nombre{
+    margin-right: 1rem;
+}
+.usuario__nombre p{
+    color: rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+.logout{
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    margin-right: 1.5rem;
+
+}

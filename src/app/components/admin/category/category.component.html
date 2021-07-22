@@ -1,0 +1,87 @@
+<div class="wrapper">
+  
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <!-- Content Wrapper -->
+
+  <div class="content-wrapper">
+
+      <div class="container">
+          <div class="row justify-content-md-center">
+              <div class="col col-lg-12 mt-5">
+                <div class="btn__container">
+
+                  <button type="button" class="btn btn-primary btn-lg mb-5 boton__add" [routerLink]="['/admin/categorias/add-category']">Añadir Categoria</button>
+                </div>
+                <div class="card">
+                      <div class="card-header">
+                        <h2 class="card-title">Categorías</h2>
+                      </div>
+                      
+                      <!-- /.card-header -->
+                      <div class="card-body p-0">
+                        <div class="graficos">
+                          <div *ngIf="datosGrafica.length > 0" class="grafico__torta">
+                            <google-chart
+                              [title]="title"  
+                              [type]="type"  
+                              [data]="datosGrafica" 
+                              [options]="options"  
+                              [width]="width"  
+                              [height]="height">  
+                            </google-chart>
+                          </div>
+                          <div class="card-estadistica card-estadistica__tel">
+                            <div class="titulo__card">
+                              Categoría mas Popular 
+                            </div>
+                            <div class="datos__card">
+                              <span>34</span> Busquedas
+                            </div>
+                          </div>
+                        </div>
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th style="width: 10px">#</th>
+                              <td align="center" style="font-weight: bold">Nombre Categoria</td>
+                              <td align="center" style="font-weight: bold">Componentes</td>
+                            </tr>
+                          </thead>
+                          <tbody *ngFor="let categoria of categories">
+                            <tr>
+                              <td>{{categoria.id}}</td>
+                              <td align="center">{{categoria.category}}</td>
+
+                              <td align="center">
+                                <button type="button" class="btn btn-success mr-2" [routerLink]="['/admin/categorias/view-category', categoria.id]"><i class="fas fa-eye"></i></button>
+                                <button type="button" class="btn btn-primary mr-2" [routerLink]="['/admin/categorias/edit-category', categoria.id]"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger" (click)="deleteCategory(categoria.id)"><i class="fas fa-trash-alt" ></i></button>
+
+                              </td>
+
+
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+
+                    
+              </div>
+
+            </div>
+        </div>
+
+  </div>
+  <!-- /.content-wrapper -->
+  
+  <!-- Main Footer -->
+  <app-footerdash></app-footerdash>
+  
+</div>
+  <!-- ./wrapper -->
+  

@@ -1,0 +1,85 @@
+.boton__add{
+    background-color: #65bb23 !important ;
+    border: #65bb23;
+}
+.btn__container{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2rem;
+}
+.card-title{
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+/* .btn-success{
+    background-color: orange;
+    border:orange;
+}
+.edit{
+    background-color: rgb(50, 116, 202);
+    color: white;
+} */
+.graficos{
+    /* display: grid;
+    grid-template-columns: 1fr 2fr; */
+    /* margin-bottom: 4rem; */
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
+    margin-bottom: 3rem;
+    overflow-y: hidden;
+}
+/* google-char{
+    
+} */
+
+.card-estadistica{
+    width: 90%;
+    margin-left: 1rem;
+    padding: 2rem 1.5rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+.card-estadistica__tel{
+    border: 2px solid #f0932b;
+    background-color: #ffbe76;
+}
+.titulo__card{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.6rem;
+    color: black;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid black;
+   
+}
+.datos__card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    gap: 0.5rem;
+}
+.datos__card span{
+    font-size: 2rem;
+    font-weight: 700;
+    color: black !important;
+   
+}
+@media(min-width:768px){
+    .graficos{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 3rem;
+    }
+    .card-estadistica{
+        width: 25%;
+        margin-left: 1rem;
+        padding: 2rem 1.5rem;
+        border-radius: 1rem;
+        margin-top: 1rem;
+    }
+}

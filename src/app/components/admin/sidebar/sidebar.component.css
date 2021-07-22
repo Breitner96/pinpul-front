@@ -1,0 +1,20 @@
+/* aside{
+    background-color: rgb(126, 145, 105);
+} */
+.sidebar{
+    margin: 0;
+    padding: 0;
+}
+.logoInfo__container{
+    background-color: #dbdbdb;
+    margin: 0  !important;
+    padding: 0 !important;
+}
+.logo__container{
+    width: 10rem;
+    margin: 3rem auto ;
+}
+.logo__container img{
+    width: 100%;
+    animation: bounce 1s;
+}

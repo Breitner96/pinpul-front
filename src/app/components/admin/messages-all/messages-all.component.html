@@ -1,0 +1,124 @@
+<div class="wrapper">
+
+    <app-sidebar></app-sidebar>
+    <app-header></app-header>
+
+    <!-- Content Wrapper -->
+
+    <div class="content-wrapper">
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-12 mt-12">
+                    <h2 class="titulo__modulo"> Mensajes</h2>
+                    <div class="card-body p-0 ">
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+
+                                        <td align="center" style="font-weight: bold">Proveedor</td>
+                                        <td align="center" style="font-weight: bold">Usuario</td>
+                                        <!-- <td align="center" style="font-weight: bold">Nombre</td> -->
+                                        <td align="center" style="font-weight: bold">Empresa</td>
+                                        <td align="center" style="font-weight: bold">Email</td>
+                                        <td align="center" style="font-weight: bold">Telefono</td>
+                                        <td align="center" style="font-weight: bold">Asunto</td>
+                                        <td align="center" style="font-weight: bold">Componentes</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let messsage of messages">
+                                        <!-- <p>{{ messsage.provider.plan_id | json }}</p> -->
+
+                                        <td align="center">{{messsage.provider.provider}}</td>
+                                        <td align="center">{{messsage.user.name}}</td>
+                                        <td align="center">{{messsage.company}}</td>
+                                        <td align="center">{{messsage.email}}</td>
+                                        <td align="center">{{messsage.phone}}</td>
+                                        <td align="center">{{messsage.asunto}}</td>
+
+                                        <td align="center">
+                                            <!-- <button type="button" class="btn btn-success mr-2"
+                                                [routerLink]="['/admin/proveedores/view-provider', provider.id]"><i
+                                                    class="fas fa-eye"></i></button> -->
+                                                    <!-- [disabled]="true" -->
+                                            <button *ngIf="can && messsage.provider.plan_id == 1"
+                                                    type="button"
+                                                    class="btn btn-primary mr-2"
+                                                    [disabled]="messsage.estado == 'enviado'"
+                                                    (click)="enviarMensaje(messsage.id)">
+                                                    <i class="fas fa-paper-plane"></i>
+                                            </button>
+                                            <button type="button"
+                                                    class="btn btn-danger"
+                                                    (click)="deleteMessage(messsage.id)"><i
+                                                    class="fas fa-trash-alt"></i>
+                                            </button>
+
+                                        </td>
+
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="container__mensaje hidden2" *ngFor="let messsage of messages"
+                            id="container__mensaje">
+
+                            <h2 class="titulo__modulo">Asunto: {{ messsage.asunto }}</h2>
+                            <p><b>Para:</b> {{messsage.provider.provider}}</p>
+                            <form [formGroup]="form" (ngSubmit)="enviarProvedorFree()">
+                                <!-- <div class="form-group">
+                                    <label for="usuario">De:</label>
+                                    <input type="text" formControlName="full_name" class="form-control">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="asunto">Asunto</label>
+                                    <input type="text" formControlName="asunto" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="company">Compañia</label>
+                                    <input type="text" formControlName="company" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="text" formControlName="email" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tel">Teléfono</label>
+                                    <input type="text" formControlName="tel" class="form-control">
+                                </div>
+                                <div class="btns">
+                                    <input type="submit" class="contact__submit" value="Enviar Información">
+                                    <button class="contact__submit contact__submit--rojo"
+                                        (click)="enviarMensaje()">Cancelar</button>
+                                </div>
+
+
+                            </form>
+
+                        </div>
+                        <div class="overwrite2 hidden2" id="over2">
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+
+    <!-- Main Footer -->
+    <app-footerdash></app-footerdash>
+
+
+</div>
+<!-- ./wrapper -->

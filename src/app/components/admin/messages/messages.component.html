@@ -1,0 +1,68 @@
+<div class="wrapper">
+
+    <app-sidebar></app-sidebar>
+    <app-header></app-header>
+
+    <!-- Content Wrapper -->
+
+    <div class="content-wrapper">
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-12 mt-12">
+                    <h2 class="titulo__modulo">Mis Mensajes</h2>
+                    <div class="card-body p-0">
+                        <table class="table">
+                            <thead>
+                                <tr >
+                                    
+                                    <!-- <td align="center" style="font-weight: bold">ID Proveedor</td> -->
+                                  
+                                    <td align="center" style="font-weight: bold">Nombre</td>
+                                    <td align="center" style="font-weight: bold">Empresa</td>
+                                    <td align="center" style="font-weight: bold">Email</td>
+                                    <td align="center" style="font-weight: bold">Telefono</td>
+                                    <td align="center" style="font-weight: bold">Asunto</td>
+                                    <td align="center" style="font-weight: bold">Componentes</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let messsage of messages">
+                                    
+                                    <td align="center">{{messsage.full_name}}</td>
+                                    <td align="center">{{messsage.company}}</td>
+                                    <td align="center">{{messsage.email}}</td>
+                                    <td align="center">{{messsage.phone}}</td>
+                                    <td align="center"></td>
+                                    
+
+                                    <td align="center">
+                                       
+                                        <button type="button" class="btn btn-danger"
+                                            (click)="deleteMessage(messsage.id)"><i
+                                                class="fas fa-trash-alt"></i>
+                                        </button>
+
+                                    </td>
+
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+
+    <!-- Main Footer -->
+    <app-footerdash></app-footerdash>
+
+
+</div>
+<!-- ./wrapper -->

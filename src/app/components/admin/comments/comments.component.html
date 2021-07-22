@@ -1,0 +1,69 @@
+<div class="wrapper">
+  
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <!-- Content Wrapper -->
+
+  <div class="content-wrapper">
+
+      <div class="container">
+          <div class="row justify-content-md-center">
+              <div class="col col-lg-12 mt-5">
+                <div class="btn__container">
+
+                  <button type="button" class="btn btn-primary btn-lg mb-5 boton__add" [routerLink]="['/admin/comentarios/add-comment']">Añadir Comentario</button>
+                </div>
+
+                    <div class="card">
+                      <div class="card-header">
+                        <h3 class="card-title">Comentarios</h3>
+                      </div>
+                      <!-- /.card-header -->
+                      <div class="card-body p-0">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th style="width: 10px">#</th>
+                              <td align="center" style="font-weight: bold">Usuarios</td>
+                              <td align="center" style="font-weight: bold">Comentarios</td>
+                              <td align="center" style="font-weight: bold">Componentes</td>
+                            </tr>
+                          </thead>
+                          <tbody *ngFor="let comment of comments">
+                            <tr>
+                              <td>{{comment.id}}</td>
+                              <td align="center">{{ comment.user.name }} {{ comment.user.last_name }}</td>
+                              <td align="center">{{comment.comment}}</td>
+
+                              <td align="center">
+                                
+                                <button type="button" class="btn btn-primary mr-2" [routerLink]="['/admin/comentarios/edit-comment', comment.id]"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger" (click)="deletecomment(comment.id)"><i class="fas fa-trash-alt"></i></button>
+
+                              </td>
+
+
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+
+              
+              </div>
+
+            </div>
+        </div>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <app-footerdash></app-footerdash>
+
+</div>
+  <!-- ./wrapper -->
+  

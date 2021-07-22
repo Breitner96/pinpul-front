@@ -1,0 +1,103 @@
+
+<div class="wrapper">
+  
+  <app-sidebar></app-sidebar>
+  <app-header></app-header>
+
+  <!-- Content Wrapper -->
+
+  <div class="content-wrapper">
+
+      <div class="container">
+          <div class="row justify-content-md-center">
+              <div class="col col-lg-6 mt-5">
+
+                  <!-- {{ formData | json }}               -->
+                  <form id="quickForm" [formGroup]="form" (ngSubmit)="update_promotion()" enctype="multipart/form-data">
+                      
+                      <div class="form-group">
+                          <label for="exampleFormControlFile1">Ingrese la imagen</label>
+                          <input type="file" formControlName="image" (change)="uploadImage($event)" class="form-control-file" id="exampleFormControlFile1"
+                          [class.is-invalid]="imagenValidate" autocomplete="text">
+                          <small *ngIf="imagenValidate" class="text-danger">Ingresa una imagen</small>
+                          <img class="mt-4" style="width: 180px; margin-bottom: 1rem;" src="http://pinpul-back.test/img/{{promotionID.image}}" alt="">
+                        </div>
+
+                        
+                      <div class="form-group">
+                          <label for="title">Ingrese el titulo</label>
+                          <input type="text" class="form-control" id="title"
+                          formControlName="title"
+                          [class.is-invalid]="titleValidate" autocomplete="text" value="{{promotionID.title}}">
+                          <small *ngIf="titleValidate" class="text-danger">Ingresa el titulo</small>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Descripción</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                          formControlName="description"
+                          [class.is-invalid]="descriptionValidate" autocomplete="text" value="{{promotionID.description}}"></textarea>
+                          <small *ngIf="descriptionValidate" class="text-danger">Ingresa la descripcion</small>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="discount">Descuento</label>
+                          <input type="number" class="form-control" id="discount"
+                          formControlName="discount"
+                          [class.is-invalid]="discountValidate" autocomplete="text" value="{{promotionID.discount}}">
+                          <small *ngIf="discountValidate" class="text-danger">Ingresa el descuento</small>
+                      </div>
+
+                      <div class="form-group">
+                          
+                          <label for="date">Ingrese el inicio de la promoción</label>
+                          <input type="date" id="date" class="form-control"
+                          formControlName="start_promotion"
+                          [class.is-invalid]="startpromotionValidate" value="{{promotionID.start_promotion}}">
+                          <small *ngIf="startpromotionValidate" class="text-danger">Ingresa el inicio de la promoción</small>
+
+                      </div>
+    
+                      <div class="form-group">
+                          
+                          <label for="date1">Ingrese el fin de la promoción</label>
+                          <input type="date" id="date1" class="form-control"
+                          formControlName="end_promotion"
+                          [class.is-invalid]="endpromotionValidate"  value="{{promotionID.end_promotion}}">
+                          <small *ngIf="endpromotionValidate" class="text-danger">Ingresa el fin de la promoción</small>
+
+                      </div>
+
+                      <div class="form-group">
+                          <label for="selectstate">Estado promoción</label>
+                          <select class="form-control" id="selectstate" formControlName="status"  [class.is-invalid]="statusValidate">
+                            
+                            <option value="{{promotionID.status}}">{{promotionID.status}}</option>
+                            <option *ngIf="promotionID.status=='inactivo'">activo</option>
+                            <option *ngIf="promotionID.status=='activo'">inactivo</option>
+                            
+                            
+                            
+                          </select>
+                          <small *ngIf="statusValidate" class="text-danger">Ingrese activo o inactivo</small>
+                      </div>
+
+  
+                      <button type="submit" class="btn btn-primary">Enviar</button>
+                      <button type="submit" [routerLink]="['/admin/promotions']" class="btn btn-danger ml-4">Regresar</button>
+                  </form>
+
+              </div>
+
+            </div>
+        </div>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <app-footerdash></app-footerdash>
+
+</div>
+  <!-- ./wrapper -->
+  

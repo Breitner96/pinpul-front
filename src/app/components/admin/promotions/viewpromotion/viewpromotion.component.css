@@ -1,0 +1,25 @@
+.text1{
+
+    font-size: 1.5rem;
+
+}
+
+.titulo{
+    font-size: 2rem;
+    font-weight: 500;
+
+}
+
+.colorestado1{
+
+    font-weight: bold;
+    color: green;
+
+}
+
+.colorestado2{
+
+    font-weight: bold;
+    color: red;
+
+}

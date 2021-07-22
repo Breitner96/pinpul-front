@@ -1,0 +1,39 @@
+input,
+select{
+    font-size: 1.4rem;
+    height: 3rem;
+}
+textarea{
+    font-size: 1.4rem;
+}
+.btn{
+    font-size: 1.4rem;
+}
+
+.content-gallery{
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content-gallery li{
+    position: relative;
+    margin: 1rem;
+    width: 20%;
+}
+
+.content-gallery i{
+    padding: 2px 5px;
+    background: white;
+    cursor: pointer;
+    width: 20px;
+    border-radius: 50%;
+    height: 20px;
+}
+
+.content-gallery .fa-times{
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    color: red;
+}

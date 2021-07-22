@@ -1,0 +1,398 @@
+<div class="home">
+    <header id="particles-js" class="header">
+        <div class="aside__menu animacionEntrada" id="aside__menu">
+            <span class="material-icons material-icons-outlined" id="close__aside" (click)="asideCerrar()">
+                close
+            </span>
+            <div class="logo__aside">
+                <a routerLink='/home/'><img src="{{ rootNGIMg }}/logos/1920x1080.png" alt="Logo empresa"></a>
+
+            </div>
+            <div class="usuario__aside">
+                <div class="usuario__avatar">
+                    <img src="{{ rootNGIMg }}/avatar5.png" alt="foto usuario">
+                </div>
+                <div class="usuario__nombre">
+                    <p class="uppercase">Nombre de usuario</p>
+                </div>
+
+            </div>
+            <div class="navegacion__aside">
+                <ul class="uppercase nav__aside">
+                    <li (click)="catMenuAsideAbrir()" id="cat__con--aside">categorías
+                        <div class="menu__cat menu__cat--aside hidden2" id="menu__cat--aside">
+                            <ul>
+                                <li *ngFor="let category of categories" class="item__menu--colapsible">
+                                    <a [routerLink]="['/categorias/', category.slug]" class="negro">
+                                        <span class="punto__verde">•</span>
+                                        {{ category.category }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>contáctenos</li>
+                    <li>Nosotros</li>
+                    <li><a routerLink='/blog/'>Blog</a> </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- <div class="nav__responsive--container" id="nav__responsive--container">
+            <span class="material-icons material-icons-outlined" id="close__aside" (click)="asideCerrar()">
+                closev
+                </span> -->
+        <!-- <ul >
+                    <li class="item__menu--responsive" ><a href="#">nosotros</a></li>
+                    <li class="item__menu--responsive"><a href="#contacto">contáctenos</a></li>
+                    <li class="item__menu--responsive cat__rela">
+                        <a [routerLink]="['/categorias/','confeccion']">
+                            categorías
+                        </a>
+                        
+                    </li>
+                    <li class="item__menu--responsive"><a href="#">blog</a></li>
+                    <li class="item__menu--responsive"><a [routerLink]="['/login/']">login / registrate</a></li>
+                </ul> -->
+        <!-- <div class="cat__collapsible--responsive"> -->
+        <!-- <ul class="col__container" >
+                                <li class="collapsible__item"><span class="punto__verde">•</span>Lorem  Ipsum Ipsum </li>
+                                <li class="collapsible__item"><span class="punto__verde">•</span>Lorem Ipsum</li>
+                            </ul>
+                        </div> -->
+
+        <!-- </div> -->
+
+
+        <div class="container">
+
+            <div class="header__top">
+                <div class="header__logo">
+                    <img src="{{ rootNGIMg }}/logos/1080x1080_simbolo.png" alt=" logo pinpul"
+                        class="oculto__escritorio">
+                    <img src="{{ rootNGIMg }}/logos/logo_horizontal.png" alt=" logo pinpul"
+                        class="oculto__movil logo_horizontal">
+                </div>
+                <div class="nav__responsive--home ">
+                    <!-- <div class="usuario__nav--home ">
+                        <p class="">Nombre Usuario</p>
+                        <span class="material-icons ">
+                            account_circle
+                            </span>
+                    </div> -->
+                    <span (click)="asideVer()"
+                        class="material-icons material-icons-outlined menu__puntos hide-on-large-only oculto__escritorio"
+                        (click)="asideAbrir()">more_vert</span>
+                </div>
+                <nav class="header__nav">
+                    <ul class="oculto__movil">
+                        <li class="oculto__movil" id='cat__tag' class="cat__tag oculto__movil" (click)="clickBody()">
+                            categorías
+                            <div class="contenedor__menu arrow_box hidden" id="contenedor__menu2">
+                                <ul>
+                                    <li *ngFor="let category of categories" class="item__menu--colapsible">
+                                        <a [routerLink]="['/categorias/', category.slug]">
+                                            <span class="punto__verde">•</span>
+                                            {{ category.category }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="oculto__movil"><a href="#contacto">contáctenos</a></li>
+                        <li class="oculto__movil"><a href="#">nosotros</a></li>
+                        <li class="oculto__movil"><a [routerLink]="['/blog/']">blog</a></li>
+                        <li class="oculto__movil"><a [routerLink]="['/login/']">login / registrarse </a></li>
+                        <!-- <li class="oculto__movil"><a [routerLink]="['/login/']">registrarse </a></li> -->
+                    </ul>
+                </nav>
+
+            </div>
+            <div class="pop">
+                <div class="popUp__container " id="popUp">
+                    <div class="pop__content ">
+                        <div class="closePop">
+                            <span class="material-icons" (click)="cerrarPop()">
+                                cancel
+                            </span>
+                        </div>
+                        <p>¿Eres Empresa?</p>
+                        <button><a (click)="checkDefaultRegister()">Registrate aquí</a></button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="header__title" (click)="cerrarColl()">
+                <h1 class="header__h1">
+                    Encuentra los proveedores que necesitas
+                </h1>
+                <div class="barra__buscar  ">
+                    <input type="search" placeholder="Buscar servicio..."><button type="submit"><span
+                            class="material-icons material-icons-outlined">search</span></button>
+                </div>
+                <!-- <input class="header__input" type="text" placeholder="¿Qué necesitas buscar?"> -->
+            </div>
+        </div>
+    </header>
+
+    <section class="top-categories">
+        <!-- <div class="overwrite" id="overwrite">
+
+        </div> -->
+        <div class="container ">
+            <h2 class="top-categories__title">Categorías populares</h2>
+            <div class="row j-between">
+
+                <div class="top-categories__container">
+                    <owl-carousel-o class="homeOptions" [options]="homeOptions">
+                        <ng-template *ngFor="let cp of categoriasPopulares" carouselSlide>
+                            <a [routerLink]="['/categorias/', cp.slug]">
+                                <div class="top-cateogories__col">
+                                    <div class="top-categories__box"
+                                        style="background-image: url('{{ rootImage }}/{{ cp.imagen }}');">
+                                        <div class="top-categories__name">
+                                            <p>{{ cp.category }} <span>+</span></p>
+                                            <small style="font-weight: 400;">lorem ipsum</small>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </ng-template>
+                    </owl-carousel-o>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="abount__pinpul">
+            <div class="about-content">
+                <h2 class="about__title">¿Qué es pinpul?</h2>
+                <p class="about__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro expedita
+                    neque mollitia distinctio libero laudantium nobis tempora facilis dignissimos praesentium, aut quod
+                    vitae voluptatem quo ipsa numquam vel laborum quasi.</p>
+                <a (click)="showUsers()" href="#contacto" class="about__button">Más información <span>+</span></a>
+            </div>
+        </div>
+        <div class="abount__video">
+            <img src="{{ rootNGIMg }}/people-2557396_1920.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="lds-ellipsis" id="lds-ellipsis">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="row j-between">
+                <div class="contact__content">
+                    <h3 class="contact__title uppercase">Formulario de contacto</h3>
+
+                    <form [formGroup]="form" (ngSubmit)="sendContactPinpul()">
+                        <div class="contact__group-form">
+                            <label for="nombre">Nombre Completo</label>
+                            <input type="text" id="nombre" class="form-control" formControlName="nombre"
+                                autocomplete="name" required [class.is-invalid]="nameValidate">
+                            <small *ngIf="nameValidate" class="text-danger">Ingrese el nombre</small>
+                        </div>
+
+                        <div class="contact__group-form">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" formControlName="email" required
+                                autocomplete="email" [class.is-invalid]="emailValidate">
+                            <small *ngIf="emailValidate" class="text-danger">Ingrese un correo valido</small>
+
+                        </div>
+
+                        <div class="contact__group-form">
+                            <label for="tel">Teléfono</label>
+                            <input type="tel" formControlName="tel" class="form-control" id="tel" required
+                                autocomplete="tel" [class.is-invalid]="telValidate">
+                            <small *ngIf="telValidate" class="text-danger">Ingrese un número teléfonico</small>
+                        </div>
+                        <div class="contact__group-form">
+                            <label for="asunto">Asunto</label>
+                            <input type="text" formControlName="asunto" class="form-control" id="asunto"
+                                [class.is-invalid]="asuntoValidate">
+                            <small *ngIf="asuntoValidate" class="text-danger">Ingrese un asunto</small>
+                        </div>
+                        <!-- <div class="contact__submit"> -->
+                        <input type="submit" value="ENVIAR" class="contact__submit">
+                        <!-- <img src="/assets/icons/avion.svg" alt="">
+                        </div> -->
+                    </form>
+                </div>
+                <div class="contact__img">
+                    <img class="contact__asesor" src="{{ rootNGIMg }}/asesor.png" alt="">
+                    <div class="contact__bg"></div>
+                    <!-- <img class="contact__bg" src="{{ rootNGIMg }}/bg-verde.jpg" alt=""> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="top-services">
+        <div class="container">
+            <h3 class="top-services__title uppercase">Proveedores más populares</h3>
+
+
+            <owl-carousel-o class="customOptions" [options]="customOptions">
+
+                <ng-template *ngFor="let provedor of proveedoresPopulares" carouselSlide>
+                    <!-- {{ provedor.plan.plan | json }} -->
+
+                    <div class="card">
+                        <i *ngIf="provedor.plan.plan == 'Premium' " class="far fa-gem"></i>
+                        <a [routerLink]="['/proveedor/', provedor.slug]">
+                            <img class="card__img" src="{{ rootImage }}/{{ provedor.logo }}" alt="">
+                        </a>
+                        <a [routerLink]="['/proveedor/', provedor.slug]">
+                            <h3 class="card__title">{{ provedor.provider }}</h3>
+                        </a>
+                        <div class="card__category-views">
+                            <div class="card__tags-categories" (click)="mostrar()">
+                                <span class="material-icons">
+                                    bookmark_border
+                                </span>
+                                <h4 class="top-services__name-category">Categorías</h4>
+                            </div>
+                            <div class="card__tags-views">
+                                <span class="material-icons material-icons-outlined">
+                                    visibility
+                                </span>
+                                <h4 class="top-services__count-view">{{provedor.views}}</h4>
+                            </div>
+                        </div>
+                        <div class="categoria_lista" id="categoria_lista">
+                            <ul>
+                                <li><span class="punto__verde">•</span>Lorem </li>
+                                <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                                <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                                <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                                <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                            </ul>
+                            <span class="material-icons material-icons-outlined" (click)="cerrar()">
+                                close
+                            </span>
+                        </div>
+                    </div>
+
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </section>
+
+    <section class="banner">
+        <div class="container">
+            <img src="{{ rootNGIMg }}/aviso.jpg" alt="">
+        </div>
+    </section>
+    <!-- style="background-image: url( {{rootNGIMg}}/bg-steps.jpg );" -->
+    <section class="steps">
+        <div class="container">
+            <div class="row j-between">
+                <div class="steps__step">
+                    <div class="steps__number">1</div>
+                    <div class="steps__title">Lorem Ipsum</div>
+                    <div class="steps__text">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod ipsum ipsam neque error, natus
+                        inventore mollitia soluta ipsa repellat nemo.
+                    </div>
+                </div>
+
+                <div class="steps__step">
+                    <div class="steps__number">2</div>
+                    <div class="steps__title">Lorem Ipsum</div>
+                    <div class="steps__text">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod ipsum ipsam neque error, natus
+                        inventore mollitia soluta ipsa repellat nemo.
+                    </div>
+                </div>
+
+                <div class="steps__step">
+                    <div class="steps__number">3</div>
+                    <div class="steps__title">Lorem Ipsum</div>
+                    <div class="steps__text">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod ipsum ipsam neque error, natus
+                        inventore mollitia soluta ipsa repellat nemo.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h3 class="testimonials__title">Nuestros clientes han opinado</h3>
+            <div class="testimonials__carousel">
+                <owl-carousel-o class="testimonialOptions" [options]="testimonialOptions">
+
+                    <ng-template carouselSlide>
+                        <div class="testimonials">
+                            <img class="testimonials__img" style="width: 100px; height: 100px; border-radius: 50%;"
+                                src="{{ rootNGIMg }}/meeting-594091_1920.jpg" alt="">
+                            <h3 class="testimonials__client">Nombre cliente 1</h3>
+                            <p class="testimonials__company">Company name</p>
+                            <p class="testimonials__text">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere exercitationem
+                                explicabo reprehenderit dolor, odio officiis omnis, possimus molestias fugit cum,
+                                expedita quae quia eaque numquam tempora suscipit laboriosam ullam eos?
+                            </p>
+                            <div class="testimonials__quotation-marks">
+                                <img class="testimonials__quotation-marks--left" src="">
+                                <img class="testimonials__quotation-marks--rigth" src="">
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template carouselSlide>
+                        <div class="testimonials">
+                            <img class="testimonials__img" style="width: 100px; height: 100px; border-radius: 50%;"
+                                src="{{ rootNGIMg }}/meeting-594091_1920.jpg" alt="">
+                            <h3 class="testimonials__client">Nombre cliente 2</h3>
+                            <p class="testimonials__company">Company name</p>
+                            <p class="testimonials__text">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere exercitationem
+                                explicabo reprehenderit dolor, odio officiis omnis, possimus molestias fugit cum,
+                                expedita quae quia eaque numquam tempora suscipit laboriosam ullam eos?
+                            </p>
+                            <div class="testimonials__quotation-marks">
+                                <img class="testimonials__quotation-marks--left" src="">
+                                <img class="testimonials__quotation-marks--rigth" src="">
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template carouselSlide>
+                        <div class="testimonials">
+                            <img class="testimonials__img" style="width: 100px; height: 100px; border-radius: 50%;"
+                                src="{{ rootNGIMg }}/meeting-594091_1920.jpg" alt="">
+                            <h3 class="testimonials__client">Nombre cliente 3</h3>
+                            <p class="testimonials__company">Company name</p>
+                            <p class="testimonials__text">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere exercitationem
+                                explicabo reprehenderit dolor, odio officiis omnis, possimus molestias fugit cum,
+                                expedita quae quia eaque numquam tempora suscipit laboriosam ullam eos?
+                            </p>
+                            <div class="testimonials__quotation-marks">
+                                <img class="testimonials__quotation-marks--left" src="">
+                                <img class="testimonials__quotation-marks--rigth" src="">
+                            </div>
+                        </div>
+                    </ng-template>
+
+                </owl-carousel-o>
+            </div>
+        </div>
+    </section>
+</div>
+
+<app-footer></app-footer>

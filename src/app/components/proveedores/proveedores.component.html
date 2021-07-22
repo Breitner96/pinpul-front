@@ -1,0 +1,413 @@
+<app-navigation></app-navigation>
+<!-- <app-breadcumbs></app-breadcumbs> -->
+
+<!-- {{ example.img | json }}
+
+<slider-carousel [images]="example.img"></slider-carousel>
+
+<img [images]="{{ example.img }}" alt=""> -->
+
+
+
+<div class="container detalle__container">
+    <main>
+        <div class="lds-ellipsis" id="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="info__empresa--detalle">
+            <div class="logo__empresa--detalle">
+                <img src="{{ DIR_IMG }}/{{ proveedorID.logo }}" alt="logo marca">
+            </div>
+            <div class="texto__empresa--detalle">
+                <!-- <h4>datos: {{ proveedorID | json }}</h4> -->
+                <h2>{{ proveedorID.provider }}<div class="empresa__detalle--premium">
+                        <div class="premium__container" *ngIf="proveedorID.plan.plan == 'Premium'">
+                            <i class="far fa-gem"></i>
+                        </div>
+
+                    </div>
+                </h2>
+                <!-- <p class="uppercase categorias__lista">
+                    <span class="material-icons material-icons-outlined">bookmark</span>
+                    TEXTIL, CALZADO Y CUERO | ASEO Y LIMPIEZA | DESARROLLO DIGITAL | BARES Y RESTAURANTES
+                </p> -->
+
+                <ul class="uppercase categorias__lista">
+                    <li class="cat__logo2"><span class="material-icons material-icons-outlined">bookmark</span></li>
+                    <li *ngFor="let category of categories"> <a [routerLink]="['/categorias/',category.slug]"
+                            style="color: bfbfbf !important;">{{ category.category }} </a> </li>
+                </ul>
+                <p class="ubicacion uppercase">
+                    <span class="material-icons">location_on</span> ubicación <b> {{ proveedorID.city.city }}, {{
+                        proveedorID.country.country }}</b>
+                </p>
+
+            </div>
+
+        </div>
+        <div class="info__pedir">
+            <button *ngIf="proveedorID.plan.plan != 'Premium'"
+                    class="btn__verde--relleno uppercase"
+                    (click)="contadorInfo(proveedorID.id)"
+                    (click)="pedirInfoGratis()"> pedir información gratis <span class="material-icons">done</span></button>
+            <p *ngIf="proveedorID.plan.plan == 'Premium'" class="ver__tel" (click)="ver__tel()">Ver teléfono</p>
+        </div>
+        <div class="popUp__infoGratis hidden" id="popUp__infoGratis">
+            <div class="cerrar" (click)="pedirInfoGratis()">
+                <span class="material-icons">
+                    cancel
+                </span>
+            </div>
+            <h3 class="uppercase">Formulario de contacto</h3>
+            <div>
+                <form [formGroup]="formDos" (ngSubmit)="sendContactPinpul()">
+                    <div class="contact__group-form">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" class="form-control" formControlName="nombre" autocomplete="name"
+                            required [class.is-invalid]="nameValidate2">
+                        <small *ngIf="nameValidate2" class="text-danger">Ingrese el nombre</small>
+                    </div>
+                    <div class="contact__group-form">
+                        <label for="nombre">Nombre Empresa</label>
+                        <input type="text" id="nombre" class="form-control" formControlName="company2"
+                            autocomplete="organization" required [class.is-invalid]="nameValidate2">
+                        <small *ngIf="nameValidate2" class="text-danger">Ingrese el nombre de la empresa</small>
+                    </div>
+                    <!-- <label for="empresa">Nombre de la Empresa</label>
+                            <input type="text" name="empresa" formControlName="company2" required autocomplete="organization"
+                            [class.is-invalid]="nameEmpresaValidate2">
+                            <small *ngIf="nameEmpresaValidate2" class="text-danger">Ingrese el nombre de la empresa</small>
+                     -->
+
+                    <div class="contact__group-form">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" formControlName="email" required
+                            autocomplete="email" [class.is-invalid]="emailValidate2">
+                        <small *ngIf="emailValidate2" class="text-danger">Ingrese un correo valido</small>
+
+                    </div>
+
+                    <div class="contact__group-form">
+                        <label for="tel">Teléfono</label>
+                        <input type="tel" formControlName="tel" class="form-control" id="tel" required
+                            autocomplete="tel" [class.is-invalid]="telValidate2">
+                        <small *ngIf="telValidate2" class="text-danger">Ingrese un número teléfonico</small>
+                    </div>
+                    <div class="contact__group-form">
+                        <label for="asunto">Asunto</label>
+                        <input type="text" formControlName="asunto2" class="form-control" id="asunto"
+                            [class.is-invalid]="asuntoValidate2">
+                        <small *ngIf="asuntoValidate2" class="text-danger">Ingrese un asunto</small>
+                    </div>
+                    <!-- <div class="contact__submit"> -->
+
+                    <input type="submit" value="ENVIAR" class="contact__submit">
+                    <!-- <img src="/assets/icons/avion.svg" alt="">
+                    </div> -->
+                </form>
+
+
+            </div>
+
+        </div>
+
+        <div class="popUp__tel hidden" id="popUp__tel">
+            <div class="cerrar" (click)="ver__tel()">
+                <span class="material-icons">
+                    cancel
+                </span>
+            </div>
+            <h3 class="uppercase">Información de contacto</h3>
+            <div class="">
+                <!-- <h4>Información de contacto</h4> -->
+                <p> <strong>Teléfono:</strong> </p>
+                <p>{{ proveedorID.phone }}</p>
+                <p> <strong>Página web:</strong> </p>
+                <p *ngIf="proveedorID.web_site != null">{{ proveedorID.web_site }}</p>
+                <p> <strong>Correo electrónico:</strong> </p>
+                <p>{{ proveedorID.email }}</p>
+                <br>
+                <h4>Redes Sociales</h4>
+                <div class="redes__sociales">
+                    <a *ngIf="proveedorID.twitter_url != null" href="{{ proveedorID.twitter_url }}" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a *ngIf="proveedorID.facebook_url != null" href="{{ proveedorID.facebook_url }}" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a *ngIf="proveedorID.instagram_url != null" href="{{ proveedorID.instagram_url }}" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a *ngIf="proveedorID.linkedin_url != null" href="{{ proveedorID.linkedin_url }}" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                    <p *ngIf="proveedorID.linkedin_url == null">No hay redes sociales registradas</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="overwrite2 hidden2" id="over2">
+
+        </div>
+        <div class="imagenes__detalles">
+            <slider-carousel [images]="images" height="350px" max-width="600px"></slider-carousel>
+            <!-- <img src="../../../assets/img/meeting-594091_1920.jpg" alt="imagen detalles"> -->
+        </div>
+        <div class="info__contacto">
+            <!-- Tab links -->
+            <div class="tab" id="tab">
+                <button class="tablinks uppercase" (click)="info()" id="info">INFORMACIÓN</button>
+                <button class="tablinks uppercase" (click)="contacto()" id="contacto">CONTACTO</button>
+
+            </div>
+
+            <!-- Tab content -->
+            <div *ngIf="show" id="contenInfo" class="tabcontent">
+                <h3>{{ proveedorID.provider }}</h3>
+                <br>
+                <p>{{ proveedorID.description }}</p>
+
+
+                <!-- <div *ngIf="proveedorID.url_video == null"> No Mostrar video</div> -->
+                <!-- <p>{{ proveedorID.url_video }}</p> -->
+                <div *ngIf="proveedorID.url_video != 'not-video'">
+                    <iframe *ngIf="proveedorID.plan.plan == 'Premium'" width="100%" height="460" [src]="getVideoIframe(proveedorID.url_video)" frameborder="0" allowfullscreen></iframe>
+                </div>
+<!-- 
+                <div *ngIf="proveedorID.url_video != 'mull'">
+                    <iframe *ngIf="proveedorID.plan.plan == 'Premium'" width="100%" height="460" [src]="getVideoIframe(proveedorID.url_video)" frameborder="0" allowfullscreen></iframe>
+                </div> -->
+
+                <table class="table" style="width: 100%;">
+                    <thead class="thead-secondary">
+                        <tr>
+                            <th scope="col">Servicio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td *ngIf="!notServices">No hay servicios registrados</td>
+                            <td *ngIf="notServices">{{ proveedorID.services }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table produc" style="width: 100%;">
+                    <thead class="thead-secondary">
+                        <tr>
+                            <th scope="col">Productos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td *ngIf="!notProducts">No hay productos registrados</td>
+                            <td *ngIf="notProducts"> {{ proveedorID.products }} </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <table class="table" style="width: 100%;">
+                    <thead class="thead-secondary">
+                        <tr>
+                            <th scope="col">Clientes Que Atendemos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- <td>{{ client.type_client  }}</td> -->
+                            <td> {{ type_clients }} </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- <table class="table" style="width: 100%;">
+                    <thead class="thead-secondary">
+                        <tr>
+                        <th scope="col">Compañias Que Atendemos</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let company of type_companies">
+                        <tr>
+                            <td>{{ company.type_company  }}</td>
+                        </tr>
+                    </tbody>
+                </table> -->
+
+                <table class="table" style="width: 100%;">
+                    <thead class="thead-secondary">
+                        <tr>
+                            <th scope="col">Ciudades que atendemos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ cities }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table" style="width: 100%;">
+                    <thead class="thead-secondary">
+                        <tr>
+                            <th scope="col">Paises que atendemos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ countries }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div *ngIf="show2" id="contentContacto" class="tabcontent ">
+                <div class="contenedor__form">
+                    <!-- <div class="info__contacto">
+                        <h4>Información de contacto</h4>
+                        <p> <strong>Teléfono:</strong> </p>
+                        <p>{{ proveedorID.phone }}</p>
+                        <p> <strong>Página web:</strong> </p>
+                        <p *ngIf="proveedorID.web_site != null">{{ proveedorID.web_site }}</p>
+                        <p> <strong>Correo electrónico:</strong> </p>
+                        <p>{{ proveedorID.email }}</p>
+                        <br>
+                        <h4>Redes Sociales</h4>
+                        <div class="redes__sociales">
+                            <a *ngIf="proveedorID.twitter_url != null" href="{{ proveedorID.twitter_url }}" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a *ngIf="proveedorID.facebook_url != null" href="{{ proveedorID.facebook_url }}" target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a *ngIf="proveedorID.instagram_url != null" href="{{ proveedorID.instagram_url }}" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a *ngIf="proveedorID.linkedin_url != null" href="{{ proveedorID.linkedin_url }}" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+
+                            <p *ngIf="proveedorID.linkedin_url == null">No hay redes sociales registradas</p>
+                        </div>
+                    </div> -->
+                    <div class="formuario__contacto">
+                        <form [formGroup]="form" (ngSubmit)="sendContactProveedor()">
+
+                            <input type="hidden" formControlName="provider_id">
+                            <input type="hidden" formControlName="user_id">
+
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" formControlName="full_name" required autocomplete="name"
+                                [class.is-invalid]="nameValidate">
+                            <small *ngIf="nameValidate" class="text-danger">Ingrese el nombre</small>
+
+                            <label for="empresa">Nombre de la Empresa</label>
+                            <input type="text" name="empresa" formControlName="company" required
+                                autocomplete="organization" [class.is-invalid]="nameEmpresaValidate">
+                            <small *ngIf="nameEmpresaValidate" class="text-danger">Ingrese el nombre de la
+                                empresa</small>
+
+
+                            <label for="email">Email</label>
+                            <input type="email" name="email" formControlName="email" required autocomplete="email"
+                                [class.is-invalid]="emailValidate">
+                            <small *ngIf="emailValidate" class="text-danger">Ingrese un correo valido</small>
+
+                            <label for="telefono">Número Telefónico</label>
+                            <input type="tel" name="telefono" formControlName="phone" required autocomplete="tel"
+                                [class.is-invalid]="telValidate">
+                            <small *ngIf="telValidate" class="text-danger">Ingrese un número teléfonico</small>
+
+                            <label for="asunto">Asunto</label>
+                            <input type="text" formControlName="asunto" id="asunto"
+                                [class.is-invalid]="asuntoValidate">
+                            <small *ngIf="asuntoValidate" class="text-danger">Ingrese un asunto</small>
+
+
+
+                            <button type="submit" class="btn__verde--relleno enviar">Enviar <span
+                                    class="material-icons">send</span></button>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+    <aside>
+        <h2 *ngIf="proveedorID.plan.plan != 'Premium'">Proveedores de tu interés</h2>
+        <div *ngIf="proveedorID.plan.plan != 'Premium'">
+            <div *ngFor="let interes of proveedoresInteres" class="card">
+                <!-- <p>{{ interes | json }}</p> -->
+                <a [routerLink]="['/proveedor', interes.slug]">
+                    <img class="card__img" src="{{ DIR_IMG }}/{{ interes.logo }}" alt="">
+                </a>
+                <div class="card__texto">
+                    <h3 class="card__title">{{ interes.provider }}</h3>
+                    <div class="card__category-views">
+                        <div class="card__tags-categories" (click)="mostrar()">
+                            <span class="material-icons">
+                                bookmark_border
+                            </span>
+                            <h4 class="top-services__name-category">Categories</h4>
+                        </div>
+                        <div class="card__tags-views">
+                            <span class="material-icons material-icons-outlined">
+                                visibility
+                            </span>
+                            <h4 class="top-services__count-view">{{ interes.views }}</h4>
+                        </div>
+                    </div>
+                    <div class="categoria_lista" id="categoria_lista">
+                        <ul>
+                            <li><span class="punto__verde">•</span>Lorem </li>
+                            <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                            <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                            <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                            <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                        </ul>
+                        <span class="material-icons material-icons-outlined" (click)="cerrar()">
+                            close
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="prom">
+
+            
+
+            <div class="alert alert-info" role="alert" *ngIf="promotions.length == 0 && proveedorID.plan.plan == 'Premium'">
+                Aún no hay promociones
+            </div>
+            
+            <div *ngIf="promotions.length > 0">
+                <h2>Promociones</h2>
+                <owl-carousel-o class="customOptions" [options]="customOptions" *ngIf="proveedorID.plan.plan == 'Premium'">
+                    <ng-template *ngFor="let promotion of promotions" carouselSlide>
+                        <div class="card" *ngIf="proveedorID.plan.plan == 'Premium'">
+                            <img class="card__img" src="{{ DIR_IMG }}/{{ promotion.image }}" alt="promociones">
+                            <div class="card__texto">
+                                <h3 class="card__title">{{ promotion.title }}</h3>
+                                <p class="promo__text">{{ promotion.description }}</p>
+                            </div>
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+            </div>
+                
+
+        </div>
+
+    </aside>
+</div>
+<app-footer></app-footer>

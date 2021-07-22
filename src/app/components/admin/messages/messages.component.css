@@ -1,0 +1,9 @@
+
+
+.titulo__modulo{
+    font-size: 2rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #c0baba;
+    padding-bottom: 0.5rem;
+    margin: 2.5rem 0;
+}

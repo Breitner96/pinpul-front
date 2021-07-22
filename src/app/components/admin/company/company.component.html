@@ -1,0 +1,64 @@
+<div class="wrapper">
+
+    <app-sidebar></app-sidebar>
+    <app-header></app-header>
+
+    <!-- Content Wrapper -->
+
+    <div class="content-wrapper">
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-12 mt-5">
+
+                    <!-- {{ providerID | json }} -->
+
+                    <div *ngIf="providerID == null" class="alert alert-info" role="alert">
+                        No has registrado tú empresa
+                    </div>
+
+                    <div *ngIf="providerID.state == 'en revisión'" class="alert alert-info" role="alert">
+                        Tus datos están en revisión
+                    </div>
+
+                    <div *ngIf="providerID.state == 'activo'" class="info-prov">
+                        <h2 class="titulo__modulo">Mi empresa</h2>
+                        <div class="datos">
+                            <div class="datosUno">
+                                <p><b>Tipo de documento:</b> {{ providerID.type_document.document }}</p>
+                                <p><b>Número de documento:</b> {{ providerID.num_document }}</p>
+                                <p><b>Celular:</b> {{ providerID.phone }}</p>
+                                <p><b>Email:</b> {{ providerID.email }}</p>
+                            </div>
+                            <div class="datosDos">
+                                <p><b>Pais Ubicación:</b> {{ providerID.country.country }}</p>
+                                <p><b>Ciudad Ubicación:</b> {{ providerID.city.city }}</p>
+                                <p><b>Paises Cobertura:</b> {{ countriesByComa }}</p>
+                                <p><b>Ciudades Cobertura:</b> {{ citiesByComa }}</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3>Descripción</h3>
+                            <p>{{ providerID.description }}</p>
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="providerID.state == 'activo'" class="container__btn" >
+                        <a  class="btn-regPro"  [routerLink]="['/admin/proveedores/edit-provider/', providerID.id]">Editar Proveedor</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <app-footerdash></app-footerdash>
+
+</div>
+<!-- ./wrapper -->

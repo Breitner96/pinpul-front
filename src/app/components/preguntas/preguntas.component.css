@@ -1,0 +1,32 @@
+.preguntas{
+    margin-top: 10rem;
+}
+
+section{
+    padding-bottom: 3rem;
+}
+h1,h2{
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2.4rem;
+}
+.preguntas__texto{
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    text-align: justify;
+    width: 90%;
+    margin: 0 auto;
+}
+.pregunta{
+    font-size: 1.6rem;
+    margin-top: 2rem;
+}
+/* .item__respuesta{
+    display: flex;
+    align-items: center;
+} */
+.texto__container{
+    text-align: justify;
+    width: 90%;
+    margin: 0 auto;
+}
