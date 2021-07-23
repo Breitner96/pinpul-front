@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { API_URL, token } from '../config/config';
+import { API_URL } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
@@ -11,21 +11,21 @@ export class CountriesService {
 
   getCountries(){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token
+      'Authorization':'Bearer ' + localStorage.getItem('access_token')
     });
     return this._http.get(`${API_URL}/countries`,{headers: headers});
   }
 
   getCountry(id:number){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token
+      'Authorization':'Bearer ' + localStorage.getItem('access_token')
     });
     return this._http.get(`${API_URL}/countries/${id}`,{headers: headers});
   }
 
   createCountry(data:any){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token,
+      'Authorization':'Bearer ' + localStorage.getItem('access_token'),
       'Content-Type':'application/json'
     });
     return this._http.post(`${API_URL}/countries`,data,{headers: headers});
@@ -33,7 +33,7 @@ export class CountriesService {
 
   updateCountry(data:any){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token,
+      'Authorization':'Bearer ' + localStorage.getItem('access_token'),
       'Content-Type':'application/json'
     });
     return this._http.put(`${API_URL}/countries/${data.id}`, data,{headers: headers});
@@ -41,7 +41,7 @@ export class CountriesService {
 
   deleteCountry(id:number){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token
+      'Authorization':'Bearer ' + localStorage.getItem('access_token')
     });
     return this._http.delete(`${API_URL}/countries/${id}`,{headers: headers});
   }

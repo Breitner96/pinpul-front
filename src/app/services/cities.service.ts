@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { API_URL, token } from '../config/config';
+import { API_URL } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
@@ -11,21 +11,21 @@ export class CitiesService {
 
   getCities(){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token
+      'Authorization':'Bearer ' + localStorage.getItem('access_token')
     });
     return this._http.get(`${API_URL}/cities`,{headers: headers});
   }
 
   getCity(id:number){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token
+      'Authorization':'Bearer ' + localStorage.getItem('access_token')
     });
     return this._http.get(`${API_URL}/cities/${id}`,{headers: headers});
   }
 
   createCity(data:any){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token,
+      'Authorization':'Bearer ' + localStorage.getItem('access_token'),
       'Content-Type':'application/json'
     });
     return this._http.post(`${API_URL}/cities`,data,{headers: headers});
@@ -33,7 +33,7 @@ export class CitiesService {
 
   updateCity(data:any){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token,
+      'Authorization':'Bearer ' + localStorage.getItem('access_token'),
       'Content-Type':'application/json'
     });
     return this._http.put(`${API_URL}/cities/${data.id}`, data,{headers: headers});
@@ -41,7 +41,7 @@ export class CitiesService {
 
   deleteCity(id:number){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token
+      'Authorization':'Bearer ' + localStorage.getItem('access_token')
     });
     return this._http.delete(`${API_URL}/cities/${id}`,{headers: headers});
   }

@@ -25,7 +25,7 @@ export class LoginService {
 
   singUp(data:any){
     const headers = new HttpHeaders( {'Content-Type':'application/json'} );
-    return this.http.post(`${API_URL}/register-providers`,data,{headers: headers});
+    return this.http.post(`${API_URL}/register`,data,{headers: headers});
   }
 
   logout() {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { API_URL, token } from '../config/config';
+import { API_URL } from '../config/config';
 
 @Injectable({
   providedIn: 'root'
@@ -11,21 +11,21 @@ export class PunctuationService {
 
   getPunctuations(){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token
+      'Authorization':'Bearer ' + localStorage.getItem('access_token')
     });
     return this._http.get(`${API_URL}/punctuations`,{headers: headers});
   }
 
   getPunctuation(id:number){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token
+      'Authorization':'Bearer ' + localStorage.getItem('access_token')
     });
     return this._http.get(`${API_URL}/punctuations/${id}`,{headers: headers});
   }
 
   createPunctuation(data:any){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token,
+      'Authorization':'Bearer ' + localStorage.getItem('access_token'),
       'Content-Type':'application/json'
     });
     return this._http.post(`${API_URL}/punctuations`,data,{headers: headers});
@@ -33,7 +33,7 @@ export class PunctuationService {
 
   updatePunctuation(data:any){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token,
+      'Authorization':'Bearer ' + localStorage.getItem('access_token'),
       'Content-Type':'application/json'
     });
     return this._http.put(`${API_URL}/punctuations/${data.id}`, data,{headers: headers});
@@ -41,14 +41,14 @@ export class PunctuationService {
 
   deletePunctuation(id:number){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token
+      'Authorization':'Bearer ' + localStorage.getItem('access_token')
     });
     return this._http.delete(`${API_URL}/punctuations/${id}`,{headers: headers});
   }
 
   changeStatePt(id:any){
     const headers = new HttpHeaders({
-      'Authorization':'Bearer ' + token,
+      'Authorization':'Bearer ' + localStorage.getItem('access_token'),
       'Content-Type':'application/json'
     });
     return this._http.post(`${API_URL}/punctuations-state`,id,{headers: headers});

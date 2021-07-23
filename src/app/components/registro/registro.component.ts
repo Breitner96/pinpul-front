@@ -85,12 +85,13 @@ export class RegistroComponent implements OnInit {
 
   createForm(){
     this.form = this.fb.group({
-      // name: ['',Validators.required],
+      name: ['',Validators.required],
       // proveedor: ['',Validators.required],
       // type_document_id: ['',Validators.required],
       // num_document: ['',Validators.required],
       email: ['',Validators.required],
       password: ['',Validators.required],
+      password_confirmation: ['',Validators.required],
       type_user: [''],
       // type_user: ['',Validators.required],
       // plan_id: ['',Validators.required],
@@ -105,7 +106,7 @@ export class RegistroComponent implements OnInit {
   registerProvider(){
     let data = this.form.value;
 
-    console.log(data);
+    // console.log(data);
     // return;
 
     this._login.singUp(data).subscribe( (data:any) =>{
