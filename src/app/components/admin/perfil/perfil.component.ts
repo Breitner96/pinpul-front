@@ -54,39 +54,39 @@ export class PerfilComponent implements OnInit {
       console.log( this.userID );
 
       this._provider.getProviderByUser(this.userID.id).subscribe( (data:any) =>{
-        console.log(data);
+        // console.log(data);
+        if(data.length > 0){
+    
+          this._provider.getProviderByUser(this.userID.id).subscribe((data: any) => {
+    
+            console.log(data);
+    
+            if (localStorage.getItem('provider_id')) {
+              localStorage.setItem('provider_id', data[0].id);
+            }
+    
+            if (data.length > 0) {
+              this.existProvider = true;
+    
+              if (data[0].state == 'activo') {
+                this.stateProvider = true;
+                localStorage.setItem('provider_id', data[0].id);
+              }
+    
+              if (data[0].plan.plan == 'Premium') {
+                this.ifPremium = true;
+              } else {
+                this.notPremium = true;
+              }
+    
+            } else {
+              this.existProvider = false;
+            }
+    
+          });
+        }
       });
 
-      // if(data.length > 0){
-  
-        // this._provider.getProviderByUser(this.userID.id).subscribe((data: any) => {
-  
-          // console.log(data);
-  
-          // if (localStorage.getItem('provider_id')) {
-          //   localStorage.setItem('provider_id', data[0].id);
-          // }
-  
-          // if (data.length > 0) {
-          //   this.existProvider = true;
-  
-          //   if (data[0].state == 'activo') {
-          //     this.stateProvider = true;
-          //     localStorage.setItem('provider_id', data[0].id);
-          //   }
-  
-          //   if (data[0].plan.plan == 'Premium') {
-          //     this.ifPremium = true;
-          //   } else {
-          //     this.notPremium = true;
-          //   }
-  
-          // } else {
-          //   this.existProvider = false;
-          // }
-  
-        // });
-      // }
 
     });
   }

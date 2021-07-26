@@ -67,6 +67,10 @@ export class ProveedoresComponent implements OnInit {
 
   public images: string[] = [];
 
+  ruta: {
+    nombre:string
+  };
+
   constructor(
     private _activateR: ActivatedRoute,
     private _router: Router,
@@ -80,65 +84,143 @@ export class ProveedoresComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.slug = this._activateR.snapshot.params['name'];
 
-    this._provider.getProviderBySlug(this.slug).subscribe((data: any) => {
+    this._activateR.params.subscribe(
+      (params: Params) => {
 
-      this.promotions = data.promotions;
-      this.proveedoresInteres = data.interes[0].providers;
+          console.log(params);
 
-      let userIn: any;
+          this.slug = params.name;
+          this._provider.getProviderBySlug(this.slug).subscribe( (data:any) =>{
 
-      if (localStorage.getItem('access_token')) {
-        this.dfUser = parseInt(localStorage.getItem('user_id'));
-      } else {
-        this.dfUser = 1;
+            console.log(data);
+
+            this.proveedorID = data.provider;
+            this.proveedoresInteres = data.interes;
+            // this.images = data.images;
+            // this.categories = data.provider.categories;
+            // this.services = data.provider.services;
+            console.log(data);
+
+            // this.promotions = data.promotions;
+
+            let userIn: any;
+
+            if (localStorage.getItem('access_token')) {
+              this.dfUser = parseInt(localStorage.getItem('user_id'));
+            } else {
+              this.dfUser = 1;
+            }
+
+            this.dfProvider = data.provider.id;
+
+            this.form.reset({
+              user_id: this.dfUser,
+              provider_id: this.dfProvider
+            });
+
+            this.type_clients = [];
+            data.provider.clients.map((element: any) => {
+              this.type_clients.push(` ${element.type_client}`);
+            });
+
+            this.type_companies = data.provider.companies;
+
+            this.countries = [];
+            data.provider.countries.map((element: any) => {
+              this.countries.push(` ${element.country}`);
+            });
+
+            this.cities = [];
+            data.provider.cities.map((element: any) => {
+              this.cities.push(` ${element.city}`);
+            });
+
+            if( this.proveedorID.products ){
+              this.notProducts = true;
+            } else {
+              this.notProducts = false;
+            }
+
+            if( this.proveedorID.services ){
+              this.notServices = true;
+            } else {
+              this.notServices = false;
+            }
+
+          this.images = []
+          data.provider.images.map((element: any) => {
+            this.images.push(`${DIR_IMG}/${element.image}`);
+          });
+
+        });
       }
+    );
 
-      this.dfProvider = data.provider.id;
+    // this.ruta = { nombre: this._activateR.snapshot.params.name }
 
-      this.form.reset({
-        user_id: this.dfUser,
-        provider_id: this.dfProvider
-      });
+    
+    // this.slug = this._activateR.snapshot.params['name'];
+    // console.log( this.slug );
+
+    // this._provider.getProviderBySlug(this.slug).subscribe((data: any) => {
+
+    //   this.promotions = data.promotions;
+    //   this.proveedoresInteres = data.interes[0].providers;
+
+    //   let userIn: any;
+
+    //   if (localStorage.getItem('access_token')) {
+    //     this.dfUser = parseInt(localStorage.getItem('user_id'));
+    //   } else {
+    //     this.dfUser = 1;
+    //   }
+
+    //   this.dfProvider = data.provider.id;
+
+    //   this.form.reset({
+    //     user_id: this.dfUser,
+    //     provider_id: this.dfProvider
+    //   });
 
 
-      this.proveedorID = data.provider;
-      console.log(this.proveedorID.url_video);
-      this.categories = data.provider.categories;
-      this.services = data.provider.services;
+    //   this.proveedorID = data.provider;
+    //   console.log(this.proveedorID.url_video);
+    //   this.categories = data.provider.categories;
+    //   this.services = data.provider.services;
 
-      data.provider.clients.map((element: any) => {
-        this.type_clients.push(` ${element.type_client}`);
-      });
+    //   data.provider.clients.map((element: any) => {
+    //     this.type_clients.push(` ${element.type_client}`);
+    //   });
 
-      this.type_companies = data.provider.companies;
+    //   this.type_companies = data.provider.companies;
 
-      data.provider.countries.map((element: any) => {
-        this.countries.push(` ${element.country}`);
-      });
+    //   data.provider.countries.map((element: any) => {
+    //     this.countries.push(` ${element.country}`);
+    //   });
 
-      data.provider.cities.map((element: any) => {
-        this.cities.push(` ${element.city}`);
-      });
+    //   data.provider.cities.map((element: any) => {
+    //     this.cities.push(` ${element.city}`);
+    //   });
 
-      if( this.proveedorID.products ){
-        this.notProducts = true;
-      } else {
-        this.notProducts = false;
-      }
+    //   if( this.proveedorID.products ){
+    //     this.notProducts = true;
+    //   } else {
+    //     this.notProducts = false;
+    //   }
 
-      if( this.proveedorID.services ){
-        this.notServices = true;
-      } else {
-        this.notServices = false;
-      }
+    //   if( this.proveedorID.services ){
+    //     this.notServices = true;
+    //   } else {
+    //     this.notServices = false;
+    //   }
 
-      data.provider.images.map((element: any) => {
-        this.images.push(`${DIR_IMG}/${element.image}`);
-      });
+    //   data.provider.images.map((element: any) => {
+    //     this.images.push(`${DIR_IMG}/${element.image}`);
+    //   });
 
-    });
+    // });
+
   }
 
   get nameValidate() { return this.form.get('full_name').invalid && this.form.get('full_name').touched }

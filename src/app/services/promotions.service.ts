@@ -23,6 +23,13 @@ export class PromotionsService {
     return this._http.get(`${API_URL}/promotions/${id}`,{headers: headers});
   }
 
+  getPromotionProvider(id:number){
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer ' + localStorage.getItem('access_token')
+    });
+    return this._http.get(`${API_URL}/promotions-provider/${id}`,{headers: headers});
+  }
+
   createPromotion(data:any){
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('access_token'),

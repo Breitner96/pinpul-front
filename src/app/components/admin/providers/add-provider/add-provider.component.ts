@@ -188,6 +188,8 @@ export class AddProviderComponent implements OnInit {
 
   add_provider() {
 
+    // console.log( this.form.value );
+    // return;
     // if( this.form.invalid ){
     //   return Object.values( this.form.controls ).forEach( control => {
     //     control.markAsTouched();  
@@ -202,7 +204,6 @@ export class AddProviderComponent implements OnInit {
       if (arregloProducto.length > 15) {
         this.maxproduct = true;
       } else {
-        this.formData.append('products', this.form.get('products').value);
         this.maxproduct = false;
       }
     }
@@ -216,7 +217,6 @@ export class AddProviderComponent implements OnInit {
       if (arregloServicio.length > 15) {
         this.maxservices = true;
       } else {
-        this.formData.append('services', this.form.get('services').value);
         this.maxservices = false;
       }
     }
@@ -235,8 +235,8 @@ export class AddProviderComponent implements OnInit {
     this.formData.append('category_id', this.form.get('category_id').value);
     this.formData.append('type_client_id', this.form.get('type_client_id').value);
     this.formData.append('description', this.form.get('description').value);
-    // this.formData.append('products', this.form.get('products').value);
-    // this.formData.append('services', this.form.get('services').value);
+    this.formData.append('products', this.form.get('products').value);
+    this.formData.append('services', this.form.get('services').value);
     this.formData.append('razon_social', this.form.get('razon_social').value);
 
     this.formData.append('num_document', this.form.get('num_document').value);
@@ -260,6 +260,8 @@ export class AddProviderComponent implements OnInit {
 
     
     this._providers.createProvider(this.formData).subscribe((data: any) => {
+
+      console.log(data);
       
       let rolUser = localStorage.getItem('VLHAZGTXBI');
       console.log(data);

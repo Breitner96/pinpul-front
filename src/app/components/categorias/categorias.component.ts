@@ -21,10 +21,11 @@ export class CategoriasComponent implements OnInit {
   providersState: any = [];
   rootImage = DIR_IMG;
   slug: any;
-  allpost = [];
+  allpost:any = [];
   notEmptyPost = true;
   notscrolly = true;
   sizedata;
+  categoriaP:any = [];
 
   constructor(
     private _categories: CategoriesService,
@@ -32,19 +33,39 @@ export class CategoriasComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private http: HttpClient,
     private _activateR: ActivatedRoute) {
-
     // this.slug = this._activateR.snapshot.params['name'];
     // this.listProviders();
     // this.listCategories();
     // this.loadInitPost();
-    
   }
 
   ngOnInit(): void {
-    this.slug = this._activateR.snapshot.params['name'];
-    this.listProviders();
-    this.listCategories();
-    this.loadInitPost();
+    // this.slug = this._activateR.snapshot.params['name'];
+    // this.slug = this._activateR.snapshot.params.name;
+    // console.log(this.slug);
+
+    this._activateR.params.subscribe(
+      (params: Params) => {
+        this.slug = params.name;
+        console.log(this.slug);
+        this._categories.getCategoryBySlug(this.slug).subscribe( (data:any) =>{
+          console.log(data);
+          if(data){
+            this.allpost = data.providers;
+            this.categoriaP = data.categories;
+            // this.allpost = data;
+            // console.log(this.allpost);
+          } else {
+            this.allpost = 0;
+            console.log('No existen proveedores en esta categoría');
+          }
+        });
+      }
+    );
+
+    // this.listProviders();
+    // this.listCategories();
+    // this.loadInitPost();
   }
 
   loadInitPost() {
@@ -69,10 +90,7 @@ export class CategoriasComponent implements OnInit {
       }
 
     });
-
-
   }
-
 
   onScroll() {
     if (this.notscrolly && this.notEmptyPost) {
@@ -81,11 +99,9 @@ export class CategoriasComponent implements OnInit {
       this.loadNextPost();
     }
   }
+
   // load th next 6 posts
   loadNextPost() {
-    // console.log(this.sizedata);
-
-
     this._categories.getCategoryBySlug(this.slug).subscribe((data: any) => {
 
       if (this.sizedata < 1) {

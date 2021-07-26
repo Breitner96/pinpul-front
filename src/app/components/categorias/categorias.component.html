@@ -79,25 +79,52 @@
     <section class="tarjetas">
 
         <div class="terjetas__container container">
-            <h2 class="uppercase"> {{ allpost.length }} proveedores disponibles</h2>
+            <!-- <h2 class="uppercase"> {{ allpost.length }} proveedores disponibles</h2> -->
 
-            <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+            <div class="row  card__container">
+
+                <div *ngFor="let provider of allpost" class="card">
+
+                        <a [routerLink]="['/proveedor/', provider.slug]">
+                            <img class="card__img" src="{{rootImage}}/{{ provider.logo }}" alt="">
+                        </a>
+                        <div class="card__texto">
+                            <a [routerLink]="['/proveedor/', provider.slug]">
+                                <h3 class="card__title">{{ provider.provider }}</h3>
+                            </a>
+                            <div class="card__category-views">
+                                <div class="card__tags-categories" (click)="mostrar(provider.id)">
+                                    <span class="material-icons"> bookmark_border </span>
+                                    <h4 class="top-services__name-category">Categorías</h4>
+                                </div>
+                                <div class="card__tags-views">
+                                    <span class="material-icons material-icons-outlined">
+                                        visibility
+                                        </span>
+                                    <h4 class="top-services__count-view">{{provider.views}}</h4>
+                                </div>
+                                <div class="categoria_lista" id="{{ provider.id }}" (click)="cerrar(provider.id)">
+                                    <ul>
+                                        <li *ngFor="let category of categoriaP" class="enlaces"><a
+                                                [routerLink]="['/categorias/', category.slug]"><span
+                                                    class="punto__verde">•</span>{{
+                                                category.category }}</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <!-- <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
                 (scrolled)="onScroll()">
-
                 <div class="row  card__container">
-
                     <div *ngFor="let provider of allpost" class="card">
-
-                        <!-- <p>{{ provider | json }}</p> -->
-                        <!-- <i *ngIf="provider.plan.plan == 'Premium' " class="far fa-gem"></i> -->
-
-                        <!-- <div *ngIf="provider.state == 'activo' "> -->
-
                             <a [routerLink]="['/proveedor/', provider.slug]">
                                 <img class="card__img" src="{{rootImage}}/{{ provider.logo }}" alt="">
                             </a>
                             <div class="card__texto">
-                                <!-- <a [routerLink]="['/proveedores/', provider.provider]"> -->
                                 <a [routerLink]="['/proveedor/', provider.slug]">
                                     <h3 class="card__title">{{ provider.provider }}</h3>
                                 </a>
@@ -120,41 +147,19 @@
                                                     category.category }}</a></li>
                                         </ul>
                                     </div>
-
                                 </div>
-
                             </div>
-
-                        <!-- </div> -->
-
-
-                        <!-- <div class="contenedor__btn">
-                <button class="search-results"
-                infiniteScroll
-                [infiniteScrollDistance]="2"
-                [infiniteScrollThrottle]="50"
-                (scrolled)="onScroll()" class="btn__verde btn">Más resultados <span class="material-icons material-icons-outlined">
-                    expand_more
-                    </span></button>
-            </div> -->
-
-                        <!-- sinner -->
                     </div>
                 </div>
-
                 <div class="row pb-5">
-
                     <div class="col-md-12 p-5">
                         <ngx-spinner bdOpacity=0.9 bdColor="" size="default" color="#581f87" type="ball-pulse-sync"
                             [fullScreen]="false">
                         </ngx-spinner>
-
                     </div>
+                </div> 
 
-                </div>
-
-
-            </div>
+            </div> -->
             <!-- Alert no more post -->
             <div *ngIf="!notEmptyPost" class="col-md-12">
                 <div class="col-md-12 d-flex justify-content-center">

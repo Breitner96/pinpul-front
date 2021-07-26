@@ -38,8 +38,13 @@ export class PromotionsComponent implements OnInit {
 
 
   listPromotions(){
-    this._promotions.getPromotions().subscribe((data:any)=>{
-      this.promotions=data;
+    // this._promotions.getPromotions().subscribe((data:any)=>{
+    //   this.promotions=data;
+    // });
+
+    this._promotions.getPromotionProvider( parseInt(localStorage.getItem('provider_id')) ).subscribe( (data:any) =>{
+      console.log(data);
+      this.promotions = data;
     });
   }
 

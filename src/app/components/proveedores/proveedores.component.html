@@ -7,8 +7,6 @@
 
 <img [images]="{{ example.img }}" alt=""> -->
 
-
-
 <div class="container detalle__container">
     <main>
         <div class="lds-ellipsis" id="lds-ellipsis">
@@ -17,12 +15,12 @@
             <div></div>
             <div></div>
         </div>
+        
         <div class="info__empresa--detalle">
             <div class="logo__empresa--detalle">
                 <img src="{{ DIR_IMG }}/{{ proveedorID.logo }}" alt="logo marca">
             </div>
             <div class="texto__empresa--detalle">
-                <!-- <h4>datos: {{ proveedorID | json }}</h4> -->
                 <h2>{{ proveedorID.provider }}<div class="empresa__detalle--premium">
                         <div class="premium__container" *ngIf="proveedorID.plan.plan == 'Premium'">
                             <i class="far fa-gem"></i>
@@ -30,10 +28,6 @@
 
                     </div>
                 </h2>
-                <!-- <p class="uppercase categorias__lista">
-                    <span class="material-icons material-icons-outlined">bookmark</span>
-                    TEXTIL, CALZADO Y CUERO | ASEO Y LIMPIEZA | DESARROLLO DIGITAL | BARES Y RESTAURANTES
-                </p> -->
 
                 <ul class="uppercase categorias__lista">
                     <li class="cat__logo2"><span class="material-icons material-icons-outlined">bookmark</span></li>
@@ -76,12 +70,6 @@
                             autocomplete="organization" required [class.is-invalid]="nameValidate2">
                         <small *ngIf="nameValidate2" class="text-danger">Ingrese el nombre de la empresa</small>
                     </div>
-                    <!-- <label for="empresa">Nombre de la Empresa</label>
-                            <input type="text" name="empresa" formControlName="company2" required autocomplete="organization"
-                            [class.is-invalid]="nameEmpresaValidate2">
-                            <small *ngIf="nameEmpresaValidate2" class="text-danger">Ingrese el nombre de la empresa</small>
-                     -->
-
                     <div class="contact__group-form">
                         <label for="email">Email</label>
                         <input type="email" id="email" class="form-control" formControlName="email" required
@@ -102,11 +90,8 @@
                             [class.is-invalid]="asuntoValidate2">
                         <small *ngIf="asuntoValidate2" class="text-danger">Ingrese un asunto</small>
                     </div>
-                    <!-- <div class="contact__submit"> -->
 
                     <input type="submit" value="ENVIAR" class="contact__submit">
-                    <!-- <img src="/assets/icons/avion.svg" alt="">
-                    </div> -->
                 </form>
 
 
@@ -122,7 +107,6 @@
             </div>
             <h3 class="uppercase">Información de contacto</h3>
             <div class="">
-                <!-- <h4>Información de contacto</h4> -->
                 <p> <strong>Teléfono:</strong> </p>
                 <p>{{ proveedorID.phone }}</p>
                 <p> <strong>Página web:</strong> </p>
@@ -153,34 +137,23 @@
         <div class="overwrite2 hidden2" id="over2">
 
         </div>
-        <div class="imagenes__detalles">
+        <div *ngIf="images.length > 0" class="imagenes__detalles">
             <slider-carousel [images]="images" height="350px" max-width="600px"></slider-carousel>
-            <!-- <img src="../../../assets/img/meeting-594091_1920.jpg" alt="imagen detalles"> -->
         </div>
         <div class="info__contacto">
-            <!-- Tab links -->
             <div class="tab" id="tab">
                 <button class="tablinks uppercase" (click)="info()" id="info">INFORMACIÓN</button>
                 <button class="tablinks uppercase" (click)="contacto()" id="contacto">CONTACTO</button>
 
             </div>
-
-            <!-- Tab content -->
             <div *ngIf="show" id="contenInfo" class="tabcontent">
                 <h3>{{ proveedorID.provider }}</h3>
                 <br>
                 <p>{{ proveedorID.description }}</p>
 
-
-                <!-- <div *ngIf="proveedorID.url_video == null"> No Mostrar video</div> -->
-                <!-- <p>{{ proveedorID.url_video }}</p> -->
                 <div *ngIf="proveedorID.url_video != 'not-video'">
                     <iframe *ngIf="proveedorID.plan.plan == 'Premium'" width="100%" height="460" [src]="getVideoIframe(proveedorID.url_video)" frameborder="0" allowfullscreen></iframe>
                 </div>
-<!-- 
-                <div *ngIf="proveedorID.url_video != 'mull'">
-                    <iframe *ngIf="proveedorID.plan.plan == 'Premium'" width="100%" height="460" [src]="getVideoIframe(proveedorID.url_video)" frameborder="0" allowfullscreen></iframe>
-                </div> -->
 
                 <table class="table" style="width: 100%;">
                     <thead class="thead-secondary">
@@ -219,24 +192,10 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <!-- <td>{{ client.type_client  }}</td> -->
                             <td> {{ type_clients }} </td>
                         </tr>
                     </tbody>
                 </table>
-
-                <!-- <table class="table" style="width: 100%;">
-                    <thead class="thead-secondary">
-                        <tr>
-                        <th scope="col">Compañias Que Atendemos</th>
-                        </tr>
-                    </thead>
-                    <tbody *ngFor="let company of type_companies">
-                        <tr>
-                            <td>{{ company.type_company  }}</td>
-                        </tr>
-                    </tbody>
-                </table> -->
 
                 <table class="table" style="width: 100%;">
                     <thead class="thead-secondary">
@@ -268,33 +227,7 @@
 
             <div *ngIf="show2" id="contentContacto" class="tabcontent ">
                 <div class="contenedor__form">
-                    <!-- <div class="info__contacto">
-                        <h4>Información de contacto</h4>
-                        <p> <strong>Teléfono:</strong> </p>
-                        <p>{{ proveedorID.phone }}</p>
-                        <p> <strong>Página web:</strong> </p>
-                        <p *ngIf="proveedorID.web_site != null">{{ proveedorID.web_site }}</p>
-                        <p> <strong>Correo electrónico:</strong> </p>
-                        <p>{{ proveedorID.email }}</p>
-                        <br>
-                        <h4>Redes Sociales</h4>
-                        <div class="redes__sociales">
-                            <a *ngIf="proveedorID.twitter_url != null" href="{{ proveedorID.twitter_url }}" target="_blank">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a *ngIf="proveedorID.facebook_url != null" href="{{ proveedorID.facebook_url }}" target="_blank">
-                                <i class="fab fa-facebook"></i>
-                            </a>
-                            <a *ngIf="proveedorID.instagram_url != null" href="{{ proveedorID.instagram_url }}" target="_blank">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a *ngIf="proveedorID.linkedin_url != null" href="{{ proveedorID.linkedin_url }}" target="_blank">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
 
-                            <p *ngIf="proveedorID.linkedin_url == null">No hay redes sociales registradas</p>
-                        </div>
-                    </div> -->
                     <div class="formuario__contacto">
                         <form [formGroup]="form" (ngSubmit)="sendContactProveedor()">
 
@@ -346,7 +279,6 @@
         <h2 *ngIf="proveedorID.plan.plan != 'Premium'">Proveedores de tu interés</h2>
         <div *ngIf="proveedorID.plan.plan != 'Premium'">
             <div *ngFor="let interes of proveedoresInteres" class="card">
-                <!-- <p>{{ interes | json }}</p> -->
                 <a [routerLink]="['/proveedor', interes.slug]">
                     <img class="card__img" src="{{ DIR_IMG }}/{{ interes.logo }}" alt="">
                 </a>

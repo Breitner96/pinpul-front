@@ -266,8 +266,6 @@ export class UpdateProviderComponent implements OnInit {
 
   update_provider(){
 
-    // console.log( this.form.get('countries_id').value );
-
     // if( this.form.invalid ){
     //   return Object.values( this.form.controls ).forEach( control => {
     //     control.markAsTouched();  
@@ -283,7 +281,6 @@ export class UpdateProviderComponent implements OnInit {
       if (arregloProducto.length > 15) {
         this.maxproduct = true;
       } else {
-        this.formData.append('products', this.form.get('products').value);
         this.maxproduct = false;
       }
     }
@@ -296,11 +293,11 @@ export class UpdateProviderComponent implements OnInit {
       if (arregloServicio.length > 15) {
         this.maxservices = true;
       } else {
-        this.formData.append('services', this.form.get('services').value);
         this.maxservices = false;
       }
     }
 
+    // this.formData.append('user_id', localStorage.getItem('user_id') );
     this.formData.append('plan_id', this.form.get('plan_id').value);
     this.formData.append('type_document_id', this.form.get('type_document_id').value);
     this.formData.append('country_id', this.form.get('country_id').value);
@@ -330,12 +327,12 @@ export class UpdateProviderComponent implements OnInit {
     let argCategories = [];
     this.form.get('category_id').value.map( (element:any) =>{
       argCategories.push(element.id);
-    })
-    this.formData.append('category_id', argCategories );
+    });
 
+    this.formData.append('category_id', argCategories );
     this.formData.append('description', this.form.get('description').value);
-    // this.formData.append('products', this.form.get('products').value);
-    // this.formData.append('services', this.form.get('services').value);
+    this.formData.append('products', this.form.get('products').value);
+    this.formData.append('services', this.form.get('services').value);
     this.formData.append('razon_social', this.form.get('razon_social').value);
     this.formData.append('num_document', this.form.get('num_document').value);
     this.formData.append('phone', this.form.get('phone').value);
@@ -356,14 +353,14 @@ export class UpdateProviderComponent implements OnInit {
     this._providers.updateProvider(this.id, this.formData).subscribe( (data:any) =>{
 
       // console.log(data);
-      // if(data){
-      //   Swal.fire({
-      //     title: `${data.messages}`,
-      //     icon: 'success',
-      //     confirmButtonText: 'Cerrar'
-      //   });
-      // }
-      // this._router.navigate(['/admin/proveedores']);
+      if(data){
+        Swal.fire({
+          title: `${data.messages}`,
+          icon: 'success',
+          confirmButtonText: 'Cerrar'
+        });
+      }
+      this._router.navigate(['/admin/proveedores']);
 
       let rolUser = localStorage.getItem('VLHAZGTXBI');
   
