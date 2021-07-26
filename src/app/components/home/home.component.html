@@ -130,7 +130,7 @@
                     Encuentra los proveedores que necesitas
                 </h1>
                 <div class="barra__buscar  ">
-                    <input type="search" placeholder="Buscar servicio..."><button type="submit"><span
+                    <input type="search" placeholder="Buscar proveedor..."><button type="submit"><span
                             class="material-icons material-icons-outlined">search</span></button>
                 </div>
                 <!-- <input class="header__input" type="text" placeholder="¿Qué necesitas buscar?"> -->
@@ -198,7 +198,7 @@
 
                     <form [formGroup]="form" (ngSubmit)="sendContactPinpul()">
                         <div class="contact__group-form">
-                            <label for="nombre">Nombre Completo</label>
+                            <label for="nombre">Nombre</label>
                             <input type="text" id="nombre" class="form-control" formControlName="nombre"
                                 autocomplete="name" required [class.is-invalid]="nameValidate">
                             <small *ngIf="nameValidate" class="text-danger">Ingrese el nombre</small>
@@ -219,10 +219,10 @@
                             <small *ngIf="telValidate" class="text-danger">Ingrese un número teléfonico</small>
                         </div>
                         <div class="contact__group-form">
-                            <label for="asunto">Asunto</label>
+                            <label for="asunto">Solicitud</label>
                             <input type="text" formControlName="asunto" class="form-control" id="asunto"
                                 [class.is-invalid]="asuntoValidate">
-                            <small *ngIf="asuntoValidate" class="text-danger">Ingrese un asunto</small>
+                            <small *ngIf="asuntoValidate" class="text-danger">Ingrese una Solicitud</small>
                         </div>
                         <!-- <div class="contact__submit"> -->
                         <input type="submit" value="ENVIAR" class="contact__submit">
@@ -331,17 +331,18 @@
 
     <section class="testimonials">
         <div class="container">
-            <h3 class="testimonials__title">Nuestros clientes han opinado</h3>
-            <div class="testimonials__carousel">
+            
+            <!-- <div class="testimonials"> -->
                 <owl-carousel-o class="testimonialOptions" [options]="testimonialOptions">
 
                     <ng-template carouselSlide>
-                        <div class="testimonials">
-                            <img class="testimonials__img" style="width: 100px; height: 100px; border-radius: 50%;"
+                        <div class="testimonials1">
+                        <h3 class="text">Nuestros clientes han opinado</h3>
+                            <img class="img" style="width: 100px; height: 100px; border-radius: 50%; margin-top:2rem;"
                                 src="{{ rootNGIMg }}/meeting-594091_1920.jpg" alt="">
-                            <h3 class="testimonials__client">Nombre cliente 1</h3>
-                            <p class="testimonials__company">Company name</p>
-                            <p class="testimonials__text">
+                            <h3>Nombre cliente 1</h3>
+                            <p class="company">Company name</p>
+                            <p class="text2">
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere exercitationem
                                 explicabo reprehenderit dolor, odio officiis omnis, possimus molestias fugit cum,
                                 expedita quae quia eaque numquam tempora suscipit laboriosam ullam eos?
@@ -354,6 +355,25 @@
                     </ng-template>
 
                     <ng-template carouselSlide>
+                        <div class="testimonials1">
+                        <h3 class="text">Nuestros clientes han opinado</h3>
+                            <img class="img" style="width: 100px; height: 100px; border-radius: 50%; margin-top:2rem;"
+                                src="{{ rootNGIMg }}/meeting-594091_1920.jpg" alt="">
+                            <h3>Nombre cliente 2</h3>
+                            <p class="company">Company name</p>
+                            <p class="text2">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere exercitationem
+                                explicabo reprehenderit dolor, odio officiis omnis, possimus molestias fugit cum,
+                                expedita quae quia eaque numquam tempora suscipit laboriosam ullam eos?
+                            </p>
+                            <div class="testimonials__quotation-marks">
+                                <img class="testimonials__quotation-marks--left" src="">
+                                <img class="testimonials__quotation-marks--rigth" src="">
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <!-- <ng-template carouselSlide>
                         <div class="testimonials">
                             <img class="testimonials__img" style="width: 100px; height: 100px; border-radius: 50%;"
                                 src="{{ rootNGIMg }}/meeting-594091_1920.jpg" alt="">
@@ -387,10 +407,10 @@
                                 <img class="testimonials__quotation-marks--rigth" src="">
                             </div>
                         </div>
-                    </ng-template>
+                    </ng-template> -->
 
                 </owl-carousel-o>
-            </div>
+            <!-- </div> -->
         </div>
     </section>
 </div>

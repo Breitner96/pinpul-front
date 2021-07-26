@@ -6,6 +6,7 @@ import { ProvidersService } from 'src/app/services/providers.service';
 import { UsersService } from 'src/app/services/users.service';
 import { Script } from 'vm';
 import { DIR_IMG , ANGULAR_IMG} from '../../config/config';
+import { BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 
 
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
@@ -105,7 +106,8 @@ export class HomeComponent implements OnInit {
     private _categories: CategoriesService,
     private _provedores: ProvidersService,
     private _router:Router,
-    private fb:FormBuilder) {
+    private fb:FormBuilder,
+    public breakpointObserver: BreakpointObserver) {
       this.createForm();
       this._categories.getCategories().subscribe( (data:any) =>{
       this.categories = data;
@@ -113,8 +115,6 @@ export class HomeComponent implements OnInit {
         this.categoriasPopulares.push(this.categories[i]);
       }
     });
-
-    
 
     particlesJS.load('particles-js', './assets/particles.json');
 
@@ -145,9 +145,11 @@ export class HomeComponent implements OnInit {
       console.log(data);
     });
   }
-  
+
+
 
   ngOnInit() {
+
 
     this._provedores.getProviders().subscribe( (data:any) =>{
       console.log(data);
@@ -159,6 +161,7 @@ export class HomeComponent implements OnInit {
 
     console.log( this.proveedoresPopulares );
 
+ 
   }
 
   cerrarPop(){

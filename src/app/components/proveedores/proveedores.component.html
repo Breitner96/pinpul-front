@@ -43,8 +43,7 @@
 
         </div>
         <div class="info__pedir">
-            <button *ngIf="proveedorID.plan.plan != 'Premium'"
-                    class="btn__verde--relleno uppercase"
+            <button class="btn__verde--relleno uppercase"
                     (click)="contadorInfo(proveedorID.id)"
                     (click)="pedirInfoGratis()"> pedir información gratis <span class="material-icons">done</span></button>
             <p *ngIf="proveedorID.plan.plan == 'Premium'" class="ver__tel" (click)="ver__tel()">Ver teléfono</p>
@@ -55,11 +54,11 @@
                     cancel
                 </span>
             </div>
-            <h3 class="uppercase">Formulario de contacto</h3>
+            <h3 class="uppercase" style="text-align: center;">Formulario de contacto</h3>
             <div>
                 <form [formGroup]="formDos" (ngSubmit)="sendContactPinpul()">
                     <div class="contact__group-form">
-                        <label for="nombre">Nombre Completo</label>
+                        <label for="nombre">Nombre</label>
                         <input type="text" id="nombre" class="form-control" formControlName="nombre" autocomplete="name"
                             required [class.is-invalid]="nameValidate2">
                         <small *ngIf="nameValidate2" class="text-danger">Ingrese el nombre</small>
@@ -85,10 +84,10 @@
                         <small *ngIf="telValidate2" class="text-danger">Ingrese un número teléfonico</small>
                     </div>
                     <div class="contact__group-form">
-                        <label for="asunto">Asunto</label>
+                        <label for="asunto">Solicitud</label>
                         <input type="text" formControlName="asunto2" class="form-control" id="asunto"
                             [class.is-invalid]="asuntoValidate2">
-                        <small *ngIf="asuntoValidate2" class="text-danger">Ingrese un asunto</small>
+                        <small *ngIf="asuntoValidate2" class="text-danger">Ingrese una Solicitud</small>
                     </div>
 
                     <input type="submit" value="ENVIAR" class="contact__submit">
@@ -155,20 +154,6 @@
                     <iframe *ngIf="proveedorID.plan.plan == 'Premium'" width="100%" height="460" [src]="getVideoIframe(proveedorID.url_video)" frameborder="0" allowfullscreen></iframe>
                 </div>
 
-                <table class="table" style="width: 100%;">
-                    <thead class="thead-secondary">
-                        <tr>
-                            <th scope="col">Servicio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td *ngIf="!notServices">No hay servicios registrados</td>
-                            <td *ngIf="notServices">{{ proveedorID.services }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-
                 <table class="table produc" style="width: 100%;">
                     <thead class="thead-secondary">
                         <tr>
@@ -179,6 +164,20 @@
                         <tr>
                             <td *ngIf="!notProducts">No hay productos registrados</td>
                             <td *ngIf="notProducts"> {{ proveedorID.products }} </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table" style="width: 100%;">
+                    <thead class="thead-secondary">
+                        <tr>
+                            <th scope="col">Servicio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td *ngIf="!notServices">No hay servicios registrados</td>
+                            <td *ngIf="notServices">{{ proveedorID.services }}</td>
                         </tr>
                     </tbody>
                 </table>
