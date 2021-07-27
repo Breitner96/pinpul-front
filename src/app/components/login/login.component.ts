@@ -57,9 +57,9 @@ export class LoginComponent implements OnInit {
     }
 
     let data = this.form.value;
+    // console.log(data);
     this._auth.signIn(data).subscribe( (data:any) =>{
 
-      console.log(data);
 
       localStorage.setItem('access_token', data.access_token);
       // localStorage.setItem('expires_in', data.expires_in);
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
       /* Rol */
       localStorage.setItem('VLHAZGTXBI', data.rol[0].name);
 
-      if(data.error){
+      if(data){
         Swal.fire({
           title: data.error,
           icon: 'error',
