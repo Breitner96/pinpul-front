@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@ang
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { LoginService } from 'src/app/services/login.service';
-import { ANGULAR_IMG } from '../../config/config';
+import { ANGULAR_IMG, DIR_IMG } from '../../config/config';
 import Swal from 'sweetalert2';
 
 
@@ -20,7 +20,10 @@ export class LoginComponent implements OnInit {
   permissions:any = [];
   @Input() rol: string;
 
-  _angularImg = ANGULAR_IMG;
+  // _angularImg = ANGULAR_IMG;
+  rootImage = DIR_IMG;
+  rootNGIMg = ANGULAR_IMG;
+
 
   constructor( 
     private _auth: LoginService,
