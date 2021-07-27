@@ -1,16 +1,16 @@
 /*
  * Local
  */
-// export const API_URL = 'http://pinpul-back.test/api';
-// export const DIR_IMG = 'http://pinpul-back.test/img';
-// export const DIR_DOCUMENTS = 'http://pinpul-back.test/documents';
+export const API_URL = 'http://pinpul-back.test/api';
+export const DIR_IMG = 'http://pinpul-back.test/img';
+export const DIR_DOCUMENTS = 'http://pinpul-back.test/documents';
 
 /*
  * Local - public
  */
-export const DIR_IMG = 'http://pinpul-back.test/public/img';
-export const API_URL = 'http://pinpul-back.test/public/api';
-export const DIR_DOCUMENTS = 'http://pinpul-back.test/public/documents'
+// export const DIR_IMG = 'http://pinpul-back.test/public/img';
+// export const API_URL = 'http://pinpul-back.test/public/api';
+// export const DIR_DOCUMENTS = 'http://pinpul-back.test/public/documents'
 
 /*
  * Producción

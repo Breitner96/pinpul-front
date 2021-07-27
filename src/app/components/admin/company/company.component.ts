@@ -31,32 +31,32 @@ export class CompanyComponent implements OnInit {
 
       // }
 
-      // if( data.length > 0 ){
-      //   this.providerID = data;
+      if( data.length > 0 ){
+        this.providerID = data;
 
-      //   if( data.countries.length > 0 ){
-      //     data.countries.map((element: any) => {
-      //       this.countries.push(` ${element.country}`);
-      //     });
-      //     this.countriesByComa = this.countries.toString();
-      //   }
+        if( data.countries.length > 0 ){
+          data.countries.map((element: any) => {
+            this.countries.push(` ${element.country}`);
+          });
+          this.countriesByComa = this.countries.toString();
+        }
   
-      //   if( data.cities.length > 0 ){
-      //     data.cities.map((element: any) => {
-      //       this.cities.push(` ${element.city}`);
-      //     });
-      //     this.citiesByComa = this.cities.toString();
-      //   }
-      // }
+        if( data.cities.length > 0 ){
+          data.cities.map((element: any) => {
+            this.cities.push(` ${element.city}`);
+          });
+          this.citiesByComa = this.cities.toString();
+        }
+      }
       
-      // else {
-      //   this._router.navigate(['/admin/dashboard']);
-      //   Swal.fire({
-      //     icon: 'warning',
-      //     title: `Sentimos la molestia`,
-      //     text: `${data.message}`,
-      //   });
-      // }
+      else {
+        this._router.navigate(['/admin/dashboard']);
+        Swal.fire({
+          icon: 'warning',
+          title: `Sentimos la molestia`,
+          text: `${data.message}`,
+        });
+      }
 
     });
   }

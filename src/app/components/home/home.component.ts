@@ -106,21 +106,7 @@ export class HomeComponent implements OnInit {
     private _provedores: ProvidersService,
     private _router:Router,
     private fb:FormBuilder) {
-      this.createForm();
-      this._categories.getCategories().subscribe( (data:any) =>{
-      this.categories = data;
-      for(let i = 0; i < 4; i++){
-        this.categoriasPopulares.push(this.categories[i]);
-      }
-    });
-
-    
-
-    particlesJS.load('particles-js', './assets/particles.json');
-
-    this.createForm();
-    
-    // console.log("hojo");
+      
   }
   get nameValidate(){ return this.form.get('nombre').invalid && this.form.get('nombre').touched }
   get emailValidate(){ return this.form.get('email').invalid && this.form.get('email').touched }
@@ -149,6 +135,16 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
+    particlesJS.load('particles-js', './assets/particles.json');
+
+    this.createForm();
+      this._categories.getCategories().subscribe( (data:any) =>{
+      this.categories = data;
+      for(let i = 0; i < 4; i++){
+        this.categoriasPopulares.push(this.categories[i]);
+      }
+    });
+
     this._provedores.getProviders().subscribe( (data:any) =>{
       console.log(data);
       this.proveedores = data;
@@ -157,7 +153,7 @@ export class HomeComponent implements OnInit {
       }
     });
 
-    console.log( this.proveedoresPopulares );
+    this.createForm();
 
   }
 
