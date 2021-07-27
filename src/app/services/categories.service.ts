@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { API_URL } from '../config/config';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class CategoriesService {
 
   constructor(private _http: HttpClient) { }
 
-  getCategories(){
+  getCategories(): Observable<any>{
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('access_token')
     });

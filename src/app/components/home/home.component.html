@@ -145,8 +145,7 @@
         <div class="container ">
             <h2 class="top-categories__title">Categorías populares</h2>
             <div class="row j-between">
-
-                <div class="top-categories__container">
+                <div class="top-categories__container">                    
                     <owl-carousel-o class="homeOptions" [options]="homeOptions">
                         <ng-template *ngFor="let cp of categoriasPopulares" carouselSlide>
                             <a [routerLink]="['/categorias/', cp.slug]">
@@ -163,7 +162,6 @@
                         </ng-template>
                     </owl-carousel-o>
                 </div>
-
             </div>
         </div>
     </section>
@@ -244,10 +242,9 @@
             <h3 class="top-services__title uppercase">Proveedores más populares</h3>
 
 
-            <owl-carousel-o class="customOptions" [options]="customOptions">
+            <!-- <owl-carousel-o class="customOptions" [options]="customOptions">
 
                 <ng-template *ngFor="let provedor of proveedoresPopulares" carouselSlide>
-                    <!-- {{ provedor.plan.plan | json }} -->
 
                     <div class="card">
                         <i *ngIf="provedor.plan.plan == 'Premium' " class="far fa-gem"></i>
@@ -286,7 +283,7 @@
                     </div>
 
                 </ng-template>
-            </owl-carousel-o>
+            </owl-carousel-o> -->
         </div>
     </section>
 

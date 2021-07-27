@@ -12,6 +12,7 @@ import { BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { EmailsService } from 'src/app/services/emails.service';
 import Swal from 'sweetalert2';
+import { Observable } from 'rxjs';
 
 declare var particlesJS: any;
 
@@ -107,7 +108,7 @@ export class HomeComponent implements OnInit {
     private _provedores: ProvidersService,
     private _router:Router,
     private fb:FormBuilder) {
-      
+      this.getCategoriesHome();
   }
   get nameValidate(){ return this.form.get('nombre').invalid && this.form.get('nombre').touched }
   get emailValidate(){ return this.form.get('email').invalid && this.form.get('email').touched }
@@ -139,16 +140,15 @@ export class HomeComponent implements OnInit {
 
     particlesJS.load('particles-js', './assets/particles.json');
 
-    this.createForm();
-      this._categories.getCategories().subscribe( (data:any) =>{
+    this._categories.getCategories().subscribe( (data:any) =>{
       this.categories = data;
-      for(let i = 0; i < 4; i++){
+      for(let i = 0; i <= this.categories.length - 1; i++){
         this.categoriasPopulares.push(this.categories[i]);
       }
+      console.log(this.categoriasPopulares);
     });
 
     this._provedores.getProviders().subscribe( (data:any) =>{
-      console.log(data);
       this.proveedores = data;
       for(let i = 0; i <= this.proveedores.length - 1 ; i++){
         this.proveedoresPopulares.push(this.proveedores[i]);
@@ -156,8 +156,29 @@ export class HomeComponent implements OnInit {
     });
 
     this.createForm();
+  }
 
- 
+  getCategoriesHome(){
+    this._categories.getCategories().subscribe( data => {
+      console.log(data);
+    });
+    // const categories$ = new Observable( observer =>{
+    //   let i = - 1;
+    //   const intervalo = setInterval( ()=> {
+    //     i++;
+    //     observer.next(i);
+    //     if( i === 4 ){
+    //       observer.complete();
+    //       clearInterval( intervalo );
+    //     }
+    //   }, 1000);
+    // });
+
+    // categories$.subscribe(
+    //   valor => console.log( valor ),
+    //   error => console.warn( error ),
+    //   () => console.info('Obs terminado')
+    // );
   }
 
   cerrarPop(){
