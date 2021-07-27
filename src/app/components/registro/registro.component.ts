@@ -4,7 +4,8 @@ import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
-import { ANGULAR_IMG } from '../../config/config';
+import { ANGULAR_IMG, DIR_IMG } from '../../config/config';
+
 
 @Component({
   selector: 'app-registro',
@@ -22,7 +23,9 @@ export class RegistroComponent implements OnInit {
 
   checkDefault:boolean;
 
-  _angularImg = ANGULAR_IMG;
+  // _angularImg = ANGULAR_IMG;
+  rootImage = DIR_IMG;
+  rootNGIMg = ANGULAR_IMG;
 
   constructor( 
     private fb:FormBuilder,
