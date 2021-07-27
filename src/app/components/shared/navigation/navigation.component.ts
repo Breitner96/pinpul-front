@@ -13,14 +13,16 @@ export class NavigationComponent implements OnInit {
   rootImage = DIR_IMG;
   rootNGIMg = ANGULAR_IMG;
 
-  constructor(private _categories: CategoriesService) {
-    this._categories.getCategories().subscribe( (data:any) =>{
-      this.categories = data;
-      // console.log(this.categories);
-    })
+  constructor(
+    private _categories: CategoriesService
+  ){
+    
   }
 
   ngOnInit(): void {
+    this._categories.getCategories().subscribe( (data:any) =>{
+      this.categories = data;
+    });
   }
   asideVer(){
     console.log('click aside');
