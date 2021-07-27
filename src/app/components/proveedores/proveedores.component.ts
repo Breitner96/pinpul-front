@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@ang
 import { EmailsService } from 'src/app/services/emails.service';
 import Swal from 'sweetalert2';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-proveedores',
@@ -27,6 +28,7 @@ export class ProveedoresComponent implements OnInit {
   type_companies: any = [];
   countries: any = [];
   cities: any = [];
+ 
   form: FormGroup;
   formDos: FormGroup;
 
@@ -34,8 +36,19 @@ export class ProveedoresComponent implements OnInit {
 
   dfUser:any = '';
   dfProvider:any = '';
-  notProducts:boolean
-  notServices:boolean
+  notProducts:boolean;
+  notServices:boolean;
+  notEmpleados:boolean;
+
+  productos:any=[];
+  firt5product:any=[];
+  firt10product:any=[];
+  firt15product:any=[];
+
+  servicios:any=[];
+  firt5service:any=[];
+  firt10service:any=[];
+  firt15service:any=[];
 
   proveedoresInteres:any = [];
   promotions:any = [];
@@ -100,7 +113,59 @@ export class ProveedoresComponent implements OnInit {
             // this.images = data.images;
             // this.categories = data.provider.categories;
             // this.services = data.provider.services;
-            console.log(data);
+            console.log(this.proveedorID);
+
+            this.productos=this.proveedorID.products.split(",");
+            
+            // this.productos.push("carro", "moto", "casa","carro", "moto", "casa","carro", "moto", "casa");
+
+            for (let i = 0; i < this.productos.length; i++) {
+              
+              if (i<=4) {
+
+                this.firt5product.push(this.productos[i])
+                
+              }
+
+              if(i>4 && i<=9){
+
+                this.firt10product.push(this.productos[i])
+
+              }
+
+              if(i>9 && i<=14){
+
+                this.firt15product.push(this.productos[i])
+
+              }
+              
+            }
+
+            this.servicios=this.proveedorID.services.split(",");
+
+            //  this.servicios.push("carro", "moto", "casa","carro", "moto", "casa","carro", "moto", "casa");
+            
+            for (let i = 0; i < this.servicios.length; i++) {
+              
+              if (i<=4) {
+
+                this.firt5service.push(this.servicios[i])
+                
+              }
+
+              if(i>4 && i<=9){
+
+                this.firt10service.push(this.servicios[i])
+
+              }
+
+              if(i>9 && i<=14){
+
+                this.firt15service.push(this.servicios[i])
+
+              }
+              
+            }
 
             // this.promotions = data.promotions;
 
@@ -146,6 +211,12 @@ export class ProveedoresComponent implements OnInit {
               this.notServices = true;
             } else {
               this.notServices = false;
+            }
+
+            if( this.proveedorID.nempleados ){
+              this.notEmpleados = true;
+            } else {
+              this.notEmpleados = false;
             }
 
           this.images = []

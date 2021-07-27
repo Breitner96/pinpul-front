@@ -345,13 +345,16 @@ p.ver__tel {
     font-size: 1.4rem !important;
     color: #6f6767;
     cursor: pointer;
-   border-bottom: 1px solid #6f6767;
-   width: 80px;
+    border-bottom: 1px solid #6f6767;
+    font-weight: 500;
+    width: 82px;
     
 }
 p.ver__tel:hover{
-    color: black;
-    border-bottom: 1px solid black;
+    color: #65bb23;
+    border-bottom: 1px solid #65bb23;
+    font-weight: bold;
+    width: 85px;
 }
 .popUp__tel,
 .popUp__infoGratis{
@@ -515,4 +518,33 @@ p.ver__tel:hover{
     font-size: 1.4rem;
 }
 
+.contact{
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+}
+
+.contact h4{
+    margin-bottom: 1rem;
+}
+
+.separar {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.separar .other{
+
+    margin-left: 2rem;
+}
+
+.lista{
+
+    font-size: 1.6rem;
+    font-weight: bold;
+
+}

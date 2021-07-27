@@ -9,3 +9,9 @@ textarea{
 .btn{
     font-size: 1.4rem;
 }
+.obligatorio{
+
+    color: red;
+    font-size: 1.8rem;
+    font-weight: bold;
+}

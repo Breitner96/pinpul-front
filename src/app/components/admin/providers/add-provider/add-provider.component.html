@@ -15,7 +15,7 @@
                 <form id="quickForm" [formGroup]="form" (ngSubmit)="add_provider()" enctype="multipart/form-data">
 
                   <div class="form-group">
-                      <label for="selectplan">Planes</label>
+                      <label for="selectplan">Planes <span class="obligatorio">*</span></label>
                       <select class="form-control" id="selectplan" formControlName="plan_id"  [class.is-invalid]="planValidate">
                         <option *ngFor="let plan of plans" value="{{ plan.id }}">
                           {{ plan.plan }}
@@ -25,7 +25,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="provider">Nombre del proveedor</label>
+                    <label for="provider">Nombre del proveedor <span class="obligatorio">*</span></label>
                     <input type="text" class="form-control" id="provider"
                     formControlName="provider"
                     [class.is-invalid]="providerValidate" autocomplete="name">
@@ -33,7 +33,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="selectplan">Tipo de documento</label>
+                    <label for="selectplan">Tipo de documento <span class="obligatorio">*</span></label>
                     <select class="form-control" id="selectdocument" formControlName="type_document_id"  [class.is-invalid]="typeDocumentValidate">
                       <option value="">Selecciones un documento</option>
                       <option *ngFor="let document of typeDocuments" value="{{ document.id }}">
@@ -44,7 +44,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="num_document">Número de documento</label>
+                    <label for="num_document">Número de documento <span class="obligatorio">*</span></label>
                     <input type="number" class="form-control" id="num_document"
                     formControlName="num_document"
                     [class.is-invalid]="numDocumentValidate" autocomplete="postal-code">
@@ -52,7 +52,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">Email <span class="obligatorio">*</span></label>
                     <input type="email" class="form-control" id="email"
                     formControlName="email"
                     [class.is-invalid]="emailValidate" autocomplete="email">
@@ -60,7 +60,7 @@
                   </div>
 
                   <div class="form-group">
-                      <label for="phone">Celular</label>
+                      <label for="phone">Celular <span class="obligatorio">*</span></label>
                       <input type="tel" class="form-control" id="phone"
                       formControlName="phone"
                       [class.is-invalid]="phoneValidate" autocomplete="tel">
@@ -68,7 +68,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="exampleFormControlFile1">Ingrese el logo</label>
+                    <label for="exampleFormControlFile1">Ingrese el logo <span class="obligatorio">*</span></label>
                     <input type="file" formControlName="logo" (change)="uploadImage($event)" class="form-control-file" id="exampleFormControlFile1"
                     [class.is-invalid]="logoValidate" autocomplete="text">
                     <small *ngIf="logoValidate" class="text-danger">Ingresa un logo</small>
@@ -76,7 +76,7 @@
 
                   
                   <div class="form-group mt-4">
-                    <label for="">Descripción</label>
+                    <label for="">Descripción <span class="obligatorio">*</span></label>
                     <textarea class="form-control" id="" rows="3"
                     formControlName="description"
                     [class.is-invalid]="descriptionValidate" autocomplete="text"></textarea>
@@ -99,10 +99,10 @@
                     <small *ngIf="maxservices" class="text-danger">Ingresa menos de 15 servicios</small>
                   </div>
 
-                  <p class="mt-2"><strong>Tipo de Empresa:</strong></p>
+                  <p class="mt-2"><strong>Tipo de Empresa: <span class="obligatorio">*</span></strong></p>
                   <input type="text" formControlName="razon_social" class="form-control" placeholder="Fabricante, Distribuidor, Servicio, Etc...">
 
-                  <p class="mt-2"><strong>Tipo de Clientes que atiende:</strong></p>
+                  <p class="mt-2"><strong>Tipo de Clientes que atiende: <span class="obligatorio">*</span></strong></p>
                   <ng-select [items]="type_clients"
                              [closeOnSelect]="false"
                              [multiple]="true"
@@ -114,7 +114,7 @@
 
 
                   <div class="form-group mt-2">
-                    <label for="selectpais">Pais Ubicación</label>
+                    <label for="selectpais">Pais Ubicación <span class="obligatorio">*</span></label>
                     <ng-select [items]="countries"
                              bindLabel="country"
                              bindValue="id"
@@ -126,7 +126,7 @@
                   </div>
                   
                   <div class="form-group">
-                      <label for="selectcities">Ciudad Ubicación</label>
+                      <label for="selectcities">Ciudad Ubicación <span class="obligatorio">*</span></label>
                       <ng-select [items]="cities"
                              bindLabel="city"
                              bindValue="id"
@@ -136,7 +136,7 @@
                       <small *ngIf="cityValidate" class="text-danger">Ingrese la Ciudad</small>
                   </div>
 
-                  <p class="mt-2"><strong>Paises que atiende:</strong></p>
+                  <p class="mt-2"><strong>Paises que atiende: <span class="obligatorio">*</span></strong></p>
                   <ng-select [items]="countries"
                              bindLabel="country"
                              bindValue="id"
@@ -145,7 +145,7 @@
                              formControlName="countries_id">
                  </ng-select>
 
-                  <p class="mt-2"><strong>Ciudades que atiende:</strong></p>
+                  <p class="mt-2"><strong>Ciudades que atiende: <span class="obligatorio">*</span></strong></p>
                   <ng-select [items]="cities"
                              bindLabel="city"
                              bindValue="id"
@@ -154,7 +154,7 @@
                              formControlName="cities_id">
                  </ng-select>
 
-                  <p class="mt-2"><strong>Categorias:</strong></p>
+                  <p class="mt-2"><strong>Categorias: <span class="obligatorio">*</span></strong></p>
                   <ng-select [items]="categories"
                              [closeOnSelect]="false"
                              bindLabel="category"
@@ -165,14 +165,14 @@
                  </ng-select>
 
                   <div class="form-group mt-2">
-                    <label for="empleados">Numero de Empleados</label>
+                    <label for="empleados">Numero de Empleados </label>
                     <input type="number" class="form-control" id="empleados"
                     formControlName="nempleados" [class.is-invalid]="numberValidate">
                     <small *ngIf="numberValidate" class="text-danger">Ingresa el numero de empleados</small>
                   </div>
 
                   <div class="form-group mt-4">
-                    <label for="exampleFormControlTextarea1">Mencione en que se destaca</label>
+                    <label for="exampleFormControlTextarea1">Mencione en que se destaca <span class="obligatorio">*</span></label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                     formControlName="details"
                     [class.is-invalid]="detailsValidate" autocomplete="text"></textarea>
@@ -181,7 +181,7 @@
 
 
                   <div class="form-group mt-4">
-                    <label for="exampleFormControlTextarea1">Que garantia ofrece</label>
+                    <label for="exampleFormControlTextarea1">Que garantia ofrece <span class="obligatorio">*</span></label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                     formControlName="garantia"
                     [class.is-invalid]="garantiaValidate" autocomplete="text"></textarea>

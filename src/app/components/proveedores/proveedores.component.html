@@ -104,8 +104,9 @@
                     cancel
                 </span>
             </div>
-            <h3 class="uppercase">Información de contacto</h3>
-            <div class="">
+            
+            <div class="contact">
+                <h3 class="uppercase">Información de contacto</h3>
                 <p> <strong>Teléfono:</strong> </p>
                 <p>{{ proveedorID.phone }}</p>
                 <p> <strong>Página web:</strong> </p>
@@ -160,25 +161,65 @@
                             <th scope="col">Productos</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="separar">
                         <tr>
                             <td *ngIf="!notProducts">No hay productos registrados</td>
-                            <td *ngIf="notProducts"> {{ proveedorID.products }} </td>
+                            <td *ngIf="notProducts"> <ul>
+                                <li *ngFor="let products5 of firt5product"><span class="lista">-</span> {{products5}}</li>
+
+                            </ul> </td>
                         </tr>
+
+                        <tr class="other">
+                            <td *ngIf="!notProducts">No hay productos registrados</td>
+                            <td *ngIf="notProducts"> <ul>
+                                <li *ngFor="let products10 of firt10product"><span class="lista">-</span> {{products10}}</li>
+
+                            </ul> </td>
+                        </tr>
+
+                        <tr class="other">
+                            <td *ngIf="!notProducts">No hay productos registrados</td>
+                            <td *ngIf="notProducts"> <ul>
+                                <li *ngFor="let products15 of firt15product"><span class="lista">-</span> {{products15}}</li>
+
+                            </ul> </td>
+                        </tr>
+
                     </tbody>
                 </table>
 
                 <table class="table" style="width: 100%;">
                     <thead class="thead-secondary">
                         <tr>
-                            <th scope="col">Servicio</th>
+                            <th scope="col">servicios</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="separar">
                         <tr>
-                            <td *ngIf="!notServices">No hay servicios registrados</td>
-                            <td *ngIf="notServices">{{ proveedorID.services }}</td>
+                            <td *ngIf="!notServices">No hay productos registrados</td>
+                            <td *ngIf="notServices"> <ul>
+                                <li *ngFor="let service5 of firt5service"><span class="lista">-</span> {{service5}}</li>
+
+                            </ul> </td>
                         </tr>
+
+                        <tr class="other">
+                            <td *ngIf="!notServices">No hay productos registrados</td>
+                            <td *ngIf="notServices"> <ul>
+                                <li *ngFor="let service10 of firt10service"><span class="lista">-</span> {{service10}}</li>
+
+                            </ul> </td>
+                        </tr>
+
+                        <tr class="other">
+                            <td *ngIf="!notServices">No hay productos registrados</td>
+                            <td *ngIf="notServices"> <ul>
+                                <li *ngFor="let service15 of firt15service"><span class="lista">-</span> {{service15}}</li>
+
+                            </ul> </td>
+                        </tr>
+
                     </tbody>
                 </table>
 
@@ -218,6 +259,72 @@
                     <tbody>
                         <tr>
                             <td>{{ countries }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table" style="width: 100%;">
+                    <thead class="thead-secondary">
+                        <tr>
+                            <th scope="col">Descripción de la empresa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ proveedorID.description }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table" style="width: 100%;">
+                    <thead class="thead-secondary">
+                        <tr>
+                            <th scope="col">Tipo de empresa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ proveedorID.razon_social }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table" style="width: 100%;">
+                    <thead class="thead-secondary">
+                        <tr>
+                            <th scope="col">Numero de Empleados</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td *ngIf="!notEmpleados">No hay empleados registrados</td>
+                            <td *ngIf="notEmpleados">{{ proveedorID.nempleados }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table" style="width: 100%;">
+                    <thead class="thead-secondary">
+                        <tr>
+                            <th scope="col">La empresa se destaca</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ proveedorID.details }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table" style="width: 100%;">
+                    <thead class="thead-secondary">
+                        <tr>
+                            <th scope="col">Garantia que ofrecemos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ proveedorID.garantia }}</td>
                         </tr>
                     </tbody>
                 </table>
