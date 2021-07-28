@@ -48,7 +48,7 @@
                     <input type="number" class="form-control" id="num_document"
                     formControlName="num_document"
                     [class.is-invalid]="numDocumentValidate" autocomplete="postal-code">
-                    <small *ngIf="numDocumentValidate" class="text-danger">Ingrese el Nit</small>
+                    <small *ngIf="numDocumentValidate" class="text-danger">Ingrese el numero de documento</small>
                   </div>
 
                   <div class="form-group">
@@ -61,7 +61,7 @@
 
                   <div class="form-group">
                       <label for="phone">Celular <span class="obligatorio">*</span></label>
-                      <input type="tel" class="form-control" id="phone"
+                      <input type="number" class="form-control" id="phone"
                       formControlName="phone"
                       [class.is-invalid]="phoneValidate" autocomplete="tel">
                       <small *ngIf="phoneValidate" class="text-danger">Ingrese un Celular</small>
@@ -79,7 +79,11 @@
                     <label for="">Descripción <span class="obligatorio">*</span></label>
                     <textarea class="form-control" id="" rows="3"
                     formControlName="description"
-                    [class.is-invalid]="descriptionValidate" autocomplete="text"></textarea>
+                    [class.is-invalid]="descriptionValidate" autocomplete="text"
+                    minlength="0"
+                    maxlength="1000"
+                    name="desc"
+                    ></textarea>
                     <small *ngIf="descriptionValidate" class="text-danger">Ingresa la descripcion</small>
                   </div>
                   
@@ -87,7 +91,9 @@
                     <label for="">Productos: ingrese los productos separarlos por "," max(15)</label>
                     <textarea class="form-control" id="" rows="3"
                     formControlName="products"
-                    autocomplete="text"></textarea>
+                    autocomplete="text"
+                    minlength="0"
+                    maxlength="1000"></textarea>
                     <small *ngIf="maxproduct" class="text-danger">Ingresa menos de 15 productos</small>
                   </div>
 
@@ -95,7 +101,9 @@
                     <label for="">Servicios: ingrese los servicios separarlos por "," max(15)</label>
                     <textarea class="form-control" id="" rows="3"
                     formControlName="services"
-                    autocomplete="text"></textarea>
+                    autocomplete="text"
+                    minlength="0"
+                    maxlength="1000"></textarea>
                     <small *ngIf="maxservices" class="text-danger">Ingresa menos de 15 servicios</small>
                   </div>
 
@@ -167,25 +175,29 @@
                   <div class="form-group mt-2">
                     <label for="empleados">Numero de Empleados </label>
                     <input type="number" class="form-control" id="empleados"
-                    formControlName="nempleados" [class.is-invalid]="numberValidate">
-                    <small *ngIf="numberValidate" class="text-danger">Ingresa el numero de empleados</small>
+                    formControlName="nempleados">
+                    
                   </div>
 
                   <div class="form-group mt-4">
-                    <label for="exampleFormControlTextarea1">Mencione en que se destaca <span class="obligatorio">*</span></label>
+                    <label for="exampleFormControlTextarea1">Mencione en que se destaca</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                     formControlName="details"
-                    [class.is-invalid]="detailsValidate" autocomplete="text"></textarea>
-                    <small *ngIf="detailsValidate" class="text-danger">Ingrese en que se destaca</small>
+                    autocomplete="text"
+                    minlength="0"
+                    maxlength="1000"></textarea>
+                    
                   </div>
 
 
                   <div class="form-group mt-4">
-                    <label for="exampleFormControlTextarea1">Que garantia ofrece <span class="obligatorio">*</span></label>
+                    <label for="exampleFormControlTextarea1">Que garantia ofrece</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                     formControlName="garantia"
-                    [class.is-invalid]="garantiaValidate" autocomplete="text"></textarea>
-                    <small *ngIf="garantiaValidate" class="text-danger">Ingresa que ofrece de garantia</small>
+                    autocomplete="text"
+                    minlength="0"
+                    maxlength="1000"></textarea>
+                    
                   </div>
 
                   <div class="form-group mt-2">
@@ -225,14 +237,14 @@
                   </div>
                   
                   <div class="form-group">
-                    <label for="exampleFormControlFile1">Galería de imágenes</label>
+                    <label for="exampleFormControlFile1">Galería de imágenes <span class="obligatorio">*</span></label>
                     <input type="file" multiple="" (change)="uploadImageGalery($event)" class="form-control-file" id="exampleFormControlFile1"
                     [class.is-invalid]="galeriaValidate" autocomplete="text">
                     <small *ngIf="galeriaValidate" class="text-danger">Ingresa una galería de imágenes</small>
                   </div>
 
                   <div class="form-group mb-4">
-                    <label for="exampleFormControlFile1">Agregar Documentos</label>
+                    <label for="exampleFormControlFile1">Agregar Documentos (Rut y Camara de Comercio) <span class="obligatorio">*</span></label>
                     <input type="file" multiple="" (change)="uploadDocument($event)" class="form-control-file" id="exampleFormControlFile1"
                     [class.is-invalid]="documentValidate" autocomplete="text">
                     <small *ngIf="documentValidate" class="text-danger">Ingrese los documentos</small>

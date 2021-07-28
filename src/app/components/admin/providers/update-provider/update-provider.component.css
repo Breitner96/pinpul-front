@@ -37,3 +37,9 @@ textarea{
     right: 3px;
     color: red;
 }
+.obligatorio{
+
+    color: red;
+    font-size: 1.8rem;
+    font-weight: bold;
+}

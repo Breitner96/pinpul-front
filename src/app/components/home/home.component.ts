@@ -9,6 +9,7 @@ import { DIR_IMG , ANGULAR_IMG} from '../../config/config';
 import { BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 
 
+
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { EmailsService } from 'src/app/services/emails.service';
 import Swal from 'sweetalert2';
@@ -154,6 +155,7 @@ export class HomeComponent implements OnInit {
         this.proveedoresPopulares.push(this.proveedores[i]);
       }
     });
+
 
     this.createForm();
   }

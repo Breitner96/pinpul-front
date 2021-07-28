@@ -14,7 +14,7 @@
           <form id="quickForm" [formGroup]="form" (ngSubmit)="update_provider()" enctype="multipart/form-data">
 
             <div class="form-group">
-              <label for="selectplan">Planes</label>
+              <label for="selectplan">Planes <span class="obligatorio">*</span></label>
               <select class="form-control" id="selectplan" formControlName="plan_id" [class.is-invalid]="planValidate">
 
                 <option *ngFor="let plan of plans" value="{{ plan.id }}">
@@ -26,14 +26,14 @@
             </div>
 
             <div class="form-group">
-              <label for="provider">Nombre del proveedor</label>
+              <label for="provider">Nombre del proveedor <span class="obligatorio">*</span></label>
               <input type="text" class="form-control" id="provider" formControlName="provider"
                 [class.is-invalid]="providerValidate" autocomplete="text" value="{{providerID.provider}}">
               <small *ngIf="providerValidate" class="text-danger">Ingrese un proveedor</small>
             </div>
 
             <div class="form-group">
-              <label for="selectplan">Tipo de documento</label>
+              <label for="selectplan">Tipo de documento <span class="obligatorio">*</span></label>
               <select class="form-control" id="selectdocument" formControlName="type_document_id"
                 [class.is-invalid]="typeDocumentValidate">
                 <option value="">Selecciones un documento</option>
@@ -46,28 +46,28 @@
             </div>
 
             <div class="form-group">
-              <label for="num_document">Número de documento</label>
+              <label for="num_document">Número de documento <span class="obligatorio">*</span></label>
               <input type="number" class="form-control" id="num_document" formControlName="num_document"
                 [class.is-invalid]="numDocumentValidate" autocomplete="postal-code">
               <small *ngIf="numDocumentValidate" class="text-danger">Ingrese el Nit</small>
             </div>
 
             <div class="form-group">
-              <label for="email">Email</label>
+              <label for="email">Email <span class="obligatorio">*</span></label>
               <input type="email" class="form-control" id="email" formControlName="email"
                 [class.is-invalid]="emailValidate" autocomplete="email" value="{{providerID.email}}">
               <small *ngIf="emailValidate" class="text-danger">Ingrese un Email</small>
             </div>
 
             <div class="form-group">
-              <label for="phone">Celular</label>
+              <label for="phone">Celular <span class="obligatorio">*</span></label>
               <input type="tel" class="form-control" id="phone" formControlName="phone"
                 [class.is-invalid]="phoneValidate" autocomplete="text" value="{{providerID.phone}}">
               <small *ngIf="phoneValidate" class="text-danger">Ingrese un Celular</small>
             </div>
 
             <div class="form-group">
-              <label for="">Ingrese el logo</label>
+              <label for="">Ingrese el logo <span class="obligatorio">*</span></label>
               <input type="file" formControlName="logo" (change)="uploadImage($event)" class="form-control-file" id=""
                 [class.is-invalid]="logoValidate" autocomplete="text">
               <small *ngIf="logoValidate" class="text-danger">Ingresa un logo</small>
@@ -76,9 +76,11 @@
             </div>
 
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Descripción</label>
+              <label for="exampleFormControlTextarea1">Descripción <span class="obligatorio">*</span></label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"
                 [class.is-invalid]="descriptionValidate" autocomplete="text"
+                minlength="0"
+                maxlength="1000"
                 value="{{providerID.description}}"></textarea>
               <small *ngIf="descriptionValidate" class="text-danger">Ingresa la descripcion</small>
             </div>
@@ -86,29 +88,33 @@
             <div class="form-group mt-4">
               <label for="">Productos: ingrese los productos separarlos por "," max(15)</label>
               <textarea class="form-control" id="" rows="3" formControlName="products" autocomplete="text"
-                value="{{ providerID.products }}">
-                    </textarea>
+                value="{{ providerID.products }}"
+                minlength="0"
+                maxlength="1000">
+              </textarea>
               <small *ngIf="maxproduct" class="text-danger">Ingresa menos de 15 productos</small>
             </div>
 
             <div class="form-group mt-4">
               <label for="">Servicios: ingrese los servicios separarlos por "," max(15)</label>
               <textarea class="form-control" id="" rows="3" formControlName="services" autocomplete="text"
-                value="{{ providerID.services }}"></textarea>
+                value="{{ providerID.services }}"
+                minlength="0"
+                maxlength="1000"></textarea>
               <small *ngIf="maxservices" class="text-danger">Ingresa menos de 15 servicios</small>
             </div>
 
-            <p class="mt-2"><strong>Tipo de Empresa:</strong></p>
+            <p class="mt-2"><strong>Tipo de Empresa: <span class="obligatorio">*</span></strong></p>
             <input type="text" formControlName="razon_social" class="form-control"
               value="{{ providerID.razon_social }}">
 
-            <p class="mt-2"><strong>Tipo de Clientes que atiende:</strong></p>
+            <p class="mt-2"><strong>Tipo de Clientes que atiende: <span class="obligatorio">*</span></strong></p>
             <ng-select [items]="type_clients" [(ngModel)]="defaultClients" [closeOnSelect]="false" [multiple]="true"
               bindLabel="type_client" formControlName="type_client_id">
             </ng-select>
 
             <div class="form-group mt-2">
-              <label for="selectpais">Pais Ubicación</label>
+              <label for="selectpais">Pais Ubicación <span class="obligatorio">*</span></label>
               <ng-select [items]="countries" [(ngModel)]="defaultCountry" bindLabel="country" bindValue="id"
                 formControlName="country_id">
               </ng-select>
@@ -116,7 +122,7 @@
             </div>
 
             <div class="form-group">
-              <label for="selectcities">Ciudad Ubicación</label>
+              <label for="selectcities">Ciudad Ubicación <span class="obligatorio">*</span></label>
               <ng-select [items]="cities"
                      [(ngModel)]="defaultCity"
                      bindLabel="city"
@@ -127,21 +133,21 @@
               <small *ngIf="cityValidate" class="text-danger">Ingrese la Ciudad</small>
             </div>
 
-            <p class="mt-2"><strong>Paises que atiende:</strong></p>
+            <p class="mt-2"><strong>Paises que atiende: <span class="obligatorio">*</span></strong></p>
             <ng-select [items]="countries" [(ngModel)]="defaultCountries"
                         bindLabel="country"
                         [multiple]="true"
                         formControlName="countries_id">
             </ng-select>
 
-            <p class="mt-2"><strong>Ciudades que atiende:</strong></p>
+            <p class="mt-2"><strong>Ciudades que atiende: <span class="obligatorio">*</span></strong></p>
             <ng-select [items]="cities" [(ngModel)]="defaultCities"
                         bindLabel="city"
                         [multiple]="true"
                         formControlName="cities_id">
             </ng-select>
 
-            <p class="mt-2"><strong>Categorias:</strong></p>
+            <p class="mt-2"><strong>Categorias: <span class="obligatorio">*</span></strong></p>
             <ng-select [items]="categories" [(ngModel)]="defaultCategories"
                         bindLabel="category"
                         [multiple]="true"
@@ -151,23 +157,23 @@
             <div class="form-group mt-2">
               <label for="empleados">Numero de Empleados</label>
               <input type="number" class="form-control" id="empleados" formControlName="nempleados"
-                [class.is-invalid]="numberValidate" value="{{providerID.nempleados}}">
-              <small *ngIf="numberValidate" class="text-danger">Ingresa el numero de empleados</small>
+                value="{{providerID.nempleados}}">
+              
             </div>
 
             <div class="form-group mt-4">
               <label for="exampleFormControlTextarea1">Mencione en que se destaca</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="details"
-                [class.is-invalid]="detailsValidate" autocomplete="text" value="{{providerID.details}}"></textarea>
-              <small *ngIf="detailsValidate" class="text-danger">Ingrese en que se destaca</small>
+                autocomplete="text" value="{{providerID.details}}"></textarea>
+              
             </div>
 
 
             <div class="form-group mt-4">
               <label for="exampleFormControlTextarea1">Que garantia ofrece</label>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="garantia"
-                [class.is-invalid]="garantiaValidate" autocomplete="text" value="{{providerID.garantia}}"></textarea>
-              <small *ngIf="garantiaValidate" class="text-danger">Ingresa que ofrece de garantia</small>
+               autocomplete="text" value="{{providerID.garantia}}"></textarea>
+              
             </div>
 
 
@@ -209,7 +215,7 @@
             </div>
 
             <div class="form-group">
-              <label for="exampleFormControlFile1">Galería de imágenes</label>
+              <label for="exampleFormControlFile1">Galería de imágenes <span class="obligatorio">*</span></label>
               <input type="file" multiple="" (change)="uploadImageGalery($event)" class="form-control-file" id="exampleFormControlFile1"
               [class.is-invalid]="galeriaValidate" autocomplete="text">
               <small *ngIf="galeriaValidate" class="text-danger">Ingresa una galería de imágenes</small>
@@ -227,7 +233,7 @@
 
 
             <div class="form-group mb-4">
-              <label for="exampleFormControlFile1">Agregar Documentos</label>
+              <label for="exampleFormControlFile1">Agregar Documentos (Rut y Camara de Comercio) <span class="obligatorio">*</span></label>
               <input type="file" multiple="" (change)="uploadDocument($event)" class="form-control-file" id="exampleFormControlFile1"
               [class.is-invalid]="documentValidate" autocomplete="text">
               <small *ngIf="documentValidate" class="text-danger">Ingrese los documentos</small>

@@ -32,16 +32,6 @@ export class RegistroComponent implements OnInit {
     private _login: LoginService,
     private _router:Router ) {
 
-      
-
-      if( sessionStorage.getItem('checkProvider') ){
-        this.checkDefault = true;
-        this.form.reset({
-          type_user: this.checkDefault,
-        })
-      } else {
-        this.checkDefault = false;
-      }
   }
 
   get nameValidate() { return this.form.get('name').invalid && this.form.get('name').touched }
@@ -57,10 +47,25 @@ export class RegistroComponent implements OnInit {
       password_confirmation: ['',Validators.required],
       type_user: ['']
     });
+
   }
 
   ngOnInit(): void {
     this.createForm();
+    this.validateyouareCompany();
+  }
+
+  validateyouareCompany(){
+
+    if( sessionStorage.getItem('checkProvider') ){
+      this.checkDefault = true;
+      this.form.reset({
+        type_user: this.checkDefault,
+      })
+    } else {
+      this.checkDefault = false;
+    }
+
   }
 
   registerProvider(){

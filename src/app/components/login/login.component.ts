@@ -32,7 +32,10 @@ export class LoginComponent implements OnInit {
     this.createForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    sessionStorage.removeItem('checkProvider');
+  }
 
   // get emailValidate(){
   //   return this.form.get('email').invalid && this.form.get('email').touched

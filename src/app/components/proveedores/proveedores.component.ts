@@ -8,6 +8,7 @@ import { EmailsService } from 'src/app/services/emails.service';
 import Swal from 'sweetalert2';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { runInThisContext } from 'vm';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-proveedores',
@@ -39,6 +40,20 @@ export class ProveedoresComponent implements OnInit {
   notProducts:boolean;
   notServices:boolean;
   notEmpleados:boolean;
+
+  notdestaca:boolean;
+  notgarantia:boolean;
+  
+  notpageweb:boolean;
+
+  notlinkedin:boolean;
+  notinstagram:boolean;
+  notfacebook:boolean;
+  nottwiter:boolean;
+
+  notsocialmedia:boolean;
+
+  noturlvideo:boolean;
 
   productos:any=[];
   firt5product:any=[];
@@ -111,7 +126,7 @@ export class ProveedoresComponent implements OnInit {
             this.proveedorID = data.provider;
             this.proveedoresInteres = data.interes;
             // this.images = data.images;
-            // this.categories = data.provider.categories;
+            this.categories = data.provider.categories;
             // this.services = data.provider.services;
             console.log(this.proveedorID);
 
@@ -201,23 +216,90 @@ export class ProveedoresComponent implements OnInit {
               this.cities.push(` ${element.city}`);
             });
 
-            if( this.proveedorID.products ){
-              this.notProducts = true;
-            } else {
+            if( this.proveedorID.products == null || this.proveedorID.products == 'null' ){
               this.notProducts = false;
+            } else {
+              this.notProducts = true;
             }
 
-            if( this.proveedorID.services ){
-              this.notServices = true;
-            } else {
+            console.log(this.proveedorID.services);
+            
+            if( this.proveedorID.services == null || this.proveedorID.services == 'null'){
               this.notServices = false;
+              
+            } else{
+              this.notServices = true;
             }
 
-            if( this.proveedorID.nempleados ){
-              this.notEmpleados = true;
-            } else {
+            if( this.proveedorID.nempleados == null || this.proveedorID.nempleados == 'null' || this.proveedorID.nempleados == 0 || this.proveedorID.nempleados == '0'  ){
               this.notEmpleados = false;
+            } else {
+              this.notEmpleados = true;
             }
+
+            if( this.proveedorID.details == null || this.proveedorID.details == 'null' ){
+              this.notdestaca = false;
+            } else {
+              this.notdestaca = true;
+            }
+            
+            
+            if( this.proveedorID.garantia == null || this.proveedorID.garantia == 'null' ){
+              this.notgarantia = false;
+            } else {
+              this.notgarantia = true;
+            }
+
+            if( this.proveedorID.web_site == null || this.proveedorID.web_site == 'null' ){
+              this.notpageweb = false;
+            } else {
+              this.notpageweb = true;
+            }
+            // Validacion para redes sociales
+
+            if( this.proveedorID.facebook_url == null || this.proveedorID.facebook_url == 'null' ){
+              this.notfacebook = false;
+            } else {
+              this.notfacebook = true;
+            }
+
+            if( this.proveedorID.instagram_url == null || this.proveedorID.instagram_url == 'null' ){
+              this.notinstagram = false;
+            } else {
+              this.notinstagram = true;
+            }
+            
+            
+            if( this.proveedorID.linkedin_url == null || this.proveedorID.linkedin_url == 'null' ){
+              this.notlinkedin = false;
+            } else {
+              this.notlinkedin = true;
+            }
+
+            if( this.proveedorID.twitter_url == null || this.proveedorID.twitter_url == 'null' ){
+              this.nottwiter = false;
+            } else {
+              this.nottwiter = true;
+            }
+
+            if (this.notfacebook==false && this.notinstagram==false && this.notlinkedin==false && this.nottwiter==false  ) {
+              this.notsocialmedia=true;
+            }
+
+            else{
+              this.notsocialmedia=false;
+
+            }
+
+            // Cuando no se tiene un video y ademas no es premium
+            if( this.proveedorID.url_video == null || this.proveedorID.url_video == 'null' || this.proveedorID.url_video == 'not-video' || this.proveedorID.plan.plan != 'Premium'){
+              this.noturlvideo = false;
+            } else {
+              this.noturlvideo = true;
+            }
+
+
+
 
           this.images = []
           data.provider.images.map((element: any) => {

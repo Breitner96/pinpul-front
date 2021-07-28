@@ -13,6 +13,7 @@ import { TypeCompaniesService } from 'src/app/services/type-companies.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { stringify } from '@angular/compiler/src/util';
 import { TypeDocumentsService } from 'src/app/services/type-documents.service';
+import { log } from 'console';
 
 
 @Component({
@@ -62,7 +63,9 @@ export class AddProviderComponent implements OnInit {
     private _services: ServicesService,
     private _clients: TypeClientsService,
     private _companies: TypeCompaniesService,
-    private _typeDocuments: TypeDocumentsService) {}
+    private _typeDocuments: TypeDocumentsService) {
+
+    }
 
   ngOnInit(): void {
     this._plans.getPlans().subscribe((data: any) => {
@@ -113,9 +116,8 @@ export class AddProviderComponent implements OnInit {
   get numDocumentValidate() { return this.form.get('num_document').invalid && this.form.get('num_document').touched }
   get phoneValidate() { return this.form.get('phone').invalid && this.form.get('phone').touched }
   get emailValidate() { return this.form.get('email').invalid && this.form.get('email').touched }
-  get numberValidate() { return this.form.get('nempleados').invalid && this.form.get('nempleados').touched }
-  get detailsValidate() { return this.form.get('details').invalid && this.form.get('details').touched }
-  get garantiaValidate() { return this.form.get('garantia').invalid && this.form.get('garantia').touched }
+  // get detailsValidate() { return this.form.get('details').invalid && this.form.get('details').touched }
+  // get garantiaValidate() { return this.form.get('garantia').invalid && this.form.get('garantia').touched }
 
   get galeriaValidate() { return this.form.get('image').invalid && this.form.get('image').touched }
   get documentValidate() { return this.form.get('document').invalid && this.form.get('document').touched }
@@ -150,9 +152,9 @@ export class AddProviderComponent implements OnInit {
       countries_id: [],
       cities_id: [''],
       category_id: [],
-      nempleados: ['', Validators.required],
-      details: ['', Validators.required], // En qué se destaca
-      garantia: ['', Validators.required],
+      nempleados: [''],
+      details: [''], // En qué se destaca
+      garantia: [''],
       facebook_url: [''],
       twitter_url: [''],
       instagram_url: [''],
@@ -221,6 +223,8 @@ export class AddProviderComponent implements OnInit {
       }
     }
 
+   
+    
 
     this.formData.append('user_id', localStorage.getItem('user_id') );
     this.formData.append('plan_id', this.form.get('plan_id').value);
@@ -242,7 +246,25 @@ export class AddProviderComponent implements OnInit {
     this.formData.append('num_document', this.form.get('num_document').value);
     this.formData.append('phone', this.form.get('phone').value);
     this.formData.append('email', this.form.get('email').value);
-    this.formData.append('nempleados', this.form.get('nempleados').value);
+
+    console.log(typeof(this.form.get('nempleados').value));
+    
+
+    if (this.form.get('nempleados').value === '') {
+
+      
+      this.formData.append('nempleados', '0');
+      // console.log("aqui");
+      
+    }
+
+    else{
+
+      this.formData.append('nempleados', this.form.get('nempleados').value);
+      // console.log("aqui no");
+    }
+
+    
     this.formData.append('details', this.form.get('details').value);
     this.formData.append('garantia', this.form.get('garantia').value);
     this.formData.append('facebook_url', this.form.get('facebook_url').value);
@@ -250,6 +272,7 @@ export class AddProviderComponent implements OnInit {
     this.formData.append('instagram_url', this.form.get('instagram_url').value);
     this.formData.append('linkedin_url', this.form.get('linkedin_url').value);
     this.formData.append('web_site', this.form.get('web_site').value);
+
 
 
     // if (arregloProducto.length > 15) {

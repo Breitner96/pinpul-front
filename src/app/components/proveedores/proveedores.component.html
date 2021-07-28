@@ -30,7 +30,7 @@
                 </h2>
 
                 <ul class="uppercase categorias__lista">
-                    <li class="cat__logo2"><span class="material-icons material-icons-outlined">bookmark</span></li>
+                    <li class="cat__logo2"><span class="material-icons material-icons-outlined mt-2" >bookmark</span></li>
                     <li *ngFor="let category of categories"> <a [routerLink]="['/categorias/',category.slug]"
                             style="color: bfbfbf !important;">{{ category.category }} </a> </li>
                 </ul>
@@ -109,27 +109,29 @@
                 <h3 class="uppercase">Información de contacto</h3>
                 <p> <strong>Teléfono:</strong> </p>
                 <p>{{ proveedorID.phone }}</p>
-                <p> <strong>Página web:</strong> </p>
-                <p *ngIf="proveedorID.web_site != null">{{ proveedorID.web_site }}</p>
+                <div *ngIf="notpageweb">
+                    <p> <strong>Página web:</strong> </p>
+                    <p>{{ proveedorID.web_site }}</p>
+                </div>
+
                 <p> <strong>Correo electrónico:</strong> </p>
                 <p>{{ proveedorID.email }}</p>
                 <br>
-                <h4>Redes Sociales</h4>
+                <div *ngIf="!notsocialmedia"><h4>Redes Sociales</h4></div>
                 <div class="redes__sociales">
-                    <a *ngIf="proveedorID.twitter_url != null" href="{{ proveedorID.twitter_url }}" target="_blank">
+                    <a *ngIf="nottwiter" href="{{ proveedorID.twitter_url }}" target="_blank">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a *ngIf="proveedorID.facebook_url != null" href="{{ proveedorID.facebook_url }}" target="_blank">
+                    <a *ngIf="notfacebook" href="{{ proveedorID.facebook_url }}" target="_blank">
                         <i class="fab fa-facebook"></i>
                     </a>
-                    <a *ngIf="proveedorID.instagram_url != null" href="{{ proveedorID.instagram_url }}" target="_blank">
+                    <a *ngIf="notinstagram" href="{{ proveedorID.instagram_url }}" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a *ngIf="proveedorID.linkedin_url != null" href="{{ proveedorID.linkedin_url }}" target="_blank">
+                    <a *ngIf="notlinkedin" href="{{ proveedorID.linkedin_url }}" target="_blank">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
 
-                    <p *ngIf="proveedorID.linkedin_url == null">No hay redes sociales registradas</p>
                 </div>
             </div>
 
@@ -151,11 +153,11 @@
                 <br>
                 <p>{{ proveedorID.description }}</p>
 
-                <div *ngIf="proveedorID.url_video != 'not-video'">
-                    <iframe *ngIf="proveedorID.plan.plan == 'Premium'" width="100%" height="460" [src]="getVideoIframe(proveedorID.url_video)" frameborder="0" allowfullscreen></iframe>
+                <div *ngIf="noturlvideo">
+                    <iframe width="100%" height="460" [src]="getVideoIframe(proveedorID.url_video)" frameborder="0" allowfullscreen></iframe>
                 </div>
 
-                <table class="table produc" style="width: 100%;">
+                <table *ngIf="notProducts" class="table produc" style="width: 100%;">
                     <thead class="thead-secondary">
                         <tr>
                             <th scope="col">Productos</th>
@@ -163,24 +165,21 @@
                     </thead>
                     <tbody class="separar">
                         <tr>
-                            <td *ngIf="!notProducts">No hay productos registrados</td>
-                            <td *ngIf="notProducts"> <ul>
+                            <td > <ul>
                                 <li *ngFor="let products5 of firt5product"><span class="lista">-</span> {{products5}}</li>
 
                             </ul> </td>
                         </tr>
 
                         <tr class="other">
-                            <td *ngIf="!notProducts">No hay productos registrados</td>
-                            <td *ngIf="notProducts"> <ul>
+                            <td> <ul>
                                 <li *ngFor="let products10 of firt10product"><span class="lista">-</span> {{products10}}</li>
 
                             </ul> </td>
                         </tr>
 
                         <tr class="other">
-                            <td *ngIf="!notProducts">No hay productos registrados</td>
-                            <td *ngIf="notProducts"> <ul>
+                            <td> <ul>
                                 <li *ngFor="let products15 of firt15product"><span class="lista">-</span> {{products15}}</li>
 
                             </ul> </td>
@@ -189,7 +188,7 @@
                     </tbody>
                 </table>
 
-                <table class="table" style="width: 100%;">
+                <table *ngIf="notServices" class="table" style="width: 100%;">
                     <thead class="thead-secondary">
                         <tr>
                             <th scope="col">servicios</th>
@@ -197,24 +196,21 @@
                     </thead>
                     <tbody class="separar">
                         <tr>
-                            <td *ngIf="!notServices">No hay productos registrados</td>
-                            <td *ngIf="notServices"> <ul>
+                            <td > <ul>
                                 <li *ngFor="let service5 of firt5service"><span class="lista">-</span> {{service5}}</li>
 
                             </ul> </td>
                         </tr>
 
                         <tr class="other">
-                            <td *ngIf="!notServices">No hay productos registrados</td>
-                            <td *ngIf="notServices"> <ul>
+                            <td> <ul>
                                 <li *ngFor="let service10 of firt10service"><span class="lista">-</span> {{service10}}</li>
 
                             </ul> </td>
                         </tr>
 
                         <tr class="other">
-                            <td *ngIf="!notServices">No hay productos registrados</td>
-                            <td *ngIf="notServices"> <ul>
+                            <td> <ul>
                                 <li *ngFor="let service15 of firt15service"><span class="lista">-</span> {{service15}}</li>
 
                             </ul> </td>
@@ -263,7 +259,7 @@
                     </tbody>
                 </table>
 
-                <table class="table" style="width: 100%;">
+                <!-- <table class="table" style="width: 100%;">
                     <thead class="thead-secondary">
                         <tr>
                             <th scope="col">Descripción de la empresa</th>
@@ -274,7 +270,7 @@
                             <td>{{ proveedorID.description }}</td>
                         </tr>
                     </tbody>
-                </table>
+                </table> -->
 
                 <table class="table" style="width: 100%;">
                     <thead class="thead-secondary">
@@ -289,7 +285,7 @@
                     </tbody>
                 </table>
 
-                <table class="table" style="width: 100%;">
+                <table *ngIf="notEmpleados" class="table" style="width: 100%;">
                     <thead class="thead-secondary">
                         <tr>
                             <th scope="col">Numero de Empleados</th>
@@ -297,13 +293,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td *ngIf="!notEmpleados">No hay empleados registrados</td>
-                            <td *ngIf="notEmpleados">{{ proveedorID.nempleados }}</td>
+                            <!-- <td *ngIf="!notEmpleados">No hay empleados registrados</td> -->
+                            <td>{{ proveedorID.nempleados }}</td>
                         </tr>
                     </tbody>
                 </table>
 
-                <table class="table" style="width: 100%;">
+                <table *ngIf="notdestaca" class="table" style="width: 100%;">
                     <thead class="thead-secondary">
                         <tr>
                             <th scope="col">La empresa se destaca</th>
@@ -316,7 +312,7 @@
                     </tbody>
                 </table>
 
-                <table class="table" style="width: 100%;">
+                <table *ngIf="notgarantia" class="table" style="width: 100%;">
                     <thead class="thead-secondary">
                         <tr>
                             <th scope="col">Garantia que ofrecemos</th>

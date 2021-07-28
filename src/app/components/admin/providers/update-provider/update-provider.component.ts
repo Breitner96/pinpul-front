@@ -200,9 +200,9 @@ export class UpdateProviderComponent implements OnInit {
   get numDocumentValidate() { return this.form.get('num_document').invalid && this.form.get('num_document').touched }
   get phoneValidate(){ return this.form.get('phone').invalid && this.form.get('phone').touched }
   get emailValidate(){ return this.form.get('email').invalid && this.form.get('email').touched }
-  get numberValidate(){ return this.form.get('nempleados').invalid && this.form.get('nempleados').touched }
-  get detailsValidate(){ return this.form.get('details').invalid && this.form.get('details').touched }
-  get garantiaValidate(){ return this.form.get('garantia').invalid && this.form.get('garantia').touched }
+  // get numberValidate(){ return this.form.get('nempleados').invalid && this.form.get('nempleados').touched }
+  // get detailsValidate(){ return this.form.get('details').invalid && this.form.get('details').touched }
+  // get garantiaValidate(){ return this.form.get('garantia').invalid && this.form.get('garantia').touched }
 
   get galeriaValidate() { return this.form.get('image').invalid && this.form.get('image').touched }
   get documentValidate() { return this.form.get('document').invalid && this.form.get('document').touched }
@@ -217,8 +217,8 @@ export class UpdateProviderComponent implements OnInit {
       phone: ['',Validators.required],
       logo: ['',Validators.required],
       description: ['',Validators.required],
-      products: ['',Validators.required],
-      services: ['',Validators.required],
+      products: [''],
+      services: [''],
       razon_social: ['',Validators.required],
       type_client_id: [],
       country_id: ['',Validators.required],
@@ -227,9 +227,9 @@ export class UpdateProviderComponent implements OnInit {
       cities_id: [''],
       provider: ['',Validators.required],
       category_id: ['',Validators.required],
-      nempleados:['',Validators.required],
-      details:['',Validators.required],
-      garantia:['',Validators.required],
+      nempleados:[''],
+      details:[''],
+      garantia:[''],
       facebook_url: [''],
       twitter_url: [''],
       instagram_url: [''],
