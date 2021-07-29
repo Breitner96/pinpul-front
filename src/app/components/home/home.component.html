@@ -257,12 +257,15 @@
             <h3 class="top-services__title uppercase">Proveedores más populares</h3>
 
 
-            <!-- <owl-carousel-o class="customOptions" [options]="customOptions">
+            <owl-carousel-o class="customOptions" [options]="customOptions">
 
                 <ng-template *ngFor="let provedor of proveedoresPopulares" carouselSlide>
 
                     <div class="card">
-                        <i *ngIf="provedor.plan.plan == 'Premium' " class="far fa-gem"></i>
+                        <div class="style-premium" *ngIf="provedor.plan.plan == 'Premium' ">
+                            <p>premium</p>
+                            <i  class="far fa-gem"></i>
+                        </div>
                         <a [routerLink]="['/proveedor/', provedor.slug]">
                             <img class="card__img" src="{{ rootImage }}/{{ provedor.logo }}" alt="">
                         </a>
@@ -298,7 +301,7 @@
                     </div>
 
                 </ng-template>
-            </owl-carousel-o> -->
+            </owl-carousel-o>
         </div>
     </section>
 

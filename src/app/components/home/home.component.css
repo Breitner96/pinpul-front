@@ -10,7 +10,7 @@
 @media(min-width:1650px){
     .home .header{
         
-        height: 120vh;
+        height: 100vh;
         
     }
 }
@@ -1150,9 +1150,35 @@ a:hover{
     color: black !important;
 }
 
+.style-premium{
+    display: flex;
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    align-items: center;
+}
+
+.style-premium p{
+    text-transform: uppercase;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    background: #74cc39;
+    padding: 1rem 4rem;
+    position: absolute;
+    /* right: 0px; */
+    border-radius: 30px;
+    text-align: center;
+    transition: all .7s ease;
+    opacity: 0;
+    /* right: -115px; */
+    transform: translateX(0px);
+    display: block;
+}
+
 .top-services .card i.fa-gem{
     background: #74cc39;
-    position: absolute;
     padding: 1rem;
     border-radius: 50%;
     color: white;
@@ -1174,4 +1200,11 @@ a:hover{
     height: 100%;
     border-radius: 50%;
     
+}
+
+.top-services .card:hover p{
+    opacity: 1;
+    /* right: 0px; */
+    transform: translateX(-115px);
+    /* display: block; */
 }

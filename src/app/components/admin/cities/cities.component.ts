@@ -12,6 +12,7 @@ export class CitiesComponent implements OnInit {
 
   countries:any = [];
   cities:any = [];
+  searchCity:any;
 
   constructor(
     private _country: CountriesService,
@@ -27,6 +28,10 @@ export class CitiesComponent implements OnInit {
       this.cities = data;
       console.log(data);
     });
+  }
+
+  getCityByWord(){
+
   }
 
   deleteCity(id){
