@@ -1,9 +1,9 @@
 /*
  * Local
  */
-// export const API_URL = 'http://pinpul-back.test/api';
-// export const DIR_IMG = 'http://pinpul-back.test/img';
-// export const DIR_DOCUMENTS = 'http://pinpul-back.test/documents';
+export const API_URL = 'http://pinpul-back.test/api';
+export const DIR_IMG = 'http://pinpul-back.test/img';
+export const DIR_DOCUMENTS = 'http://pinpul-back.test/documents';
 
 /*
  * Local - public
@@ -16,9 +16,9 @@
  * Producción
  */
 
-export const API_URL = 'https://desarrollo.zuntek.co/pinpul/public_html/api';
-export const DIR_IMG = 'https://desarrollo.zuntek.co/pinpul/public_html/img';
-export const DIR_DOCUMENTS = 'https://desarrollo.zuntek.co/pinpul/public_html/documents';
+// export const API_URL = 'https://desarrollo.zuntek.co/pinpul/public_html/api';
+// export const DIR_IMG = 'https://desarrollo.zuntek.co/pinpul/public_html/img';
+// export const DIR_DOCUMENTS = 'https://desarrollo.zuntek.co/pinpul/public_html/documents';
 
 
 /*

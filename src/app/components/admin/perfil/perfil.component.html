@@ -34,7 +34,7 @@
           </div>
 
 
-          <div *ngIf="notGerencia">
+          <div *ngIf="rolUser == 'proveedor'">
             <div *ngIf="!existProvider">
               <a routerLink="/admin/proveedores/add-provider" class="btn-regPro">Registrar proveedor</a>
             </div>

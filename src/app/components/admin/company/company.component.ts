@@ -31,7 +31,7 @@ export class CompanyComponent implements OnInit {
 
       // }
 
-      if( data.length > 0 ){
+      if( data ){
         this.providerID = data;
 
         if( data.countries.length > 0 ){
@@ -47,9 +47,7 @@ export class CompanyComponent implements OnInit {
           });
           this.citiesByComa = this.cities.toString();
         }
-      }
-      
-      else {
+      } else {
         this._router.navigate(['/admin/dashboard']);
         Swal.fire({
           icon: 'warning',
