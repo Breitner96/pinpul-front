@@ -96,6 +96,17 @@
     color: rgb(79, 212, 79) !important;
     
 }
+.nopointer{
+
+    cursor: default!important;
+
+}
+
+.welcome{
+    padding: 1rem;
+
+}
+
 .nav__container .navegacion ul span{
     font-size: 1.4rem;
 }
@@ -104,6 +115,7 @@
     cursor: pointer;
    
 }
+
 @media(min-width:1024px){
     .nav__container .oculto__escritorio{
         display: none;
@@ -293,4 +305,19 @@ a:hover{
     transition: all .5s ease;
     animation:backOutUp;
     animation-duration: 1s;
+}
+
+/* Nuevo */
+
+.avatar{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    margin-right: 0.6rem;
+}
+.avatar img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    
 }

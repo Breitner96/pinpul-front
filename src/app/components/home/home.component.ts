@@ -25,6 +25,9 @@ declare var particlesJS: any;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  localUserName = localStorage.getItem('user_name');
+
   
   categoriasPopulares:any = [];
   proveedoresPopulares:any = [];
@@ -33,6 +36,8 @@ export class HomeComponent implements OnInit {
   rootImage = DIR_IMG;
   rootNGIMg = ANGULAR_IMG;
   form:FormGroup;
+
+  showuser:boolean;
   
 
   customOptions: OwlOptions = {
@@ -156,8 +161,30 @@ export class HomeComponent implements OnInit {
       }
     });
 
+    if (localStorage.getItem('user_name')) {
+
+      this.showuser=true;
+    }
+
+    else{
+      this.showuser=false;
+
+    }
 
     this.createForm();
+    
+
+
+  }
+
+  logout(){
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('VLHAZGTXBI');
+    localStorage.removeItem('SB177IRHUL');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('provider_id');
+    this._router.navigate(['/login']);
   }
 
   getCategoriesHome(){

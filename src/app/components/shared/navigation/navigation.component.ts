@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { DIR_IMG, ANGULAR_IMG } from '../../../config/config';
 
@@ -9,12 +10,16 @@ import { DIR_IMG, ANGULAR_IMG } from '../../../config/config';
 })
 export class NavigationComponent implements OnInit {
 
+  localUserName = localStorage.getItem('user_name');
+
   categories:any = [];
   rootImage = DIR_IMG;
   rootNGIMg = ANGULAR_IMG;
+  showuser:boolean;
 
   constructor(
-    private _categories: CategoriesService
+    private _categories: CategoriesService,
+    private _router:Router
   ){
     
   }
@@ -23,7 +28,28 @@ export class NavigationComponent implements OnInit {
     this._categories.getCategories().subscribe( (data:any) =>{
       this.categories = data;
     });
+
+    if (localStorage.getItem('user_name')) {
+
+      this.showuser=true;
+    }
+
+    else{
+      this.showuser=false;
+
+    }
   }
+
+  logout(){
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('VLHAZGTXBI');
+    localStorage.removeItem('SB177IRHUL');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('provider_id');
+    this._router.navigate(['/login']);
+  }
+
   asideVer(){
     console.log('click aside');
     console.log('click categoria');

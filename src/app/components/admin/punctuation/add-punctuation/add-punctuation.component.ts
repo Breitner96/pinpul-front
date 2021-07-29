@@ -44,12 +44,12 @@ export class AddPunctuationComponent implements OnInit {
       this.ratings = data;
     });
     
-    if( localStorage.getItem('access_token') ){
-      userIn = parseInt( localStorage.getItem('user_id') );
-      this.form.reset({
-        user_id: userIn,
-      });
-    }
+    // if( localStorage.getItem('access_token') ){
+    //   userIn = parseInt( localStorage.getItem('user_id') );
+    //   this.form.reset({
+    //     user_id: userIn,
+    //   });
+    // }
 
     this.createForm();
   }

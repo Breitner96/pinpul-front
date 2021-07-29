@@ -79,7 +79,21 @@
                             <a routerLink='/'>Nosotros</a>
                         </li>
                         <li class="hide-on-med-and-down oculto__movil"><a [routerLink]="['/blog/']">Blog</a></li>
-                        <li class="hide-on-med-and-down oculto__movil"><a routerLink='/login/'>login <span class="material-icons">person</span></a></li>
+                        <li *ngIf="!showuser" class="hide-on-med-and-down oculto__movil"><a routerLink='/login/'>login <span class="material-icons">person</span></a></li>
+                        <li *ngIf="showuser" class="hide-on-med-and-down oculto__movil"> <span [routerLink]="['/admin/dashboard']" class="material-icons material-icons-outlined">
+                            settings
+                            </span></li>
+
+
+                        <li  *ngIf="showuser" class="hide-on-med-and-down oculto__movil nopointer welcome"><p>Bienvenido <b>{{ localUserName }}</b> </p></li>
+
+                        <li  *ngIf="showuser" class="hide-on-med-and-down oculto__movil avatar nopointer"><img src="{{ rootNGIMg }}/avatar5.png" alt="usuario"></li>
+                        <li  *ngIf="showuser" class="hide-on-med-and-down oculto__movil"> <div class="logout" (click)="logout()">
+                            <span class="material-icons material-icons-outlined">
+                            logout
+                            </span>
+                        </div></li>
+
                     </ul>
         
                 </div>

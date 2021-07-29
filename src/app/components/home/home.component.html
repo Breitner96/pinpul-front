@@ -103,7 +103,22 @@
                         <li class="oculto__movil"><a href="#contacto">contáctenos</a></li>
                         <li class="oculto__movil"><a href="#">nosotros</a></li>
                         <li class="oculto__movil"><a [routerLink]="['/blog/']">blog</a></li>
-                        <li class="oculto__movil"><a [routerLink]="['/login/']">login / registrarse </a></li>
+                        <li  *ngIf="!showuser" class="oculto__movil"><a [routerLink]="['/login/']">login / registrarse </a></li>
+                        <li *ngIf="showuser" class="oculto__movil"> <span [routerLink]="['/admin/dashboard']" class="material-icons material-icons-outlined">
+                            settings
+                            </span></li>
+
+
+                        <li  *ngIf="showuser" class="oculto__movil nopointer"><p>Bienvenido <b>{{ localUserName }}</b> </p></li>
+
+                        <li  *ngIf="showuser" class="oculto__movil avatar nopointer"><img src="{{ rootNGIMg }}/avatar5.png" alt="usuario"></li>
+                        <li  *ngIf="showuser" class="oculto__movil"> <div class="logout" (click)="logout()">
+                            <span class="material-icons material-icons-outlined">
+                            logout
+                            </span>
+                        </div></li>
+
+
                         <!-- <li class="oculto__movil"><a [routerLink]="['/login/']">registrarse </a></li> -->
                     </ul>
                 </nav>

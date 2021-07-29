@@ -131,12 +131,12 @@ export class SidebarComponent implements OnInit {
       icon: 'fas fa-user-plus',
       roles: ['gerencia','admin','atención al cliente'],
     },
-    {
-      label: 'Comentarios',
-      slug: '/admin/comentarios',
-      icon: 'fas fa-comment',
-      roles: ['gerencia','admin','cliente','atención al cliente'],
-    },
+    // {
+    //   label: 'Comentarios',
+    //   slug: '/admin/comentarios',
+    //   icon: 'fas fa-comment',
+    //   roles: ['gerencia','admin','cliente','atención al cliente'],
+    // },
     {
       label: 'Roles',
       slug: '/admin/roles',
@@ -149,12 +149,12 @@ export class SidebarComponent implements OnInit {
     //   icon: 'fas fa-cubes',
     //   roles: ['gerencia'],
     // },
-    {
-      label: 'Calificaciónes',
-      slug: '/admin/puntuaciones',
-      icon: 'fas fa-smile',
-      roles: ['gerencia','cliente'],
-    },
+    // {
+    //   label: 'Calificaciónes',
+    //   slug: '/admin/puntuaciones',
+    //   icon: 'fas fa-smile',
+    //   roles: ['gerencia','cliente'],
+    // },
   ];
 
   constructor(

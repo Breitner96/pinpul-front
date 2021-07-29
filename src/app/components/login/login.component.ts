@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
 
   login(){
 
+
     if( this.form.invalid ){
       return Object.values( this.form.controls ).forEach( control => {
         control.markAsTouched();  
@@ -63,49 +64,61 @@ export class LoginComponent implements OnInit {
     // console.log(data);
     this._auth.signIn(data).subscribe( (data:any) =>{
 
+      // console.log(data.errorLogin);
+      // return;
 
-      localStorage.setItem('access_token', data.access_token);
-      // localStorage.setItem('expires_in', data.expires_in);
-      localStorage.setItem('user_id', data.user.id);
-      localStorage.setItem('user_name', data.user.name);
-
-      /* Rol */
-      localStorage.setItem('VLHAZGTXBI', data.rol[0].name);
-
-      if(data){
+      if(data.errorLogin){
         Swal.fire({
-          title: data.error,
+          title: data.errorLogin,
           icon: 'error',
           confirmButtonText: 'Cerrar'
         });
       }
-      
-      if( localStorage.getItem('access_token') ){
-        setTimeout( () => {
-          localStorage.removeItem('access_token');
+      else{
+        
+        localStorage.setItem('access_token', data.access_token);
+        // localStorage.setItem('expires_in', data.expires_in);
+        localStorage.setItem('user_id', data.user.id);
+        localStorage.setItem('user_name', data.user.name);
+  
+        /* Rol */
+        localStorage.setItem('VLHAZGTXBI', data.rol[0].name);
+  
+        console.log(data.token);
+        
+  
+        
+        
+        if( localStorage.getItem('access_token') ){
+          setTimeout( () => {
+            localStorage.removeItem('access_token');
+            Swal.fire({
+              title: `Su sesión ha caducado`,
+              confirmButtonText: 'Cerrar'
+            });
+            this._router.navigateByUrl('/login');
+          }, 3600000); // 1 hora = 3600000
+        }
+  
+        // data.permissions.map( (element:any) =>{
+        //   this.permissions.push( element.name );
+        // });
+  
+        /* Permisos */
+        // localStorage.setItem('SB177IRHUL', JSON.stringify(this.permissions) );
+        
+        this._router.navigate(['/admin/dashboard']);
+        if(data){
           Swal.fire({
-            title: `Su sesión ha caducado`,
+            title: `Ingreso correcto`,
+            icon: 'success',
             confirmButtonText: 'Cerrar'
           });
-          this._router.navigateByUrl('/login');
-        }, 3600000); // 1 hora = 3600000
+        }
+        
       }
 
-      // data.permissions.map( (element:any) =>{
-      //   this.permissions.push( element.name );
-      // });
 
-      /* Permisos */
-      // localStorage.setItem('SB177IRHUL', JSON.stringify(this.permissions) );
-      
-      this._router.navigate(['/admin/dashboard']);
-      if(data){
-        Swal.fire({
-          title: `Ingreso correcto`,
-          icon: 'success',
-          confirmButtonText: 'Cerrar'
-        });
-      }
       
     });
   }
