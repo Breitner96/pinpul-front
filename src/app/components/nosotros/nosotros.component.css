@@ -1,0 +1,9 @@
+.proveedores__container{
+    margin-top: 8rem !important;
+    height: 100vh;
+    padding: 7rem 0rem;
+}
+
+.proveedores__container p {
+    font-size: 1.4rem;
+}

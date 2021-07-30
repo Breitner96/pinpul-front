@@ -7,7 +7,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { Script } from 'vm';
 import { DIR_IMG , ANGULAR_IMG} from '../../config/config';
 import { BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
-
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
@@ -36,85 +36,23 @@ export class HomeComponent implements OnInit {
   rootImage = DIR_IMG;
   rootNGIMg = ANGULAR_IMG;
   form:FormGroup;
-
   showuser:boolean;
-  
 
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 1
-      },
-      740: {
-        items: 1
-      },
-      940: {
-        items: 4
-      }
-    },
-    nav: true
-  }
+  customOptions: OwlOptions;
+  homeOptions: OwlOptions;
+  testimonialOptions:OwlOptions;
 
-  homeOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 4
-      }
-    },
-    nav: true
-  
-  }
 
-  testimonialOptions:  OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      }
-    },
-    nav: true
-  }
     
   constructor(
     private users: UsersService,
+    private _http: HttpClient,
     private _emails: EmailsService,
     private _categories: CategoriesService,
     private _provedores: ProvidersService,
     private _router:Router,
     private fb:FormBuilder) {
-      this.getCategoriesHome();
+      // this.getCategoriesHome();
   }
   get nameValidate(){ return this.form.get('nombre').invalid && this.form.get('nombre').touched }
   get emailValidate(){ return this.form.get('email').invalid && this.form.get('email').touched }
@@ -136,45 +74,134 @@ export class HomeComponent implements OnInit {
 
   showUsers(){
     this.users.getUsers().subscribe( (data:any) =>{
-      console.log(data);
+      // console.log(data);
     });
   }
+
+  // newPromise(): Promise<any>{
+  //   const headers = new HttpHeaders({
+  //     'Authorization':'Bearer ' + localStorage.getItem('access_token')
+  //   });
+
+  //   const promesa = new Promise( (resolve, reject) =>{
+  //     resolve( this._http.get(`https://pinpul.com/site/public_html/api/categories`,{headers: headers}) )
+  //   });
+  //   return promesa;
+  // }
 
 
 
   ngOnInit() {
+    // this.newPromise()
+    //       .then( resp =>{
+    //         resp.subscribe( data => {
+    //           this.categoriasPopulares = data;
+    //         })
+    //       });
 
     particlesJS.load('particles-js', './assets/particles.json');
 
     this._categories.getCategories().subscribe( (data:any) =>{
       this.categories = data;
-      for(let i = 0; i <= this.categories.length - 1; i++){
-        this.categoriasPopulares.push(this.categories[i]);
+
+      this.customOptions = {
+        loop: true,
+        mouseDrag: false,
+        touchDrag: false,
+        pullDrag: false,
+        dots: false,
+        navSpeed: 700,
+        navText: ['', ''],
+        responsive: {
+          0: {
+            items: 1
+          },
+          768: {
+            items: 2,
+            nav: true
+          },
+          992: {
+            items: 4,
+            nav: true
+          },
+          1024: {
+            items: 4,
+            nav: false
+          }
+        },
+        nav: true
       }
-      console.log(this.categoriasPopulares);
+      // for(let i = 0; i <= this.categories.length - 1; i++){
+      //   this.categoriasPopulares.push(this.categories[i]);
+      // }
+
     });
 
     this._provedores.getProviders().subscribe( (data:any) =>{
       this.proveedores = data;
-      for(let i = 0; i <= this.proveedores.length - 1 ; i++){
-        this.proveedoresPopulares.push(this.proveedores[i]);
-      }
+
+      // for(let i = 0; i <= this.proveedores.length - 1 ; i++){
+      //   this.proveedoresPopulares.push(this.proveedores[i]);
+      // }
+
+      this.homeOptions = {
+        loop: true,
+        mouseDrag: false,
+        touchDrag: false,
+        pullDrag: false,
+        dots: false,
+        navSpeed: 700,
+        navText: ['', ''],
+        responsive: {
+          0: {
+            items: 1
+          },
+          400: {
+            items: 2
+          },
+          740: {
+            items: 3
+          },
+          940: {
+            items: 4
+          }
+        },
+        nav: true
+      };
+
+
     });
 
-    if (localStorage.getItem('user_name')) {
+  
+    
+  
+    
+  
+    this.testimonialOptions = {
+      loop: true,
+      mouseDrag: false,
+      touchDrag: false,
+      pullDrag: false,
+      dots: false,
+      navSpeed: 700,
+      navText: ['', ''],
+      responsive: {
+        0: {
+          items: 1
+        }
+      },
+      nav: true
+    }
+    
 
+    if (localStorage.getItem('user_name')) {
       this.showuser=true;
     }
-
     else{
       this.showuser=false;
-
     }
 
     this.createForm();
-    
-
-
   }
 
   logout(){
@@ -187,79 +214,46 @@ export class HomeComponent implements OnInit {
     this._router.navigate(['/login']);
   }
 
-  getCategoriesHome(){
-    this._categories.getCategories().subscribe( data => {
-      console.log(data);
-    });
-    // const categories$ = new Observable( observer =>{
-    //   let i = - 1;
-    //   const intervalo = setInterval( ()=> {
-    //     i++;
-    //     observer.next(i);
-    //     if( i === 4 ){
-    //       observer.complete();
-    //       clearInterval( intervalo );
-    //     }
-    //   }, 1000);
-    // });
-
-    // categories$.subscribe(
-    //   valor => console.log( valor ),
-    //   error => console.warn( error ),
-    //   () => console.info('Obs terminado')
-    // );
-  }
-
   cerrarPop(){
     var element = document.querySelector("#popUp");
     element.setAttribute("style","display:none;");
   }
   mostrar(){
-    
-    console.log('click categoria');
     let cat_lista:any = document.getElementById('categoria_lista');
     cat_lista.setAttribute("style", "display:inline-block;");
-    
   }
+
   cerrar(){
-    console.log('click cerrar categoria');
     let cat_lista:any = document.getElementById('categoria_lista');
     cat_lista.setAttribute("style", "display:none;");
   }
+
   asideAbrir(){
     let aside:any = document.getElementById('nav__responsive--container');
     aside.setAttribute("style", "display:inline-block;");
     let over:any = document.getElementById('overwrite');
-  over.setAttribute("style","display:inline-block")
+    over.setAttribute("style","display:inline-block")
   }
-  // asideCerrar(){
-  //   let aside:any = document.getElementById('nav__responsive--container');
-  //   aside.setAttribute("style", "display:none;");
-  //   let over:any = document.getElementById('overwrite');
-  // over.setAttribute("style","display:none")
-  // }
+
   asideCerrar(){
     let aside___menu:any = document.getElementById('aside__menu');
     let over:any = document.getElementById('overwrite');
     aside___menu.setAttribute("style", "animation:fadeOut; animation-duration: 1s;")
     over.setAttribute("style","display:none;")
-    
-    // aside___menu.removeClass('animacionEntrada')
-    // aside___menu.addClass('animacionSalida')
-    // over.addClass('animacionSalida')
   }
+
   catMenuAsideAbrir(){
     var element = document.querySelector("#menu__cat--aside");
     element.classList.toggle("hidden2");
   }
+
   asideVer(){
-    console.log('click aside');
-    console.log('click categoria');
     let aside___menu:any = document.getElementById('aside__menu');
     let over:any = document.getElementById('overwrite');
     aside___menu.setAttribute("style", "display:inline-block;")
     over.setAttribute("style","display:inline-block")
   }
+
   mostrarColl(){
     let aside:any = document.getElementById('contenedor__menu2');
     aside.setAttribute("style", "display:inline-block;");
@@ -313,7 +307,7 @@ export class HomeComponent implements OnInit {
         'tel': '',
         'asunto': '',
       });
-      console.log(data);
+      // console.log(data);
     });
   }
   

@@ -9,9 +9,12 @@ import { map, retry } from 'rxjs/operators';
 })
 export class CategoriesService {
 
+  categories:any = [];
+
   constructor(private _http: HttpClient) { }
 
-  getCategories(): Observable<any>{
+  getCategories():Observable<any>{
+
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('access_token')
     });

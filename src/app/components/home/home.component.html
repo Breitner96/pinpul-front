@@ -32,37 +32,11 @@
                         </div>
                     </li>
                     <li>contáctenos</li>
-                    <li>Nosotros</li>
+                    <li> <a routerLink='/nosotros/'> Nosotros</a></li>
                     <li><a routerLink='/blog/'>Blog</a> </li>
                 </ul>
             </div>
         </div>
-
-        <!-- <div class="nav__responsive--container" id="nav__responsive--container">
-            <span class="material-icons material-icons-outlined" id="close__aside" (click)="asideCerrar()">
-                closev
-                </span> -->
-        <!-- <ul >
-                    <li class="item__menu--responsive" ><a href="#">nosotros</a></li>
-                    <li class="item__menu--responsive"><a href="#contacto">contáctenos</a></li>
-                    <li class="item__menu--responsive cat__rela">
-                        <a [routerLink]="['/categorias/','confeccion']">
-                            categorías
-                        </a>
-                        
-                    </li>
-                    <li class="item__menu--responsive"><a href="#">blog</a></li>
-                    <li class="item__menu--responsive"><a [routerLink]="['/login/']">login / registrate</a></li>
-                </ul> -->
-        <!-- <div class="cat__collapsible--responsive"> -->
-        <!-- <ul class="col__container" >
-                                <li class="collapsible__item"><span class="punto__verde">•</span>Lorem  Ipsum Ipsum </li>
-                                <li class="collapsible__item"><span class="punto__verde">•</span>Lorem Ipsum</li>
-                            </ul>
-                        </div> -->
-
-        <!-- </div> -->
-
 
         <div class="container">
 
@@ -74,12 +48,6 @@
                         class="oculto__movil logo_horizontal">
                 </div>
                 <div class="nav__responsive--home ">
-                    <!-- <div class="usuario__nav--home ">
-                        <p class="">Nombre Usuario</p>
-                        <span class="material-icons ">
-                            account_circle
-                            </span>
-                    </div> -->
                     <span (click)="asideVer()"
                         class="material-icons material-icons-outlined menu__puntos hide-on-large-only oculto__escritorio"
                         (click)="asideAbrir()">more_vert</span>
@@ -101,22 +69,29 @@
 
                         </li>
                         <li class="oculto__movil"><a href="#contacto">contáctenos</a></li>
-                        <li class="oculto__movil"><a href="#">nosotros</a></li>
+                        <li class="oculto__movil"><a routerLink='/nosotros/'>nosotros</a></li>
                         <li class="oculto__movil"><a [routerLink]="['/blog/']">blog</a></li>
-                        <li  *ngIf="!showuser" class="oculto__movil"><a [routerLink]="['/login/']">login / registrarse </a></li>
-                        <li *ngIf="showuser" class="oculto__movil"> <span [routerLink]="['/admin/dashboard']" class="material-icons material-icons-outlined">
-                            settings
+                        <li *ngIf="!showuser" class="oculto__movil"><a [routerLink]="['/login/']">login / registrarse
+                            </a></li>
+                        <li *ngIf="showuser" class="oculto__movil"> <span [routerLink]="['/admin/dashboard']"
+                                class="material-icons material-icons-outlined">
+                                settings
                             </span></li>
 
 
-                        <li  *ngIf="showuser" class="oculto__movil nopointer"><p>Bienvenido <b>{{ localUserName }}</b> </p></li>
+                        <li *ngIf="showuser" class="oculto__movil nopointer">
+                            <p>Bienvenido <b>{{ localUserName }}</b> </p>
+                        </li>
 
-                        <li  *ngIf="showuser" class="oculto__movil avatar nopointer"><img src="{{ rootNGIMg }}/avatar5.png" alt="usuario"></li>
-                        <li  *ngIf="showuser" class="oculto__movil"> <div class="logout" (click)="logout()">
-                            <span class="material-icons material-icons-outlined">
-                            logout
-                            </span>
-                        </div></li>
+                        <li *ngIf="showuser" class="oculto__movil avatar nopointer"><img
+                                src="{{ rootNGIMg }}/avatar5.png" alt="usuario"></li>
+                        <li *ngIf="showuser" class="oculto__movil">
+                            <div class="logout" (click)="logout()">
+                                <span class="material-icons material-icons-outlined">
+                                    logout
+                                </span>
+                            </div>
+                        </li>
 
 
                         <!-- <li class="oculto__movil"><a [routerLink]="['/login/']">registrarse </a></li> -->
@@ -132,7 +107,10 @@
                                 cancel
                             </span>
                         </div>
-                        <p>¿Eres Empresa?</p>
+                        <p>
+                            ¿Eres Empresa? <br>
+                            Conoce los beneficios de ser parte de PINPUL
+                        </p>
                         <button><a (click)="checkDefaultRegister()">Registrate aquí</a></button>
                     </div>
                 </div>
@@ -142,7 +120,7 @@
 
             <div class="header__title" (click)="cerrarColl()">
                 <h1 class="header__h1">
-                    Encuentra los proveedores que necesitas
+                    ENCUENTRA AQUÍ LOS PROVEEDORES QUE NECESITAS
                 </h1>
                 <div class="barra__buscar  ">
                     <input type="search" placeholder="Buscar proveedor..."><button type="submit"><span
@@ -158,24 +136,30 @@
 
         </div> -->
         <div class="container ">
-            <h2 class="top-categories__title">Categorías populares</h2>
+            <h2 class="top-categories__title">Categorías más populares</h2>
             <div class="row j-between">
-                <div class="top-categories__container">                    
-                    <owl-carousel-o class="homeOptions" [options]="homeOptions">
-                        <ng-template *ngFor="let cp of categoriasPopulares" carouselSlide>
-                            <a [routerLink]="['/categorias/', cp.slug]">
-                                <div class="top-cateogories__col">
-                                    <div class="top-categories__box"
-                                        style="background-image: url('{{ rootImage }}/{{ cp.imagen }}');">
-                                        <div class="top-categories__name">
-                                            <p>{{ cp.category }} <span>+</span></p>
-                                            <small style="font-weight: 400;">lorem ipsum</small>
+                <div class="top-categories__container">
+
+                    <owl-carousel-o [options]="customOptions">
+                        <ng-container *ngFor="let cp of categories">
+                            <ng-template carouselSlide [id]="cp.id">
+                                <a [routerLink]="['/categorias/', cp.slug]">
+                                    <div class="top-cateogories__col">
+                                        <div class="top-categories__box"
+                                            style="background-image: url('{{ rootImage }}/{{ cp.imagen }}');">
+                                            <div class="top-categories__name">
+                                                <p>{{ cp.category }} <span>+</span></p>
+                                                <small style="font-weight: 400;">lorem ipsum</small>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </ng-template>
+                                </a>
+                            </ng-template>
+                        </ng-container>
                     </owl-carousel-o>
+
+                    <!-- <app-categorias-populares id="slider-categorias"></app-categorias-populares> -->
+
                 </div>
             </div>
         </div>
@@ -184,10 +168,11 @@
     <section class="about">
         <div class="abount__pinpul">
             <div class="about-content">
-                <h2 class="about__title">¿Qué es pinpul?</h2>
-                <p class="about__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro expedita
-                    neque mollitia distinctio libero laudantium nobis tempora facilis dignissimos praesentium, aut quod
-                    vitae voluptatem quo ipsa numquam vel laborum quasi.</p>
+                <h2 class="about__title">¿Qué es pinpul proveedores?</h2>
+                <p class="about__description">PINPUL es una plataforma web diseñada para los emprendedores. Nuestro
+                    objetivo es
+                    conectarte con los mejores proveedores de Colombia y así impulsar el emprendimiento
+                    garantizándoles las mejores opciones.</p>
                 <a (click)="showUsers()" href="#contacto" class="about__button">Más información <span>+</span></a>
             </div>
         </div>
@@ -208,6 +193,11 @@
             <div class="row j-between">
                 <div class="contact__content">
                     <h3 class="contact__title uppercase">Formulario de contacto</h3>
+
+                    <h4 class="text-center">¿Buscas algún proveedore en específico?</h4>
+                    <p style="font-size: 1.4rem; margin-top: 1rem; margin-bottom: 2rem;" class="text-center">¡Cuéntanos
+                        qué necesitas y nosotros nos encargamos de conectarte con los mejores
+                        proveedores!</p>
 
                     <form [formGroup]="form" (ngSubmit)="sendContactPinpul()">
                         <div class="contact__group-form">
@@ -257,14 +247,12 @@
             <h3 class="top-services__title uppercase">Proveedores más populares</h3>
 
 
-            <owl-carousel-o class="customOptions" [options]="customOptions">
-
-                <ng-template *ngFor="let provedor of proveedoresPopulares" carouselSlide>
-
+            <owl-carousel-o [options]="homeOptions">
+                <ng-template *ngFor="let provedor of proveedores" carouselSlide>
                     <div class="card">
                         <div class="style-premium" *ngIf="provedor.plan.plan == 'Premium' ">
                             <p>premium</p>
-                            <i  class="far fa-gem"></i>
+                            <i class="far fa-gem"></i>
                         </div>
                         <a [routerLink]="['/proveedor/', provedor.slug]">
                             <img class="card__img" src="{{ rootImage }}/{{ provedor.logo }}" alt="">
@@ -299,9 +287,9 @@
                             </span>
                         </div>
                     </div>
-
                 </ng-template>
             </owl-carousel-o>
+
         </div>
     </section>
 
@@ -316,28 +304,25 @@
             <div class="row j-between">
                 <div class="steps__step">
                     <div class="steps__number">1</div>
-                    <div class="steps__title">Lorem Ipsum</div>
+                    <div class="steps__title">Busca tu proveedor</div>
                     <div class="steps__text">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod ipsum ipsam neque error, natus
-                        inventore mollitia soluta ipsa repellat nemo.
+                        Anímate y busca entre cientos de proveedores. Revisa nuestras categorías.
                     </div>
                 </div>
 
                 <div class="steps__step">
                     <div class="steps__number">2</div>
-                    <div class="steps__title">Lorem Ipsum</div>
+                    <div class="steps__title">Solicita cotizaciones</div>
                     <div class="steps__text">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod ipsum ipsam neque error, natus
-                        inventore mollitia soluta ipsa repellat nemo.
+                        Recibe cotizaciones y compara precios.
                     </div>
                 </div>
 
                 <div class="steps__step">
                     <div class="steps__number">3</div>
-                    <div class="steps__title">Lorem Ipsum</div>
+                    <div class="steps__title">¡Escoge!</div>
                     <div class="steps__text">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod ipsum ipsam neque error, natus
-                        inventore mollitia soluta ipsa repellat nemo.
+                        Finalmente escoge entre los proveedores que analizaste.
                     </div>
                 </div>
             </div>
@@ -346,85 +331,49 @@
 
     <section class="testimonials">
         <div class="container">
-            
+
             <!-- <div class="testimonials"> -->
-                <owl-carousel-o class="testimonialOptions" [options]="testimonialOptions">
+            <owl-carousel-o class="testimonialOptions" [options]="testimonialOptions">
 
-                    <ng-template carouselSlide>
-                        <div class="testimonials1">
+                <ng-template carouselSlide>
+                    <div class="testimonials1">
                         <h3 class="text">Nuestros clientes han opinado</h3>
-                            <img class="img" style="width: 100px; height: 100px; border-radius: 50%; margin-top:2rem;"
-                                src="{{ rootNGIMg }}/meeting-594091_1920.jpg" alt="">
-                            <h3>Nombre cliente 1</h3>
-                            <p class="company">Company name</p>
-                            <p class="text2">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere exercitationem
-                                explicabo reprehenderit dolor, odio officiis omnis, possimus molestias fugit cum,
-                                expedita quae quia eaque numquam tempora suscipit laboriosam ullam eos?
-                            </p>
-                            <div class="testimonials__quotation-marks">
-                                <img class="testimonials__quotation-marks--left" src="">
-                                <img class="testimonials__quotation-marks--rigth" src="">
-                            </div>
+                        <img class="img" style="width: 100px; height: 100px; border-radius: 50%; margin-top:2rem;"
+                            src="{{ rootNGIMg }}/meeting-594091_1920.jpg" alt="">
+                        <h3>Nombre cliente 1</h3>
+                        <p class="company">Company name</p>
+                        <p class="text2">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere exercitationem
+                            explicabo reprehenderit dolor, odio officiis omnis, possimus molestias fugit cum,
+                            expedita quae quia eaque numquam tempora suscipit laboriosam ullam eos?
+                        </p>
+                        <div class="testimonials__quotation-marks">
+                            <img class="testimonials__quotation-marks--left" src="">
+                            <img class="testimonials__quotation-marks--rigth" src="">
                         </div>
-                    </ng-template>
+                    </div>
+                </ng-template>
 
-                    <ng-template carouselSlide>
-                        <div class="testimonials1">
+                <ng-template carouselSlide>
+                    <div class="testimonials1">
                         <h3 class="text">Nuestros clientes han opinado</h3>
-                            <img class="img" style="width: 100px; height: 100px; border-radius: 50%; margin-top:2rem;"
-                                src="{{ rootNGIMg }}/meeting-594091_1920.jpg" alt="">
-                            <h3>Nombre cliente 2</h3>
-                            <p class="company">Company name</p>
-                            <p class="text2">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere exercitationem
-                                explicabo reprehenderit dolor, odio officiis omnis, possimus molestias fugit cum,
-                                expedita quae quia eaque numquam tempora suscipit laboriosam ullam eos?
-                            </p>
-                            <div class="testimonials__quotation-marks">
-                                <img class="testimonials__quotation-marks--left" src="">
-                                <img class="testimonials__quotation-marks--rigth" src="">
-                            </div>
+                        <img class="img" style="width: 100px; height: 100px; border-radius: 50%; margin-top:2rem;"
+                            src="{{ rootNGIMg }}/meeting-594091_1920.jpg" alt="">
+                        <h3>Nombre cliente 2</h3>
+                        <p class="company">Company name</p>
+                        <p class="text2">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere exercitationem
+                            explicabo reprehenderit dolor, odio officiis omnis, possimus molestias fugit cum,
+                            expedita quae quia eaque numquam tempora suscipit laboriosam ullam eos?
+                        </p>
+                        <div class="testimonials__quotation-marks">
+                            <img class="testimonials__quotation-marks--left" src="">
+                            <img class="testimonials__quotation-marks--rigth" src="">
                         </div>
-                    </ng-template>
+                    </div>
+                </ng-template>
 
-                    <!-- <ng-template carouselSlide>
-                        <div class="testimonials">
-                            <img class="testimonials__img" style="width: 100px; height: 100px; border-radius: 50%;"
-                                src="{{ rootNGIMg }}/meeting-594091_1920.jpg" alt="">
-                            <h3 class="testimonials__client">Nombre cliente 2</h3>
-                            <p class="testimonials__company">Company name</p>
-                            <p class="testimonials__text">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere exercitationem
-                                explicabo reprehenderit dolor, odio officiis omnis, possimus molestias fugit cum,
-                                expedita quae quia eaque numquam tempora suscipit laboriosam ullam eos?
-                            </p>
-                            <div class="testimonials__quotation-marks">
-                                <img class="testimonials__quotation-marks--left" src="">
-                                <img class="testimonials__quotation-marks--rigth" src="">
-                            </div>
-                        </div>
-                    </ng-template>
-
-                    <ng-template carouselSlide>
-                        <div class="testimonials">
-                            <img class="testimonials__img" style="width: 100px; height: 100px; border-radius: 50%;"
-                                src="{{ rootNGIMg }}/meeting-594091_1920.jpg" alt="">
-                            <h3 class="testimonials__client">Nombre cliente 3</h3>
-                            <p class="testimonials__company">Company name</p>
-                            <p class="testimonials__text">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere exercitationem
-                                explicabo reprehenderit dolor, odio officiis omnis, possimus molestias fugit cum,
-                                expedita quae quia eaque numquam tempora suscipit laboriosam ullam eos?
-                            </p>
-                            <div class="testimonials__quotation-marks">
-                                <img class="testimonials__quotation-marks--left" src="">
-                                <img class="testimonials__quotation-marks--rigth" src="">
-                            </div>
-                        </div>
-                    </ng-template> -->
-
-                </owl-carousel-o>
+            </owl-carousel-o>
             <!-- </div> -->
         </div>
     </section>

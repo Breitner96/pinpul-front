@@ -93,6 +93,9 @@ import { MessagesComponent } from './components/admin/messages/messages.componen
 import { MessagesAllComponent } from './components/admin/messages-all/messages-all.component';
 import { PoliticasComponent } from './components/politicas/politicas.component';
 import { PreguntasComponent } from './components/preguntas/preguntas.component';
+import { CategoriasPopularesComponent } from './components/categorias-populares/categorias-populares.component';
+import { ProveedoresPopularesComponent } from './components/proveedores-populares/proveedores-populares.component';
+import { NosotrosComponent } from './components/nosotros/nosotros.component';
 
 @NgModule({
   declarations: [
@@ -168,7 +171,10 @@ import { PreguntasComponent } from './components/preguntas/preguntas.component';
     MessagesComponent,
     MessagesAllComponent,
     PoliticasComponent,
-    PreguntasComponent
+    PreguntasComponent,
+    CategoriasPopularesComponent,
+    ProveedoresPopularesComponent,
+    NosotrosComponent
   ],
   imports: [
     CommonModule,

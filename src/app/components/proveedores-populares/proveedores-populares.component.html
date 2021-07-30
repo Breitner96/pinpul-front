@@ -1,0 +1,42 @@
+<owl-carousel-o id="proveedores-populares" [options]="proveedoresOptions">
+    <ng-template *ngFor="let provedor of proveedores" carouselSlide>
+        <div class="card">
+            <div class="style-premium" *ngIf="provedor.plan.plan == 'Premium' ">
+                <p>premium</p>
+                <i  class="far fa-gem"></i>
+            </div>
+            <a [routerLink]="['/proveedor/', provedor.slug]">
+                <img class="card__img" src="{{ rootImage }}/{{ provedor.logo }}" alt="">
+            </a>
+            <a [routerLink]="['/proveedor/', provedor.slug]">
+                <h3 class="card__title">{{ provedor.provider }}</h3>
+            </a>
+            <div class="card__category-views">
+                <div class="card__tags-categories" (click)="mostrar()">
+                    <span class="material-icons">
+                        bookmark_border
+                    </span>
+                    <h4 class="top-services__name-category">Categorías</h4>
+                </div>
+                <div class="card__tags-views">
+                    <span class="material-icons material-icons-outlined">
+                        visibility
+                    </span>
+                    <h4 class="top-services__count-view">{{provedor.views}}</h4>
+                </div>
+            </div>
+            <div class="categoria_lista" id="categoria_lista">
+                <ul>
+                    <li><span class="punto__verde">•</span>Lorem </li>
+                    <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                    <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                    <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                    <li><span class="punto__verde">•</span>Lorem Ipsum</li>
+                </ul>
+                <span class="material-icons material-icons-outlined" (click)="cerrar()">
+                    close
+                </span>
+            </div>
+        </div>
+    </ng-template> 
+</owl-carousel-o>

@@ -1,6 +1,7 @@
 /* @import url('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'); */
 .cat__container{
     margin-top: 8rem !important;
+    height: 100vh;
 }
 .cat__container .ships__filtros{
     display: flex;

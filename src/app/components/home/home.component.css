@@ -1185,6 +1185,7 @@ a:hover{
     font-size: 1.5rem;
     top: 1rem;
     right: 2rem;
+    z-index: 3;
 }
 
 /* Nuevo */
@@ -1200,6 +1201,10 @@ a:hover{
     height: 100%;
     border-radius: 50%;
     
+}
+
+.top-services .card{
+    padding: 0rem 1rem;
 }
 
 .top-services .card:hover p{

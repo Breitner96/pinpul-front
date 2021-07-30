@@ -1,0 +1,46 @@
+#proveedores-populares .card{
+    padding: 0rem 1rem;
+}
+
+#proveedores-populares .style-premium{
+    display: flex;
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    align-items: center;
+}
+
+#proveedores-populares .style-premium p{
+    text-transform: uppercase;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    background: #74cc39;
+    padding: 1rem 4rem;
+    position: absolute;
+    /* right: 0px; */
+    border-radius: 30px;
+    text-align: center;
+    transition: all .7s ease;
+    opacity: 0;
+    /* right: -115px; */
+    transform: translateX(0px);
+    display: block;
+}
+
+#proveedores-populares .card i.fa-gem{
+    background: #74cc39;
+    padding: 1rem;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    top: 1rem;
+    right: 2rem;
+    z-index: 3;
+}
+
+#proveedores-populares .card:hover p{
+    opacity: 1;
+    transform: translateX(-115px);
+}

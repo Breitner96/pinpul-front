@@ -1,0 +1,15 @@
+<div id="owl" class="owl-carousel owl-theme">
+    <div class="item" *ngFor="let cp of categories" carouselSlide>
+        <a [routerLink]="['/categorias/', cp.slug]">
+            <div class="top-cateogories__col">
+                <div class="top-categories__box"
+                    style="background-image: url('{{ rootImage }}/{{ cp.imagen }}');">
+                    <div class="top-categories__name">
+                        <p>{{ cp.category }} <span>+</span></p>
+                        <small style="font-weight: 400;">lorem ipsum</small>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

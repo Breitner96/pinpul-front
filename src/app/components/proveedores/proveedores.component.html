@@ -43,9 +43,10 @@
 
         </div>
         <div class="info__pedir">
+            <!-- (click)="pedirInfoGratis()"> pedir información gratis <span class="material-icons">done</span></button> -->
             <button class="btn__verde--relleno uppercase"
                     (click)="contadorInfo(proveedorID.id)"
-                    (click)="pedirInfoGratis()"> pedir información gratis <span class="material-icons">done</span></button>
+                    (click)="sendContactProveedor()"> pedir información gratis <span class="material-icons">done</span></button>
             <p *ngIf="proveedorID.plan.plan == 'Premium'" class="ver__tel" (click)="ver__tel()">Ver teléfono</p>
         </div>
         <div class="popUp__infoGratis hidden" id="popUp__infoGratis">

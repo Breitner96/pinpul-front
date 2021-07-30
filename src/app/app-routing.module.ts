@@ -93,6 +93,7 @@ import { UpdateTypeClientComponent } from './components/admin/type-client/update
 import { ProveedoresComponent } from './components/proveedores/proveedores.component';
 import { OffersComponent } from './components/admin/offers/offers.component';
 import { CompanyComponent } from './components/admin/company/company.component';
+import { NosotrosComponent } from './components/nosotros/nosotros.component';
 
 
 const routes: Routes = [
@@ -105,6 +106,7 @@ const routes: Routes = [
   { path: 'vista-blog', component: VistaBlogComponent },
   { path: 'politicas', component: PoliticasComponent },
   { path: 'preguntas', component: PreguntasComponent },
+  { path: 'nosotros', component: NosotrosComponent },
   {
     // path: 'categorias', component: CategoriasComponent
     path: 'categorias/:name', component: CategoriasComponent,
