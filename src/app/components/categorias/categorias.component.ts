@@ -40,45 +40,34 @@ export class CategoriasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.slug = this._activateR.snapshot.params['name'];
-    // this.slug = this._activateR.snapshot.params.name;
-    // console.log(this.slug);
-
     this._activateR.params.subscribe(
       (params: Params) => {
         this.slug = params.name;
-        console.log(this.slug);
+        // console.log(this.slug);
         this._categories.getCategoryBySlug(this.slug).subscribe( (data:any) =>{
-          console.log(data);
+          // console.log(data);
           if(data){
             this.allpost = data.providers;
             this.categoriaP = data.categories;
-            // this.allpost = data;
-            // console.log(this.allpost);
+            // console.log(this.categoriaP);
           } else {
             this.allpost = 0;
-            console.log('No existen proveedores en esta categoría');
+            // console.log('No existen proveedores en esta categoría');
           }
         });
       }
     );
-
-    // this.listProviders();
-    // this.listCategories();
-    // this.loadInitPost();
   }
 
   loadInitPost() {
     this._categories.getCategoryBySlug(this.slug).subscribe((data: any) => {
 
-      console.log(data.proveedor);
-      console.log(data.categorias);
+      // console.log(data);
 
       this.sizedata = data.proveedor;
 
       if (this.sizedata > 0) {
         for (let i = 0; i < 7; i++) {
-          // this.allpost.push(data[0].providers[i]);
           this.allpost.push(data[i]);
         }
         console.log(this.allpost)
@@ -165,10 +154,12 @@ export class CategoriasComponent implements OnInit {
 
 
   mostrar(id: any) {
+    console.log(id);
     let cat_lista: any = document.getElementById(id);
     cat_lista.setAttribute("style", "display:inline-block;");
 
   }
+
   cerrar(id: any) {
     // console.log('click cerrar categoria');
     let cat_lista: any = document.getElementById(id);
