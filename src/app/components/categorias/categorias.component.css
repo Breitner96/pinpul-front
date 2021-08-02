@@ -1,22 +1,28 @@
 /* @import url('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'); */
+
+.tarjetas{
+    margin: 2rem 0rem;
+}
+
 .cat__container{
     margin-top: 8rem !important;
     height: 100vh;
 }
 .cat__container .ships__filtros{
     display: flex;
-    padding: 2rem 0;
-    align-items: center;
-    
+    align-items: center; 
+    margin-top: 12rem;
 }
 @media(max-width:768px){
-    .cat__container .ships__filtros{
+    /* .cat__container .ships__filtros{
         overflow: scroll;
-    }
+    } */
 }
 .cat__container .ships{
     display: flex;
     align-items: center;
+    width: 100%;
+    justify-content: space-between;
 }
 .cat__container .next__btn{
     border-radius: 100%;
@@ -182,7 +188,8 @@
 }
 .chip__contenedor{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
     align-items: center;
    
 }

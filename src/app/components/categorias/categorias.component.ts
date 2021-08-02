@@ -5,6 +5,8 @@ import { DIR_IMG } from '../../config/config';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { CitiesService } from 'src/app/services/cities.service';
+import { CountriesService } from 'src/app/services/countries.service';
 
 // import {HostListener, KeyboardEvent} from '@angular/core';
 
@@ -26,12 +28,16 @@ export class CategoriasComponent implements OnInit {
   notscrolly = true;
   sizedata;
   categoriaP:any = [];
+  cities:any = [];
+  countries:any = [];
 
   constructor(
     private _categories: CategoriesService,
     private _providers: ProvidersService,
     private spinner: NgxSpinnerService,
     private http: HttpClient,
+    private _cities: CitiesService,
+    private _countries: CountriesService,
     private _activateR: ActivatedRoute) {
     // this.slug = this._activateR.snapshot.params['name'];
     // this.listProviders();
@@ -40,19 +46,30 @@ export class CategoriasComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this._categories.getCategories().subscribe( (data:any) =>{
+      this.categories = data;
+    });
+
+    this._cities.getCities().subscribe( (data:any) =>{
+      this.cities = data;
+    });
+
+    this._countries.getCountries().subscribe( (data:any) =>{
+      this.countries = data;
+    });
+
     this._activateR.params.subscribe(
       (params: Params) => {
         this.slug = params.name;
-        // console.log(this.slug);
+
         this._categories.getCategoryBySlug(this.slug).subscribe( (data:any) =>{
-          // console.log(data);
+          console.log(data);
           if(data){
             this.allpost = data.providers;
             this.categoriaP = data.categories;
-            // console.log(this.categoriaP);
           } else {
             this.allpost = 0;
-            // console.log('No existen proveedores en esta categoría');
           }
         });
       }
@@ -165,17 +182,48 @@ export class CategoriasComponent implements OnInit {
     let cat_lista: any = document.getElementById(id);
     cat_lista.setAttribute("style", "display:none;");
   }
+
   mostrarOpt() {
     let cat_lista: any = document.getElementById('chip_options');
     cat_lista.setAttribute("style", "display:inline-block;");
   }
+
   cerrarOpt() {
     let cat_lista: any = document.getElementById('chip_options');
     cat_lista.setAttribute("style", "display:none;");
   }
+
   clickBody() {
     var element = document.querySelector("#chip_options");
     element.classList.toggle("hidden");
+  }
+
+  changeCategoryFilter($event){
+    console.log($event.slug);
+
+    this._activateR.params.subscribe(
+      (params: Params) => {
+        this.slug = params.name;
+
+        this._categories.getCategoryBySlug($event.slug).subscribe( (data:any) =>{
+          console.log(data);
+          if(data){
+            this.allpost = data.providers;
+            this.categoriaP = data.categories;
+          } else {
+            this.allpost = 0;
+          }
+        });
+      }
+    );
+  }
+
+  changeCityFilter($event){
+
+  }
+
+  changeCountryFilter($event){
+    
   }
 
 }

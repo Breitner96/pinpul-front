@@ -40,6 +40,28 @@ export class NavigationComponent implements OnInit {
     }
   }
 
+  openMenuMobile(){
+
+    let page = document.querySelector('.nav-component');
+    page.classList.add("home-over");
+
+    let mobileMenu = document.querySelector('#menu-nav-mobile');
+    mobileMenu.classList.add("style-open-mobile");
+  }
+
+  openCategoriesMobile(){
+    let contentSubitemsMobile = document.querySelector('.content-subitems-mobile');
+    contentSubitemsMobile.classList.toggle('toggle-content-subitems-mobile');    
+  }
+
+  closeMenuNavMobile(){
+    let page = document.querySelector('.nav-component');
+    page.classList.remove("home-over");
+
+    let asideMenuMobile = document.querySelector('#menu-nav-mobile');
+    asideMenuMobile.classList.remove("style-open-mobile");
+  }
+
   logout(){
     localStorage.removeItem('user_id');
     localStorage.removeItem('user_name');
@@ -51,8 +73,6 @@ export class NavigationComponent implements OnInit {
   }
 
   asideVer(){
-    console.log('click aside');
-    console.log('click categoria');
     let aside___menu:any = document.getElementById('aside__menu');
     let over:any = document.getElementById('overwrite');
     aside___menu.setAttribute("style", "display:inline-block;")
@@ -64,27 +84,23 @@ export class NavigationComponent implements OnInit {
     let over:any = document.getElementById('overwrite');
     aside___menu.setAttribute("style", "animation:fadeOut; animation-duration: 1s;")
     over.setAttribute("style","display:none;")
-    
-    // aside___menu.removeClass('animacionEntrada')
-    // aside___menu.addClass('animacionSalida')
-    // over.addClass('animacionSalida')
   }
 
   catMenuAbrir(){
     let cat___menu:any = document.getElementById('menu__cat');
     let tag:any = document.getElementById('cat__con');
-    // let buscar:any  = document.getElementById('barra__buscar');
-    // buscar.setAttribute("style", "width:80%;");
     cat___menu.setAttribute("style", "display:block; color:black;")
     tag.setAttribute("style", "color:rgb(79, 212, 79); font-weight:700;")
-    // tag.setAttribute("style","background:rgb(79, 212, 79); padding:0.5rem 2rem; color:white; ")
   }
+
   catMenuAsideAbrir(){
     var element = document.querySelector("#menu__cat--aside");
     element.classList.toggle("hidden");
   }
+
   clickBody(){
     var element = document.querySelector("#menu__cat");
     element.classList.toggle("hidden");
   }
+
 }

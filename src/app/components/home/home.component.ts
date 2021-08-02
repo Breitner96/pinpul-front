@@ -99,6 +99,7 @@ export class HomeComponent implements OnInit {
     //         })
     //       });
 
+
     particlesJS.load('particles-js', './assets/particles.json');
 
     this._categories.getCategories().subscribe( (data:any) =>{
@@ -169,14 +170,8 @@ export class HomeComponent implements OnInit {
         nav: true
       };
 
-
     });
 
-  
-    
-  
-    
-  
     this.testimonialOptions = {
       loop: true,
       mouseDrag: false,
@@ -202,6 +197,17 @@ export class HomeComponent implements OnInit {
     }
 
     this.createForm();
+
+    // let home = document.querySelector('.home');
+    // let menu2 = document.querySelector('#contenedor__menu2');
+    // home.addEventListener('click', ()=>{
+    //   if( menu2.classList.contains('open-categories') ){
+    //     menu2.classList.remove('open-categories');
+    //   }
+    // });
+
+
+
   }
 
   logout(){
@@ -212,6 +218,19 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem('access_token');
     localStorage.removeItem('provider_id');
     this._router.navigate(['/login']);
+  }
+
+  openCategoriesMobile(){
+    let contentSubitemsMobile = document.querySelector('.content-subitems-mobile');
+    contentSubitemsMobile.classList.toggle('toggle-content-subitems-mobile');    
+  }
+
+  closeMenuNavMobile(){
+    let body = document.querySelector('.home');
+    body.classList.remove("home-over");
+
+    let asideMenuMobile = document.querySelector('#menu-nav-mobile');
+    asideMenuMobile.classList.remove("style-open-mobile");
   }
 
   cerrarPop(){
@@ -229,10 +248,17 @@ export class HomeComponent implements OnInit {
   }
 
   asideAbrir(){
-    let aside:any = document.getElementById('nav__responsive--container');
-    aside.setAttribute("style", "display:inline-block;");
-    let over:any = document.getElementById('overwrite');
-    over.setAttribute("style","display:inline-block")
+    console.log('Abrir menú responsive');
+    // let aside:any = document.getElementById('nav__responsive--container');
+    // aside.setAttribute("style", "display:inline-block;");
+    // let over:any = document.getElementById('overwrite');
+    // over.setAttribute("style","display:inline-block");
+
+    let body = document.querySelector('.home');
+    body.classList.add("home-over");
+
+    let asideMenuMobile = document.querySelector('#menu-nav-mobile');
+    asideMenuMobile.classList.add("style-open-mobile");
   }
 
   asideCerrar(){
@@ -248,10 +274,10 @@ export class HomeComponent implements OnInit {
   }
 
   asideVer(){
-    let aside___menu:any = document.getElementById('aside__menu');
-    let over:any = document.getElementById('overwrite');
-    aside___menu.setAttribute("style", "display:inline-block;")
-    over.setAttribute("style","display:inline-block")
+    // let aside___menu:any = document.getElementById('aside__menu');
+    // let over:any = document.getElementById('overwrite');
+    // aside___menu.setAttribute("style", "display:inline-block;")
+    // over.setAttribute("style","display:inline-block")
   }
 
   mostrarColl(){
@@ -271,6 +297,7 @@ export class HomeComponent implements OnInit {
   clickBody(){
     var element = document.querySelector("#contenedor__menu2");
     element.classList.toggle("hidden");
+    element.classList.add("open-categories");
   }
 
   checkDefaultRegister(){

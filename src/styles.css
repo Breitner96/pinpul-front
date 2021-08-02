@@ -610,4 +610,42 @@ aside{
     z-index: 0;
 }
 
+.chip__contenedor .box-filter{
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 200px;
+    margin-right: 1rem;
+}
 
+@media screen and (max-width: 992px){
+    .chip__contenedor .box-filter{
+        width: 100%;
+    }
+    .chip__contenedor{
+        
+        width: 100%;
+    }
+    .box-filter{
+        flex-wrap: nowrap !important;
+        margin-bottom: 1rem;
+    }
+}
+
+.box-filter .styleSelectCategories,
+.box-filter .styleSelectCities,
+.box-filter .styleSelectCountry{
+    width: 100%;
+}
+
+.ng-dropdown-panel.ng-select-bottom{
+    border: none !important;
+}
+
+.box-filter .ng-select-container,
+.box-filter  .ng-dropdown-panel.ng-select-bottom{
+    border:none;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    width: 100%;
+}

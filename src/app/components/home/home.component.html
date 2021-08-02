@@ -1,43 +1,41 @@
 <div class="home">
-    <header id="particles-js" class="header">
-        <div class="aside__menu animacionEntrada" id="aside__menu">
-            <span class="material-icons material-icons-outlined" id="close__aside" (click)="asideCerrar()">
-                close
-            </span>
-            <div class="logo__aside">
-                <a routerLink='/home/'><img src="{{ rootNGIMg }}/logos/1920x1080.png" alt="Logo empresa"></a>
 
-            </div>
-            <div class="usuario__aside">
-                <div class="usuario__avatar">
-                    <img src="{{ rootNGIMg }}/avatar5.png" alt="foto usuario">
-                </div>
-                <div class="usuario__nombre">
-                    <p class="uppercase">Nombre de usuario</p>
-                </div>
+    <div id="menu-nav-mobile">
 
+        <div class="row-close">
+            <span class="material-icons material-icons-outlined" (click)="closeMenuNavMobile()">close</span>
+        </div>
+
+        <div class="usuario__aside">
+            <div class="usuario__avatar">
+                <img src="{{ rootNGIMg }}/avatar5.png" alt="foto usuario">
             </div>
-            <div class="navegacion__aside">
-                <ul class="uppercase nav__aside">
-                    <li (click)="catMenuAsideAbrir()" id="cat__con--aside">categorías
-                        <div class="menu__cat menu__cat--aside hidden2" id="menu__cat--aside">
-                            <ul>
-                                <li *ngFor="let category of categories" class="item__menu--colapsible">
-                                    <a [routerLink]="['/categorias/', category.slug]" class="negro">
-                                        <span class="punto__verde">•</span>
-                                        {{ category.category }}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>contáctenos</li>
-                    <li> <a routerLink='/nosotros/'> Nosotros</a></li>
-                    <li><a routerLink='/blog/'>Blog</a> </li>
-                </ul>
+            <div class="usuario__nombre">
+                <p class="uppercase">Nombre de usuario</p>
             </div>
         </div>
 
+        <div class="">
+            <ul class="content-items-mobile">
+                <li class="content-items-mobile__li">
+                    <a class="content-items-mobile__a" id="categoriesMobile" (click)="openCategoriesMobile()">categorías</a>
+                    <ul class="content-subitems-mobile">
+                        <li class="content-subitems-mobile__li" *ngFor="let category of categories">
+                            <a class="content-subitems-mobile__a" [routerLink]="['/categorias/', category.slug]">
+                                <span class="punto__verde">•</span>
+                                {{ category.category }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li> <a class="content-items-mobile__a" href="#contacto"> contáctenos </a> </li> 
+                <li> <a class="content-items-mobile__a" routerLink='/nosotros/'> Nosotros</a></li>
+                <li> <a class="content-items-mobile__a" routerLink='/blog/'>Blog</a> </li>
+            </ul>
+        </div>
+    </div>
+
+    <header id="particles-js" class="header">
         <div class="container">
 
             <div class="header__top">
@@ -54,7 +52,7 @@
                 </div>
                 <nav class="header__nav">
                     <ul class="oculto__movil">
-                        <li class="oculto__movil" id='cat__tag' class="cat__tag oculto__movil" (click)="clickBody()">
+                        <li class="oculto__movil" id='cat__tag' class="cat__tag oculto__movil">
                             categorías
                             <div class="contenedor__menu arrow_box hidden" id="contenedor__menu2">
                                 <ul>

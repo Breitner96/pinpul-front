@@ -1,56 +1,76 @@
 <app-navigation></app-navigation>
-<div class="cat__container">
+<div id="page" class="cat__container">
     <div class="filtros">
         <div class="container filtros_container">
             <div class="ships__filtros">
-                <div class="next__btn">
+                <!-- <div class="next__btn">
                     <span class="material-icons material-icons-outlined">navigate_before</span>
-                </div>
+                </div> -->
                 <div class="ships">
                     <div class="chip__contenedor">
-                        <div class="chip" (click)="clickBody()">
+
+                        <div class="box-filter">
+                            <span class="material-icons material-icons-outlined">
+                                bookmark
+                            </span>
+    
+                            <ng-select [items]="categories"
+                                 bindLabel="category"
+                                 class="styleSelectCategories"
+                                 bindValue="id"
+                                 labelForId="state"
+                                 (change)="changeCategoryFilter($event)"
+                                 placeholder="Categorias">
+                            </ng-select>
+                        </div>
+
+                        <div class="box-filter">
+                            <span class="material-icons material-icons-outlined">apartment</span>
+    
+                            <ng-select [items]="cities"
+                                 bindLabel="city"
+                                 class="styleSelectCities"
+                                 bindValue="id"
+                                 labelForId="state"
+                                 (change)="changeCityFilter($event)"
+                                 placeholder="Ciudades">
+                            </ng-select>
+                        </div>
+
+                        <div class="box-filter">
+                            <span class="material-icons material-icons-outlined">public</span>
+    
+                            <ng-select [items]="countries"
+                                 bindLabel="country"
+                                 class="styleSelectCountry"
+                                 bindValue="id"
+                                 labelForId="state"
+                                 (change)="changeCountryFilter($event)"
+                                 placeholder="Países">
+                            </ng-select>
+                        </div>
+
+                        <!-- <div class="chip" (click)="clickBody()">
                             <span class="material-icons material-icons-outlined">
                                 bookmark
                             </span>Categorías
+                        </div> -->
 
-                        </div>
+                        
+
                         <div class="chip__options hidden" id="chip_options">
                             <ul>
-
                                 <!-- <a *ngFor="let category of categories" [routerLink]="['/home/']">
                                     <li><span class="punto__verde">•</span>{{ category.category }}</li>
                                 </a> -->
-
-
-                                <a [routerLink]="['/home/']">
-                                    <li><span class="punto__verde">•</span>Confección</li>
-                                </a>
-                                <a [routerLink]="['/home/']">
-                                    <li><span class="punto__verde">•</span>Cortes</li>
-                                </a>
-                                <a [routerLink]="['/home/']">
-                                    <li><span class="punto__verde">•</span>Desarrollo</li>
-                                </a>
-                                <a [routerLink]="['/home/']">
-                                    <li><span class="punto__verde">•</span>Ropa</li>
-                                </a>
-                                <a [routerLink]="['/home/']">
-                                    <li><span class="punto__verde">•</span>Uniforme</li>
-                                </a>
-
-
                             </ul>
                             <!-- <span class="material-icons material-icons-outlined" (click)="cerrarOpt()" >close</span> -->
                         </div>
                     </div>
 
-                    <div class="chip">
-                        <span class="material-icons material-icons-outlined">apartment</span>Ciudad
-                    </div>
-
-                    <div class="chip">
+                    <!-- <div class="chip">
                         <span class="material-icons material-icons-outlined">public</span>País
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -84,11 +104,15 @@
             <div class="row  card__container">
 
                 <div *ngFor="let provider of allpost; let i = index" class="card">
-                    <a [routerLink]="['/proveedor/', provider.slug]">
+                    <div class="style-premium" *ngIf="provider.plan == 'Premium' ">
+                        <p>premium</p>
+                        <i class="far fa-gem"></i>
+                    </div>
+                    <a [routerLink]="['/proveedor/', provider.PROVIDER_SLUG]">
                         <img class="card__img" src="{{rootImage}}/{{ provider.logo }}" alt="">
                     </a>
                     <div class="card__texto">
-                        <a [routerLink]="['/proveedor/', provider.slug]">
+                        <a [routerLink]="['/proveedor/', provider.PROVIDER_SLUG]">
                             <h3 class="card__title">{{ provider.provider }}</h3>
                         </a>
                         <div class="card__category-views">
@@ -102,7 +126,8 @@
                                 </span>
                                 <h4 class="top-services__count-view">{{provider.views}}</h4>
                             </div>
-                            <div class="categoria_lista" id="{{ provider.provider_id }}" (click)="cerrar(provider.provider_id)">
+                            <div class="categoria_lista" id="{{ provider.provider_id }}"
+                                (click)="cerrar(provider.provider_id)">
                                 <ul>
                                     <li *ngFor="let category of categoriaP[i]" class="enlaces">
                                         <a [routerLink]="['/categorias/', category.slug]">
