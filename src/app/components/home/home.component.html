@@ -21,24 +21,28 @@
                     <a class="content-items-mobile__a" id="categoriesMobile" (click)="openCategoriesMobile()">categorías</a>
                     <ul class="content-subitems-mobile">
                         <li class="content-subitems-mobile__li" *ngFor="let category of categories">
-                            <a class="content-subitems-mobile__a" [routerLink]="['/categorias/', category.slug]">
+                            <a (click)="closeMenuNavMobile()" class="content-subitems-mobile__a" [routerLink]="['/categorias/', category.slug]">
                                 <span class="punto__verde">•</span>
                                 {{ category.category }}
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li> <a class="content-items-mobile__a" href="#contacto"> contáctenos </a> </li> 
-                <li> <a class="content-items-mobile__a" routerLink='/nosotros/'> Nosotros</a></li>
-                <li> <a class="content-items-mobile__a" routerLink='/blog/'>Blog</a> </li>
+                <li> <a (click)="closeMenuNavMobile()" class="content-items-mobile__a" href="#contacto"> contáctenos </a> </li> 
+                <li> <a (click)="closeMenuNavMobile()" class="content-items-mobile__a" routerLink='/nosotros/'> Nosotros</a></li>
+                <li> <a (click)="closeMenuNavMobile()" class="content-items-mobile__a" routerLink='/blog/'>Blog</a> </li>
             </ul>
         </div>
+    </div>
+
+    <div class="options-menu-mobile">
+        <span class="material-icons material-icons-outlined" (click)="openMenuMobile()">more_vert</span>
     </div>
 
     <header id="particles-js" class="header">
         <div class="container">
 
-            <div class="header__top">
+            <!-- <div class="header__top">
                 <div class="header__logo">
                     <img src="{{ rootNGIMg }}/logos/1080x1080_simbolo.png" alt=" logo pinpul"
                         class="oculto__escritorio">
@@ -53,17 +57,17 @@
                 <nav class="header__nav">
                     <ul class="oculto__movil">
                         <li class="oculto__movil" id='cat__tag' class="cat__tag oculto__movil">
+
                             categorías
-                            <div class="contenedor__menu arrow_box hidden" id="contenedor__menu2">
+                            <div class="contenedor__menu arrow_box" id="contenedor__menu2">
                                 <ul>
-                                    <li *ngFor="let category of categories" class="item__menu--colapsible">
+                                    <li *ngFor="let category of categories">
                                         <a [routerLink]="['/categorias/', category.slug]">
                                             <span class="punto__verde">•</span>
                                             {{ category.category }}
                                         </a>
                                     </li>
                                 </ul>
-                            </div>
 
                         </li>
                         <li class="oculto__movil"><a href="#contacto">contáctenos</a></li>
@@ -92,12 +96,46 @@
                         </li>
 
 
-                        <!-- <li class="oculto__movil"><a [routerLink]="['/login/']">registrarse </a></li> -->
                     </ul>
-                </nav>
+                </nav> -->
+
+                <div class="menu-desktop">
+
+                    <div id="logo">
+                        <a routerLink='/home/'>
+                            <img src="{{ rootNGIMg }}/logos/1080x1080_simbolo.png" alt=" logo pinpul" class="logo-pinpul-mobile">
+                        </a>
+            
+                        <a routerLink='/home/'>
+                            <img src="{{ rootNGIMg }}/logos/logo_horizontal.png" alt=" logo pinpul" class="logo-pinpul-desktop">
+                        </a>
+                    </div>
+            
+                    <div id="items-nav">
+                        <ul>
+                            <li>
+                                <a routerLink="#">
+                                    Categorías
+                                    <div class="content-subitems-nav">
+                                        <ul class="subitems-nav">
+                                            <li *ngFor="let category of categories">
+                                                <a [routerLink]="['/categorias/', category.slug]">
+                                                    <span class="punto__verde">•</span>
+                                                    {{ category.category }}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </a>
+                            </li>
+                            <li><a routerLink='/nosotros/'>nosotros</a></li>
+                            <li><a routerLink='/blog/'>blog</a></li>
+                            <li><a routerLink='/login/'>login / registrarse</a></li>
+                        </ul>
+                    </div>
 
             </div>
-            <div class="pop">
+            <div *ngIf="popUp" class="pop">
                 <div class="popUp__container " id="popUp">
                     <div class="pop__content ">
                         <div class="closePop">
@@ -147,7 +185,6 @@
                                             style="background-image: url('{{ rootImage }}/{{ cp.imagen }}');">
                                             <div class="top-categories__name">
                                                 <p>{{ cp.category }} <span>+</span></p>
-                                                <small style="font-weight: 400;">lorem ipsum</small>
                                             </div>
                                         </div>
                                     </div>

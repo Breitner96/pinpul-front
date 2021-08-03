@@ -6,6 +6,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -96,6 +98,9 @@ import { PreguntasComponent } from './components/preguntas/preguntas.component';
 import { CategoriasPopularesComponent } from './components/categorias-populares/categorias-populares.component';
 import { ProveedoresPopularesComponent } from './components/proveedores-populares/proveedores-populares.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
+import { ListBlogComponent } from './components/admin/blog/list-blog/list-blog.component';
+import { CreateBlogComponent } from './components/admin/blog/create-blog/create-blog.component';
+import { EditBlogComponent } from './components/admin/blog/edit-blog/edit-blog.component';
 
 @NgModule({
   declarations: [
@@ -174,7 +179,10 @@ import { NosotrosComponent } from './components/nosotros/nosotros.component';
     PreguntasComponent,
     CategoriasPopularesComponent,
     ProveedoresPopularesComponent,
-    NosotrosComponent
+    NosotrosComponent,
+    ListBlogComponent,
+    CreateBlogComponent,
+    EditBlogComponent
   ],
   imports: [
     CommonModule,
@@ -189,9 +197,14 @@ import { NosotrosComponent } from './components/nosotros/nosotros.component';
     SliderCarouselModule,
     NgxSpinnerModule,
     GoogleChartsModule,
-    NgSelectModule
+    NgSelectModule,
+    RecaptchaV3Module,
+    EditorModule
   ],
-  providers: [],
+  providers: [
+    RecaptchaV3Module,
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: '6Lf3ntYbAAAAAPCNU0DgOF5VCGR6C6sBZdzyQx6Z' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

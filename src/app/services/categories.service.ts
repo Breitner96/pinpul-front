@@ -13,12 +13,22 @@ export class CategoriesService {
 
   constructor(private _http: HttpClient) { }
 
-  getCategories():Observable<any>{
+  obtenerCategorias(){
+    // https://pinpul.com/site/public_html/api/categories
+    // http://pinpul-back.test/api/categories
+    fetch('http://pinpul-back.test/api/categories').then( resp => {
+      console.log( resp.json );
+      return resp.json
+      // this.categories = resp.json;
+    });
+    // return this.categories;
+  }
 
+  getCategories(){
     const headers = new HttpHeaders({
       'Authorization':'Bearer ' + localStorage.getItem('access_token')
     });
-    return this._http.get(`${API_URL}/categories`,{headers: headers});
+    return this._http.get('http://pinpul-back.test/api/categories',{headers: headers});
   }
 
   getCategory(id:number){

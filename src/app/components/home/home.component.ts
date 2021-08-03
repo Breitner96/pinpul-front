@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Router } from '@angular/router';
 import { CategoriesService } from 'src/app/services/categories.service';
@@ -8,8 +8,8 @@ import { Script } from 'vm';
 import { DIR_IMG , ANGULAR_IMG} from '../../config/config';
 import { BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-
-
+import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { Subscription } from 'rxjs';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { EmailsService } from 'src/app/services/emails.service';
 import Swal from 'sweetalert2';
@@ -37,10 +37,16 @@ export class HomeComponent implements OnInit {
   rootNGIMg = ANGULAR_IMG;
   form:FormGroup;
   showuser:boolean;
-
+  popUp:boolean = false;
   customOptions: OwlOptions;
   homeOptions: OwlOptions;
   testimonialOptions:OwlOptions;
+
+  // recaptcha
+  public recentToken: string = ''
+  private singleExecutionSubscription: Subscription;
+
+  recaptchaAvailable = false;
 
 
     
@@ -50,16 +56,16 @@ export class HomeComponent implements OnInit {
     private _emails: EmailsService,
     private _categories: CategoriesService,
     private _provedores: ProvidersService,
+    private recaptchaV3Service: ReCaptchaV3Service,
     private _router:Router,
     private fb:FormBuilder) {
       // this.getCategoriesHome();
+      
   }
   get nameValidate(){ return this.form.get('nombre').invalid && this.form.get('nombre').touched }
   get emailValidate(){ return this.form.get('email').invalid && this.form.get('email').touched }
   get telValidate(){ return this.form.get('tel').invalid && this.form.get('tel').touched } 
   get asuntoValidate(){ return this.form.get('asunto').invalid && this.form.get('asunto').touched }
-  
- 
   
 
   createForm(){
@@ -89,6 +95,24 @@ export class HomeComponent implements OnInit {
   //   return promesa;
   // }
 
+  getRecaptchaToken(action){
+    this.singleExecutionSubscription = this.recaptchaV3Service.execute(action)
+    .subscribe(response => {
+        this.recentToken = response;
+        this.recaptchaAvailable = true;
+    },error=>{
+      console.log("error getting recaptcha");
+      // this.OnDestroy();
+    });
+  }
+
+  OnDestroy(){}
+
+  // async categoriasAll(){
+  //   this.categories = await this._categories.obtenerCategorias();
+  //   console.log( this.categories );
+  // }
+
 
 
   ngOnInit() {
@@ -99,10 +123,23 @@ export class HomeComponent implements OnInit {
     //         })
     //       });
 
+    setTimeout( ()=>{
+      this.popUp = true;
+    }, 3000);
+
+    this.getRecaptchaToken('register');
 
     particlesJS.load('particles-js', './assets/particles.json');
 
+    
+
+    // this._categories.obtenerCategorias().then( resp => console.log( resp ) );
+
+    
+
     this._categories.getCategories().subscribe( (data:any) =>{
+
+      console.log(data)
       this.categories = data;
 
       this.customOptions = {
@@ -132,13 +169,10 @@ export class HomeComponent implements OnInit {
         },
         nav: true
       }
-      // for(let i = 0; i <= this.categories.length - 1; i++){
-      //   this.categoriasPopulares.push(this.categories[i]);
-      // }
-
     });
 
     this._provedores.getProviders().subscribe( (data:any) =>{
+      // console.log(data);
       this.proveedores = data;
 
       // for(let i = 0; i <= this.proveedores.length - 1 ; i++){
@@ -197,17 +231,6 @@ export class HomeComponent implements OnInit {
     }
 
     this.createForm();
-
-    // let home = document.querySelector('.home');
-    // let menu2 = document.querySelector('#contenedor__menu2');
-    // home.addEventListener('click', ()=>{
-    //   if( menu2.classList.contains('open-categories') ){
-    //     menu2.classList.remove('open-categories');
-    //   }
-    // });
-
-
-
   }
 
   logout(){
@@ -220,18 +243,28 @@ export class HomeComponent implements OnInit {
     this._router.navigate(['/login']);
   }
 
-  openCategoriesMobile(){
-    let contentSubitemsMobile = document.querySelector('.content-subitems-mobile');
-    contentSubitemsMobile.classList.toggle('toggle-content-subitems-mobile');    
+  openMenuMobile(){
+    let page = document.querySelector('.home');
+    page.classList.add("home-over");
+
+    let mobileMenu = document.querySelector('#menu-nav-mobile');
+    mobileMenu.classList.add("style-open-mobile");
   }
 
   closeMenuNavMobile(){
     let body = document.querySelector('.home');
     body.classList.remove("home-over");
 
-    let asideMenuMobile = document.querySelector('#menu-nav-mobile');
-    asideMenuMobile.classList.remove("style-open-mobile");
+    let mobileMenu = document.querySelector('#menu-nav-mobile');
+    mobileMenu.classList.remove("style-open-mobile");
   }
+
+  openCategoriesMobile(){
+    let contentSubitemsMobile = document.querySelector('.content-subitems-mobile');
+    contentSubitemsMobile.classList.toggle('toggle-content-subitems-mobile');    
+  }
+
+  
 
   cerrarPop(){
     var element = document.querySelector("#popUp");
@@ -309,11 +342,15 @@ export class HomeComponent implements OnInit {
   // setInterval(function(){ alert("Hello"); }, 3000);
 
   sendContactPinpul(){
+
+    if(this.recaptchaAvailable){
+      // do we have recaptcha token?
+     this.form.value.rcToken = this.recentToken;
+   }
     
     if( this.form.invalid ){
       return Object.values( this.form.controls ).forEach( control => {
         control.markAsTouched(); 
-        
       });
     }else{
       let tag:any = document.getElementById('lds-ellipsis');

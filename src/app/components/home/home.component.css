@@ -50,7 +50,6 @@
     
 }
 .home .logo_horizontal{
-    width: 50rem;
 }
 .home .logo_horizontal img{
     width: 100%;
@@ -97,7 +96,14 @@
     background-color: #ffffff;
     display: flex;
     align-items: center;
+    position: absolute;
+    right: 1.5rem;
 }
+
+.barra__buscar button .material-icons-outlined{
+    display: block;
+}
+
 @media(min-width:768px){
     .home .barra__buscar{
         width: 100%;
@@ -536,11 +542,14 @@
     .header__title{
         width: 75%;
     }
-    .pop{
+    /* .pop{
         margin-top: 2rem;
-    }
+    } */
     .popUp__container{
         z-index: 2;
+    }
+    .top-categories{
+        margin-top: -30rem;
     }
 }
 
@@ -549,6 +558,10 @@
         background: white;
         width: 75%;
         max-width: 1024px;
+    }
+
+    .options-menu-mobile{
+        display: none;
     }
 }
 
@@ -1113,6 +1126,17 @@ a:hover{
     z-index: 3;
 }
 
+.top-services .card{
+    padding: 0rem 1rem;
+}
+
+.top-services .card:hover p{
+    opacity: 1;
+    /* right: 0px; */
+    transform: translateX(-115px);
+    /* display: block; */
+}
+
 /* Nuevo */
 
 .avatar{
@@ -1128,22 +1152,10 @@ a:hover{
     
 }
 
-.top-services .card{
-    padding: 0rem 1rem;
-}
 
-.top-services .card:hover p{
-    opacity: 1;
-    /* right: 0px; */
-    transform: translateX(-115px);
-    /* display: block; */
-}
 
 
 /* CUSTOMS STYLES */
-
-
-
 #menu-nav-mobile{
     display: none;
     position: fixed;
@@ -1152,6 +1164,10 @@ a:hover{
     height: 100%;
     overflow: scroll;
     transition: all .5s ease;
+}
+
+#menu-nav-mobile .material-icons-outlined{
+    color: #191919;
 }
 
 .open-categories{
@@ -1204,4 +1220,169 @@ a:hover{
 .row-close .material-icons-outlined{
     display: inline-block;
     padding: 1rem;
+}
+
+/*menu*/
+
+.logo-pinpul-desktop{
+    display: block;
+}
+
+.logo-pinpul-mobile{
+    width: 90px;
+}
+.logo-pinpul-desktop{
+    width: 200px;
+}
+
+.home .menu-desktop{
+    display: flex;
+    width: 90%;
+    max-width: 95%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#buscador{
+    border-radius: 30px;
+    border: 1px solid #e7e7e7;
+    width: 40%;
+    padding: 1rem;
+}
+
+#buscador input{
+    padding: .5rem 1rem;
+    font-size: 1.6rem !important;
+    width: 100%;
+}
+
+#buscador input:focus{
+    border: none !important;
+}
+
+@media screen and (min-width: 992px){
+
+    .logo-pinpul-desktop{
+        display: block;
+        width: 180px;
+        max-width: 100%;
+    }
+
+    .logo-pinpul-mobile{
+        display: none;
+    }
+
+    .home #items-nav a {
+        color: #fff;
+    }
+
+    #items-nav ul{
+        display: flex;
+    }
+
+    #items-nav li{
+        margin: 0rem 1rem;
+    }
+
+    #items-nav li:hover .subitems-nav{
+        display: block;
+    }
+
+    #items-nav .subitems-nav li:hover a{
+        color: #fff;
+        background: rgb(79, 212, 79);
+    }
+
+    #items-nav .subitems-nav li:hover span{
+        color: #fff;
+    }
+
+    #items-nav a{
+        color: #191919;
+        display: block;
+        text-transform: uppercase;
+        font-size: 1.3rem;
+    }
+
+    #items-nav ul.subitems-nav{
+        background: #fff;
+        display: none;
+        position: absolute;
+        width: 250px;
+        box-shadow: 0px 0px 3px #d2d2d2;
+        border-radius: 7px;
+        border: 1px solid #e7e7e7e7;
+        transition: all .5s ease;
+    }
+
+    #items-nav ul.subitems-nav a {
+        color: #191919;
+    }
+
+    ul.subitems-nav li{
+        margin: 0 !important;
+    }
+
+    ul.subitems-nav a{
+        padding: .1rem 1rem;
+    }
+
+    .content-subitems-nav{
+        padding-top: 2rem;
+        width: 250px;
+        display: block;
+        position: absolute;
+        z-index: 9999;
+    }
+
+    .material-icons-outlined{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 991px){
+    .logo-pinpul-desktop{
+        display: none;
+    }
+    .menu-desktop{
+        width: 95%;
+    }
+    #items-nav{
+        display: none;
+    }
+    #buscador{
+        width: 70%;
+    }
+    .material-icons-outlined{
+        display: block;
+        font-size: 4rem;
+        cursor: pointer;
+    }
+
+    .options-menu-mobile{
+        display: block;
+        position: absolute;
+        right: 3rem;
+        top: 1rem;
+        color: #fff;
+        z-index: 99;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .menu-desktop{
+        width: 95%;
+    }
+}
+
+
+.home .material-icons-outlined{
+    /* position: absolute; */
+    z-index: 999;
+    right: 3rem;
+    top: 1rem;
+    color: #fff;
+
 }

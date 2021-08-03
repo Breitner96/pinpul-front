@@ -101,7 +101,7 @@
     }
 
     ul.subitems-nav a{
-        padding: .5rem 1rem;
+        padding: .1rem 1rem;
     }
 
     .content-subitems-nav{
@@ -115,6 +115,20 @@
         display: none;
     }
 
+}
+
+.usuario__aside{
+    display: flex;
+    align-items: center;
+}
+
+.usuario__avatar{
+    width: 100px;
+    margin-right: 2rem;
+}
+
+.usuario__aside img{
+    border-radius: 50%;
 }
 
 @media screen and (max-width: 991px){

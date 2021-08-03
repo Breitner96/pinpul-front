@@ -1,35 +1,34 @@
 <app-navigation></app-navigation>
 
-<section class="blog__main container">
+<!-- <section class="blog__main container">
     <h2>Blog Pinpul</h2>
-    <div class="blog2 contenedor ">
+    <div *ngFor="let article of articles" class="blog2 contenedor ">
         <div class="imagen__blog2">
-            <img src="{{ rootNGIMg }}/at_01.jpg" alt="Imagen del blog" >
+            <img src="{{ rootImage }}/{{ article.imagen }}" alt="Imagen del blog" >
         </div>
         <div class="texto__blog2">
-            <h3>Titulo del blog</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita corrupti placeat voluptatem </p>
+            <h3>{{ article.title }}</h3>
+            {{ article.content }}
             <a class="waves-effect waves-light btn cyan lighten-1" [routerLink]="['/vista-blog/']">Leer mas</a>
         </div>
     </div>
-    <div class=" blog2 contenedor ">
-        <div class="imagen__blog2 imagen__blog--par">
-            <img src="{{ rootNGIMg }}/at_01.jpg" alt="Imagen del blog" >
+</section> -->
+
+
+<section class="section-blog" class="container mt-7">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center text-uppercase mb-2">Blog Pinpul</h2>
         </div>
-        <div class="texto__blog2 texto__blog--par">
-            <h3>Titulo del blog</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita corrupti placeat voluptatem </p>
-            <a class="waves-effect waves-light btn cyan lighten-1" [routerLink]="['/vista-blog/']">Leer mas</a>
-        </div>
-    </div>
-    <div class="blog2 contenedor ">
-        <div class="imagen__blog2">
-            <img src="{{ rootNGIMg }}/at_01.jpg" alt="Imagen del blog" >
-        </div>
-        <div class="texto__blog2">
-            <h3>Titulo del blog</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita corrupti placeat voluptatem </p>
-            <a class="waves-effect waves-light btn cyan lighten-1" [routerLink]="['/vista-blog/']">Leer mas</a>
+        <div *ngFor="let article of articles" class="col-md-4">
+            <div>
+                <img src="{{ rootImage }}/{{ article.imagen }}" alt="Imagen del blog" >
+            </div>
+            <div>
+                <h3 class="text-uppercase">{{ article.title }}</h3>
+                <div [innerHTML]="article.content"></div>
+                <a class="waves-effect waves-light btn cyan lighten-1" [routerLink]="['/vista-blog/']">Leer mas</a>
+            </div>
         </div>
     </div>
 </section>

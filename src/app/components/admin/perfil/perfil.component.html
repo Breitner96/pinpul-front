@@ -10,28 +10,48 @@
 
           <h2 class="titulo__modulo">Mi información</h2>
 
-          <div class="info__container">
-            <div class="info1">
-              <h4>Información Personal</h4>
-              <p><strong>Nombre:</strong> {{ userID.name }}</p>
-              <p><strong>Email:</strong> {{ userID.email }}</p>
+          <form [formGroup]="formInfo" (ngSubmit)="updateUserData()">
+            <div class="row">
 
+              <div class="col-md-6">
 
+                <h4>Información Personal</h4>
+                <div class="form-group">
+                  <label for="">Nombre:</label>
+                  <input class="form-control" type="text" formControlName="name">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Email:</label>
+                  <input class="form-control" type="email" formControlName="email">
+                </div>
+
+                <div class="form-group">
+                  <label for="">Teléfono:</label>
+                  <input class="form-control" type="tel" formControlName="phone">
+                </div>
+
+              </div>
+
+              <div class="col-md-6">
+                <h4>Cambiar contraseña</h4>
+                <div class="form-group">
+                  <label for="pass">Ingrese su nueva contraseña</label>
+                  <input type="password" class="form-control" formControlName="password">
+                </div>
+
+                <div class="form-group">
+                  <label for="pass">Repita su contraseña</label>
+                  <input type="password" class="form-control" formControlName="password_confirmation">
+                </div>
+
+                <div class="form-group">
+                  <button type="submit" class="contact__submit pay">Actualizar información</button>
+                </div>
+
+              </div>
             </div>
-            <div class="info2">
-              <h4>Cambiar contraseña</h4>
-              <form [formGroup]="form">
-
-                <label for="pass">Ingrese su nueva contraseña</label>
-                <input type="password" class="form-control">
-                <label for="pass">Repita su contraseña</label>
-                <input type="password" class="form-control">
-                <button type="submit" class="contact__submit pay">Cambiar contraseña</button>
-                <!-- <input type="submit" value="ENVIAR" class="contact__submit"> -->
-
-              </form>
-            </div>
-          </div>
+          </form>
 
 
           <div *ngIf="rolUser == 'proveedor'">
@@ -48,9 +68,11 @@
           </div>
 
           <!-- Si el proveedor existe y el estado es activo -->
-          <div *ngIf="existProvider && stateProvider">
-            <div style="width: 30%; text-align: center;" class="alert alert-success" role="alert">Tus datos han sido
-              aprobados</div>
+          <div *ngIf="noMostrarDatosAprovados">
+            <div *ngIf="existProvider && stateProvider">
+              <div style="width: 30%; text-align: center;" class="alert alert-success" role="alert">Tus datos han sido
+                aprobados</div>
+            </div>
           </div>
 
           <div>

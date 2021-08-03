@@ -1,0 +1,73 @@
+
+<div class="wrapper">
+
+    <app-sidebar></app-sidebar>
+    <app-header></app-header>
+  
+    <!-- Content Wrapper -->
+  
+    <div class="content-wrapper">
+  
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-6 mt-5">
+  
+                                      
+                    <form id="quickForm" [formGroup]="form" (ngSubmit)="createBlog()" enctype="multipart/form-data"> 
+                        <div class="form-group">
+                        <label for="title">Ingrese la categoria</label>
+                        <input type="text" class="form-control" id="title"
+                        formControlName="title">
+                        <!-- [class.is-invalid]="categoriaValidate" -->
+                        <!-- <small *ngIf="categoriaValidate" class="text-danger">Ingresa la categoria</small> -->
+                        </div>
+  
+                        <div class="form-group">
+                          <label for="exampleFormControlFile1">Ingrese la imagen</label>
+                          <input type="file" 
+                                 formControlName="imagen"
+                                 (change)="uploadImage($event)"
+                                 class="form-control-file"
+                                 id="exampleFormControlFile1">
+                          <!-- <small *ngIf="imagenValidate" class="text-danger">Ingresa una imagen</small> -->
+                        </div>
+
+                        <!-- initialValue="<p>Initial content of the editor</p>" -->
+                        <editor
+                            formControlName="content"
+                            apiKey="i2j5gpeji0n57d6oe17vdsgkl4w5hkj0p1mxva530rlu79zn"
+                            initialValue=""
+                            [init]="{
+                                height: 500,
+                                menubar: false,
+                                plugins: [
+                                'advlist autolink lists link image charmap print',
+                                'preview anchor searchreplace visualblocks code',
+                                'fullscreen insertdatetime media table paste',
+                                'help wordcount'
+                                ],
+                                toolbar:
+                                'undo redo | formatselect | bold italic | \
+                                alignleft aligncenter alignright alignjustify | \
+                                bullist numlist outdent indent | help'
+                            }"
+                        >
+                        </editor>
+  
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <button type="submit" [routerLink]="['/admin/categorias']" class="btn btn-danger ml-4">Regresar</button>
+                    </form>
+  
+                </div>
+  
+              </div>
+          </div>
+  
+    </div>
+    <!-- /.content-wrapper -->
+  
+    <!-- Main Footer -->
+    <app-footerdash></app-footerdash>
+  
+  </div>
+    <!-- ./wrapper -->

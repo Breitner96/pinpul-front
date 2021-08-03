@@ -5,6 +5,8 @@ import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@ang
 import { EmailsService } from 'src/app/services/emails.service';
 import Swal from 'sweetalert2';
 import { EpaycoService } from 'src/app/services/epayco.service';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-perfil',
@@ -19,6 +21,7 @@ export class PerfilComponent implements OnInit {
   selectRol: boolean = false;
   showInfoProvider: boolean = false;
   form: FormGroup;
+  formInfo: FormGroup;
 
   localUserID: any;
   rolUser: any;
@@ -30,64 +33,96 @@ export class PerfilComponent implements OnInit {
   notPremium: boolean;
   notGerencia: boolean;
 
+  noMostrarDatosAprovados: boolean = false;
+
   constructor(
     private _user: UsersService,
     private _provider: ProvidersService,
     private fb: FormBuilder,
-    private _epayco: EpaycoService) {}
+    private _router: Router,
+    private _epayco: EpaycoService) { }
 
   ngOnInit(): void {
 
     this.localUserID = parseInt(localStorage.getItem('user_id'));
-      this.rolUser = localStorage.getItem('VLHAZGTXBI');
+    this.rolUser = localStorage.getItem('VLHAZGTXBI');
 
-      if (this.rolUser == 'gerencia') {
-        this.notGerencia = false;
-      } else {
-        this.notGerencia = true;
-      }
-    
-    this.createForm();
+    if (this.rolUser == 'gerencia') {
+      this.notGerencia = false;
+    } else {
+      this.notGerencia = true;
+    }
+
+    if (this.rolUser != 'proveedor' || this.rolUser != 'cliente') {
+      this.noMostrarDatosAprovados = false;
+    } else {
+      this.noMostrarDatosAprovados = true;
+    }
+
+    this.updateInforForm();
+
 
     this._user.getUser(this.localUserID).subscribe((data: any) => {
       this.userID = data;
-      console.log( this.userID );
+      // console.log(this.userID);
 
-      this._provider.getProviderByUser(this.userID.id).subscribe( (data:any) =>{
+      this.formInfo.reset({
+        id: this.userID.id,
+        name: this.userID.name,
+        email: this.userID.email,
+        phone: this.userID.phone,
+        rol_id: this.rolUser
+      });
+
+      this._provider.getProviderByUser(this.userID.id).subscribe((data: any) => {
         // console.log(data);
-        if(data.length > 0){
-    
+        if (data.length > 0) {
+
           this._provider.getProviderByUser(this.userID.id).subscribe((data: any) => {
-    
+
             console.log(data);
-    
+
             if (localStorage.getItem('provider_id')) {
               localStorage.setItem('provider_id', data[0].id);
             }
-    
+
             if (data.length > 0) {
               this.existProvider = true;
-    
+
               if (data[0].state == 'activo') {
                 this.stateProvider = true;
                 localStorage.setItem('provider_id', data[0].id);
               }
-    
+
               if (data[0].plan.plan == 'Premium') {
                 this.ifPremium = true;
               } else {
                 this.notPremium = true;
               }
-    
+
             } else {
               this.existProvider = false;
             }
-    
+
           });
         }
       });
 
+    });
 
+    this.createForm();
+
+  }
+
+  updateInforForm() {
+    this.formInfo = this.fb.group({
+      id: '',
+      name: ['',],
+      email: ['',],
+      phone: [''],
+      password: [''],
+      password_confirmation: [''],
+      rol_id: []
     });
   }
 
@@ -112,6 +147,20 @@ export class PerfilComponent implements OnInit {
   mostrarPago() {
     var element = document.querySelector(".formulario__pago");
     element.classList.toggle("hidden");
+  }
+
+  updateUserData() {
+    let data = this.formInfo.value;
+    // console.log(data);
+    this._user.updateUser(data).subscribe((data: any) => {
+      Swal.fire({
+        title: `Datos actualizados correctamente`,
+        icon: 'success',
+        confirmButtonText: 'Cerrar'
+      });
+      this._router.navigate(['/admin/perfil']);
+      // console.log(data);
+    });
   }
 
 
