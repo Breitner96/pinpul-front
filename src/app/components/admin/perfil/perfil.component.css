@@ -33,10 +33,9 @@ h4{
 
 }
 
-
 .contact__submit{
     display: flex;
-    width: 200px;
+    /* width: 200px; */
     background: #65bb23;
     margin: 0 auto;
     justify-content: center;

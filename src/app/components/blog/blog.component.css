@@ -1,3 +1,11 @@
+.section-blog{
+    margin-top: 13rem;
+}
+
+.section-blog p {
+    width: 100%;
+}
+
 @media(min-width:1024px){
     .blog__main{
         margin-top: 6rem;

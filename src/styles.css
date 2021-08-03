@@ -17,24 +17,23 @@
     box-sizing: inherit;
 }
 
+html, body{
+    height: 100% !important;
+}
 
 html{
     font-size: 62.5%;
     font-family: 'Lato', sans-serif;
-    height: auto;
     scroll-behavior: smooth; 
-    height: 100%;
 }
 
 body{
-    font-size: 1.6rem;
-    height: 100%;
+    font-size: 1.8rem;
 }
 
-.wrapper{
+/* .wrapper{
     font-size: 1.6rem;
-    
-}
+} */
 
 /* body::after{
     content: '';
@@ -614,7 +613,7 @@ aside{
     align-items: center;
     display: flex;
     flex-wrap: nowrap;
-    width: 200px;
+    /* width: 200px; */
     margin-right: 1rem;
 }
 
@@ -646,6 +645,16 @@ aside{
 .box-filter  .ng-dropdown-panel.ng-select-bottom{
     border:none;
     text-transform: uppercase;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     width: 100%;
+}
+
+.ng-dropdown-panel .scroll-host{
+    overflow: hidden;
+    overflow-y: auto;
+    position: absolute;
+    display: block;
+    -webkit-overflow-scrolling: touch;
+    left: -52px;
+    top: 2rem;
 }

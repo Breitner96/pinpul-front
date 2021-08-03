@@ -191,8 +191,10 @@
     flex-wrap: wrap;
     /* flex-direction: column; */
     align-items: center;
-   
+   width: 60%;
 }
+
+
 .chip__options{
     position: absolute;
     width: 200px;
@@ -283,4 +285,120 @@
     font-size: 1.5rem;
     top: 1rem;
     right: 2rem;
+}
+
+
+/* #filter-categories{
+    text-transform: uppercase;
+} */
+
+
+.box-filter{
+    background: #fff;
+    border: 1px solid #efeaea;
+    border-radius: 30px;
+    padding: 1rem 2rem;
+    flex-grow: 1;
+    position: relative;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.box-filter .content-categories{
+    display: none;
+    position: absolute;
+    top: 5rem;
+    height: 200px;
+    background: #fff;
+    border: 1px solid #e7e7e7;
+    padding: 1rem;
+    border-radius: 7px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    left: 0;
+    font-size: 1rem;
+    margin-top: 1rem;
+    transition: all .5s ease;
+    z-index: 20;
+}
+
+.content-categories input{
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e7e7e7;
+    padding-bottom: .5rem;
+}
+
+.content-categories a{
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    color: #191919;
+    display: block;
+    padding: .5rem 0rem;
+}
+
+
+
+.box-filter .material-icons-outlined{
+    color: #79b929;
+}
+
+
+.open-filter-category{
+    display: block !important;
+}
+
+
+.style-premium{
+    display: flex;
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    align-items: center;
+}
+
+.style-premium p{
+    text-transform: uppercase;
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    background: #74cc39;
+    padding: 1rem 4rem;
+    position: absolute;
+    border-radius: 30px;
+    text-align: center;
+    transition: all .7s ease;
+    opacity: 0;
+    transform: translateX(0px);
+    display: block;
+    top: .7rem;
+}
+
+.tarjetas .card i.fa-gem{
+    background: #74cc39;
+    padding: 1rem;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    top: .7rem;
+    right: 0rem;
+    z-index: 3;
+}
+
+.tarjetas .card{
+    padding: 0rem 1rem;
+    overflow: hidden;
+}
+
+.tarjetas .card:hover p{
+    opacity: 1;
+    transform: translateX(-150px);
+}
+
+
+@media screen and (max-width:992px){
+    .chip__contenedor{
+        width: 100%;
+    }
 }

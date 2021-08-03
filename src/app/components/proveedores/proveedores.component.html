@@ -109,14 +109,14 @@
             <div class="contact">
                 <h3 class="uppercase">Información de contacto</h3>
                 <p> <strong>Teléfono:</strong> </p>
-                <p>{{ proveedorID.phone }}</p>
+                <p> <a style="color: #191919;" href="tel:{{ proveedorID.phone }}"> {{ proveedorID.phone }} </a></p>
                 <div *ngIf="notpageweb">
                     <p> <strong>Página web:</strong> </p>
                     <p>{{ proveedorID.web_site }}</p>
                 </div>
 
                 <p> <strong>Correo electrónico:</strong> </p>
-                <p>{{ proveedorID.email }}</p>
+                <p> <a style="color: #191919;" href="mailto:{{ proveedorID.email }}"> {{ proveedorID.email }} </a></p>
                 <br>
                 <div *ngIf="!notsocialmedia"><h4>Redes Sociales</h4></div>
                 <div class="redes__sociales">
@@ -419,12 +419,6 @@
 
         <div class="prom">
 
-            
-
-            <div class="alert alert-info" role="alert" *ngIf="promotions.length == 0 && proveedorID.plan.plan == 'Premium'">
-                Aún no hay promociones
-            </div>
-            
             <div *ngIf="promotions.length > 0">
                 <h2>Promociones</h2>
                 <owl-carousel-o class="customOptions" [options]="customOptions" *ngIf="proveedorID.plan.plan == 'Premium'">

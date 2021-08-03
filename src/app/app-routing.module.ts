@@ -94,6 +94,9 @@ import { ProveedoresComponent } from './components/proveedores/proveedores.compo
 import { OffersComponent } from './components/admin/offers/offers.component';
 import { CompanyComponent } from './components/admin/company/company.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
+import { ListBlogComponent } from './components/admin/blog/list-blog/list-blog.component';
+import { CreateBlogComponent } from './components/admin/blog/create-blog/create-blog.component';
+import { EditBlogComponent } from './components/admin/blog/edit-blog/edit-blog.component';
 
 
 const routes: Routes = [
@@ -132,6 +135,14 @@ const routes: Routes = [
       { path: 'messages-all', component: MessagesAllComponent },
       
       { path:'', component:CategoryComponent },
+
+      {
+        path:'blogs',children:[
+          { path:'', component: ListBlogComponent },
+          { path:'create', component:CreateBlogComponent },
+          { path:'edit-blog/:id', component:EditBlogComponent }
+        ]
+      },
 
       {
         path:'categorias',children:[

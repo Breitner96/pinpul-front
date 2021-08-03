@@ -31,6 +31,8 @@ export class CategoriasComponent implements OnInit {
   cities:any = [];
   countries:any = [];
 
+  downCategories:boolean = false;
+
   constructor(
     private _categories: CategoriesService,
     private _providers: ProvidersService,
@@ -74,7 +76,17 @@ export class CategoriasComponent implements OnInit {
         });
       }
     );
+
+    // document.querySelector(':not(body)').addEventListener('click',()=>{
+    //   console.log( document.querySelector('body') );
+    // })
+
   }
+
+  // filterCategory(){
+  //   let ctCategories = document.querySelector('.content-categories');
+  //   ctCategories.classList.toggle('open-filter-category');
+  // }
 
   loadInitPost() {
     this._categories.getCategoryBySlug(this.slug).subscribe((data: any) => {
@@ -218,6 +230,10 @@ export class CategoriasComponent implements OnInit {
     );
   }
 
+  filterCategory($event){
+
+  }
+
   changeCityFilter($event){
 
   }
@@ -225,5 +241,7 @@ export class CategoriasComponent implements OnInit {
   changeCountryFilter($event){
     
   }
+
+  
 
 }

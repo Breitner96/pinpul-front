@@ -9,17 +9,32 @@
                 <div class="ships">
                     <div class="chip__contenedor">
 
-                        <div class="box-filter">
+                        <!-- <div id="filter-categories" (click)="filterCategory()" class="box-filter">
                             <span class="material-icons material-icons-outlined">
                                 bookmark
                             </span>
+
+                            CATEGORIAS
+
+                            <div class="content-categories">
+                                <input type="text" placeholder="Buscar categoría">
+                                <ul>
+                                    <li *ngFor="let categoria of categories">
+                                        <a routerLink="/categorias/{{categoria.slug}}">{{ categoria.category }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> -->
+
+                        <div class="box-filter">
+                            <span class="material-icons material-icons-outlined">bookmark</span>
     
                             <ng-select [items]="categories"
                                  bindLabel="category"
                                  class="styleSelectCategories"
                                  bindValue="id"
                                  labelForId="state"
-                                 (change)="changeCategoryFilter($event)"
+                                 (change)="filterCategory($event)"
                                  placeholder="Categorias">
                             </ng-select>
                         </div>

@@ -35,6 +35,12 @@ export class SidebarComponent implements OnInit {
       roles: ['gerencia','admin','financiero','atención al cliente','proveedor','cliente']
     },
     {
+      label: 'Blog',
+      slug: '/admin/blogs',
+      icon: 'fas fa-edit',
+      roles: ['gerencia']
+    },
+    {
       label: 'Mi Empresa',
       slug: '/admin/empresa',
       icon: 'far fa-building',
@@ -137,12 +143,12 @@ export class SidebarComponent implements OnInit {
     //   icon: 'fas fa-comment',
     //   roles: ['gerencia','admin','cliente','atención al cliente'],
     // },
-    {
-      label: 'Roles',
-      slug: '/admin/roles',
-      icon: 'fas fa-comment',
-      roles: ['gerencia'],
-    },
+    // {
+    //   label: 'Roles',
+    //   slug: '/admin/roles',
+    //   icon: 'fas fa-comment',
+    //   roles: ['gerencia'],
+    // },
     // {
     //   label: 'Permisos',
     //   slug: '/admin/permisos',

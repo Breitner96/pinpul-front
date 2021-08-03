@@ -1,0 +1,71 @@
+<div class="wrapper">
+
+    <app-sidebar></app-sidebar>
+    <app-header></app-header>
+
+    <!-- Content Wrapper -->
+
+    <div class="content-wrapper">
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-12 mt-5">
+                    <div class="btn__container">
+
+                        <button type="button" class="btn btn-primary btn-lg mb-5 boton__add"
+                            [routerLink]="['/admin/blogs/create']">Añadir nuevo artículo</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Tipos de Documentos</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <td align="center" style="font-weight: bold">Título</td>
+                                        <td align="center" style="font-weight: bold">Fecha</td>
+                                        <td align="center" style="font-weight: bold">Componentes</td>
+                                    </tr>
+                                </thead>
+
+                                <!-- <tbody *ngFor="let document of documentos">
+                                    <tr>
+                                        <td>{{document.id}}</td>
+                                        <td align="center">{{document.document}}</td>
+
+                                        <td align="center">
+
+                                            <button type="button" class="btn btn-primary mr-2"
+                                                [routerLink]="['/admin/tipo-documento/edit-type-document', document.id]"><i
+                                                    class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-danger"
+                                                (click)="deletedocument(document.id)"><i
+                                                    class="fas fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody> -->
+
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+
+    <!-- Main Footer -->
+    <app-footerdash></app-footerdash>
+
+</div>
+<!-- ./wrapper -->

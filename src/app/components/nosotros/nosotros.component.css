@@ -1,9 +1,54 @@
+#wrapper{
+    min-height: 100%;
+}
+
+#about-page img{
+    transition: all .7s ease;
+    transform: scale(1);
+}
+
+#about-page .info-img{
+    overflow: hidden;
+}
+
+#about-page .info-img:hover img{
+    transform: scale(1.2);
+}
+
 .proveedores__container{
     margin-top: 8rem !important;
-    height: 100vh;
+    min-height: 100%;
     padding: 7rem 0rem;
 }
 
 .proveedores__container p {
     font-size: 1.4rem;
+}
+
+.info-about{
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    height: 100%;
+}
+
+.info-about h3{
+    font-size: 3rem;
+}
+
+.info-about p{
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 768px){
+
+    .order-info{
+        order: 1;
+    }
+    .order-img{
+        order: 2;
+    }
+
 }
